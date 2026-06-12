@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/loop-returns/main/json-schema/loop-returns-label-request.json",
+  "title": "Loop Returns - Label Request",
+  "description": "A label request record in Loop representing a request to generate a shipping label for a return.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the label request, created by Loop.",
+      "examples": ["67329889100573"]
+    },
+    "return_id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The return ID associated with this label request.",
+      "examples": [1001]
+    },
+    "shop_id": {
+      "type": "integer",
+      "format": "int64",
+      "description": "The ID of the shop belonging to the merchant.",
+      "examples": [50]
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the label request.",
+      "enum": ["issued", "cancelled", "fulfilled"],
+      "examples": ["issued"]
+    },
+    "addresses": {
+      "type": "object",
+      "description": "Origin and destination addresses for the shipment.",
+      "properties": {
+        "origin": {
+          "$ref": "#/$defs/Address"
+        },
+        "destination": {
+          "$ref": "#/$defs/Address"
+        }
+      }
+    },
+    "parcel": {
+      "type": "object",
+      "description": "Physical dimensions and weight of the parcel.",
+      "properties": {
+        "height": {
+          "type": "number",
+          "format": "double",
+          "description": "Height of the parcel in inches.",
+          "examples": [5]
+        },
+        "length": {
+          "type": "number",
+          "format": "double",
+          "description": "Length of the parcel in inches.",
+          "examples": [20.2]
+        },
+        "width": {
+          "type": "number",
+          "format": "double",
+          "description": "Width of the parcel in inches.",
+          "examples": [10.9]
+        },
+        "weight": {
+          "type": "number",
+          "format": "double",
+          "description": "Weight of the parcel in grams.",
+          "examples": [65.9]
+        }
+      }
+    },
+    "products": {
+      "type": "array",
+      "description": "List of products included in the shipment.",
+      "items": {
+        "$ref": "#/$defs/Product"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "description": "Any errors associated with the label request.",
+      "items": {}
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the label request was created.",
+      "examples": ["2023-04-25T13:25:00-05:00"]
+    }
+  },
+  "required": ["id", "return_id", "status"],
+  "$defs": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "company": {
+          "type": ["string", "null"],
+          "maxLength": 100
+        },
+        "address1": {
+          "type": "string",
+          "maxLength": 125
+        },
+        "address2": {
+          "type": ["string", "null"],
+          "maxLength": 125
+        },
+        "city": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "region": {
+          "type": ["string", "null"],
+          "maxLength": 100
+        },
+        "postal_code": {
+          "type": ["string", "null"],
+          "maxLength": 16
+        },
+        "country": {
+          "type": ["string", "null"],
+          "maxLength": 100
+        },
+        "country_code": {
+          "type": "string",
+          "maxLength": 2,
+          "description": "Two-letter ISO country code."
+        }
+      },
+      "required": ["address1", "city", "country_code"]
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "hs_code": {
+          "type": "string"
+        },
+        "country_of_origin": {
+          "type": "string"
+        },
+        "price": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "integer",
+              "description": "Amount in cents."
+            },
+            "currency": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

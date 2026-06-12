@@ -1,0 +1,116 @@
+vocabulary:
+  - term: return
+    definition: A customer-initiated post-purchase request to send back one or more items from an order, which may result in a refund, exchange, store credit, or gift card outcome.
+    domain: Returns Management
+
+  - term: return_id
+    definition: A unique numeric identifier assigned by Loop to each return record.
+    domain: Returns Management
+
+  - term: return_state
+    definition: The current lifecycle status of a return. Valid values are open, closed, cancelled, expired, and review.
+    domain: Returns Management
+
+  - term: return_outcome
+    definition: The resolution type chosen by the customer for a return, such as refund, exchange, store credit, or gift card.
+    domain: Returns Management
+
+  - term: exchange
+    definition: A return outcome in which the customer selects replacement items instead of receiving a monetary refund or store credit.
+    domain: Returns Management
+
+  - term: label
+    definition: A shipping label generated for a return shipment, containing carrier information, tracking number, and a printable PDF URL.
+    domain: Shipping
+
+  - term: label_request
+    definition: A request created when a merchant or integration needs to generate a shipping label for a return, containing origin/destination addresses and parcel details.
+    domain: Shipping
+
+  - term: label_status
+    definition: The tracking status of a return shipment label. Valid values are new, pre_transit, in_transit, out_for_delivery, and delivered.
+    domain: Shipping
+
+  - term: destination
+    definition: A physical location configured in Loop to receive returned merchandise, such as a warehouse or donation center.
+    domain: Returns Management
+
+  - term: destination_type
+    definition: The category of a return destination, either warehouse or donate.
+    domain: Returns Management
+
+  - term: cart
+    definition: A temporary object representing product variant selections for a Shop Now On-Store exchange, identified by a unique token.
+    domain: Exchange
+
+  - term: cart_token
+    definition: A unique string identifier for a cart object used in Shop Now On-Store exchanges.
+    domain: Exchange
+
+  - term: webhook
+    definition: A programmatic subscription that sends HTTP notifications to a specified URL when Loop events occur, such as return creation or label updates.
+    domain: Integrations
+
+  - term: webhook_topic
+    definition: The category of events a webhook subscription covers. Valid values are return, label, restock, label.request, giftcard, and happy.returns.shipment.
+    domain: Integrations
+
+  - term: webhook_trigger
+    definition: The specific event condition that fires a webhook notification. Examples include return.created, label.updated, and giftcard.requested.
+    domain: Integrations
+
+  - term: fraud_report
+    definition: A record attached to a return indicating suspected fraudulent activity, categorized by type such as package-never-received or item-is-worn.
+    domain: Fraud Prevention
+
+  - term: fraud_category
+    definition: The classification of a fraud report. Valid values are package-never-received, package-is-empty, package-is-missing-items, instant-return-charge-failed, keep-item-abuse, splitting-returns-to-avoid-restrictions, item-is-worn, and other.
+    domain: Fraud Prevention
+
+  - term: deep_link
+    definition: A URL that directs a customer to a specific order within the Loop return portal, bypassing the standard order lookup flow.
+    domain: Customer Experience
+
+  - term: asn
+    definition: Advanced Shipping Notice — a report of return packages organized by tracking status and timeframe, used for warehouse receiving workflows.
+    domain: Logistics
+
+  - term: line_item
+    definition: An individual product within a return, representing a single variant being returned along with its reason, outcome, and pricing details.
+    domain: Returns Management
+
+  - term: handling_fee
+    definition: A fee charged by the merchant to process a return, deducted from the refund or credit amount.
+    domain: Returns Management
+
+  - term: store_credit
+    definition: A return outcome where the customer receives a credit balance in the merchant's store rather than a cash refund.
+    domain: Returns Management
+
+  - term: gift_card
+    definition: A return outcome where the customer receives a digital gift card code issued through the merchant's Shopify store.
+    domain: Returns Management
+
+  - term: restock
+    definition: The process of returning a product to available inventory after a return is received and inspected.
+    domain: Inventory
+
+  - term: X_Authorization
+    definition: The HTTP request header used to authenticate Loop API requests, containing a scoped API key.
+    domain: Authentication
+
+  - term: oauth2
+    definition: The authorization protocol used for the Labels API and Webhooks API, requiring an authorization code flow through oauth.loopreturns.com.
+    domain: Authentication
+
+  - term: shop_id
+    definition: The unique numeric identifier for a merchant's shop within Loop, used to associate records with a specific store.
+    domain: Platform
+
+  - term: provider_order_id
+    definition: The order identifier from the external commerce platform (e.g., Shopify order ID) linked to a Loop return.
+    domain: Platform
+
+  - term: return_method
+    definition: The physical or logistical method by which a customer ships back their return, such as a prepaid label or Happy Returns drop-off.
+    domain: Shipping

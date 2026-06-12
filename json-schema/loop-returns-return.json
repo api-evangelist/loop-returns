@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/loop-returns/main/json-schema/loop-returns-return.json",
+  "title": "Loop Returns - Return",
+  "description": "A return record in Loop representing a customer-initiated post-purchase return request.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier associated with the return.",
+      "examples": ["12345678"]
+    },
+    "state": {
+      "type": "string",
+      "description": "The current lifecycle state of the return.",
+      "enum": ["open", "closed", "cancelled", "expired", "review"],
+      "examples": ["open"]
+    },
+    "outcome": {
+      "type": "string",
+      "description": "The resolution type chosen by the customer.",
+      "enum": ["refund", "exchange", "store_credit", "gift_card"],
+      "examples": ["exchange"]
+    },
+    "order_id": {
+      "type": "string",
+      "description": "The Loop order identifier associated with the return.",
+      "examples": ["98766312"]
+    },
+    "order_name": {
+      "type": "string",
+      "description": "The order name from the commerce platform.",
+      "examples": ["#7382018"]
+    },
+    "provider_order_id": {
+      "type": "string",
+      "description": "The order identifier from the external commerce platform (e.g., Shopify).",
+      "examples": ["3248923479283"]
+    },
+    "customer": {
+      "type": ["string", "null"],
+      "format": "email",
+      "description": "The customer's email address.",
+      "examples": ["customer@example.com"]
+    },
+    "currency": {
+      "type": "string",
+      "description": "The ISO 4217 currency code for the store's default currency.",
+      "examples": ["USD"]
+    },
+    "total": {
+      "type": "string",
+      "description": "The total cost of the return.",
+      "examples": ["63.30"]
+    },
+    "refund": {
+      "type": "string",
+      "description": "The amount refunded in the return.",
+      "examples": ["63.30"]
+    },
+    "handling_fee": {
+      "type": "string",
+      "description": "The handling fee charged by the merchant.",
+      "examples": ["0.00"]
+    },
+    "return_product_total": {
+      "type": "string",
+      "description": "The gross value of the returning items before discounts and tax.",
+      "examples": ["156.00"]
+    },
+    "return_tax_total": {
+      "type": "string",
+      "description": "The total value of taxes on the returning items.",
+      "examples": ["8.58"]
+    },
+    "return_total": {
+      "type": "string",
+      "description": "The net value of the returning items after discounts and tax.",
+      "examples": ["164.58"]
+    },
+    "exchange_total": {
+      "type": "string",
+      "description": "The net value of the exchanges after discounts and tax.",
+      "examples": ["101.28"]
+    },
+    "gift_card": {
+      "type": "string",
+      "description": "The value of the gift card issued in the return.",
+      "examples": ["0.00"]
+    },
+    "carrier": {
+      "type": "string",
+      "description": "The carrier associated with the return shipment.",
+      "examples": ["USPS"]
+    },
+    "tracking_number": {
+      "type": "string",
+      "description": "The return shipment tracking number.",
+      "examples": ["9400136105440512280610"]
+    },
+    "label_status": {
+      "type": "string",
+      "description": "The delivery status of the return shipping label.",
+      "enum": ["new", "pre_transit", "in_transit", "out_for_delivery", "delivered"],
+      "examples": ["in_transit"]
+    },
+    "label_url": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "The link to the shipping label PDF.",
+      "examples": ["https://s3.amazonaws.com/example-bucket/label.pdf"]
+    },
+    "destination_id": {
+      "type": ["string", "null"],
+      "description": "The unique identifier of the shipping destination for this return.",
+      "examples": ["67896541368765"]
+    },
+    "status_page_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL of the Loop return tracking status page.",
+      "examples": ["https://example.loopreturns.com/#/return/uuid"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the return was created.",
+      "examples": ["2023-01-01T22:27:15.000Z"]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time the return was last updated.",
+      "examples": ["2023-01-01T22:27:18.000Z"]
+    }
+  },
+  "required": ["id", "state", "created_at"]
+}

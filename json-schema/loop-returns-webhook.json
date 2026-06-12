@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/loop-returns/main/json-schema/loop-returns-webhook.json",
+  "title": "Loop Returns - Webhook",
+  "description": "A programmatic webhook subscription in Loop for receiving real-time event notifications.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The webhook's unique identifier.",
+      "examples": [12345]
+    },
+    "shop_id": {
+      "type": "integer",
+      "description": "The unique identifier of the shop that created the webhook.",
+      "examples": [65432]
+    },
+    "topic": {
+      "type": "string",
+      "description": "The category of events this webhook covers.",
+      "enum": ["return", "label", "restock", "label.request", "giftcard", "happy.returns.shipment"],
+      "examples": ["return"]
+    },
+    "trigger": {
+      "type": "string",
+      "description": "The specific event condition that fires this webhook notification.",
+      "enum": [
+        "return.created",
+        "return.updated",
+        "return.closed",
+        "label.created",
+        "label.updated",
+        "restock.requested",
+        "label.request.issued",
+        "label.request.cancelled",
+        "giftcard.requested",
+        "shipment.processed"
+      ],
+      "examples": ["return.created"]
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL where webhook notifications are sent.",
+      "examples": ["https://example.com/webhook"]
+    },
+    "status": {
+      "type": "string",
+      "description": "Whether the webhook subscription is active.",
+      "enum": ["active", "inactive"],
+      "default": "inactive",
+      "examples": ["active"]
+    }
+  },
+  "required": ["topic", "trigger", "url"]
+}

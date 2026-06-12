@@ -1,0 +1,8 @@
+{
+  "id": 12345,
+  "shop_id": 65432,
+  "topic": "return",
+  "trigger": "return.created",
+  "url": "https://example.com/webhook/loop-returns",
+  "status": "active"
+}

@@ -1,0 +1,294 @@
+openapi: 3.1.0
+info:
+  title: Loop Returns - Destinations API
+  description: API for managing return destinations (warehouses and donation centers).
+  version: v1
+servers:
+  - url: https://api.loopreturns.com/api/v1
+tags:
+  - name: Destinations
+paths:
+  /destinations:
+    get:
+      summary: Get All Destinations
+      operationId: getAllDestinations
+      description: Retrieve all destinations.
+      tags:
+        - Destinations
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  destinations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Destination'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+    post:
+      summary: Create Destination
+      description: Create a destination.
+      operationId: createDestination
+      tags:
+        - Destinations
+      security:
+        - api_key: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDestinationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '422':
+          description: Unprocessable
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/UnprocessableResponse'
+                  - $ref: '#/components/schemas/DestinationLimitExceeded'
+  /destinations/{id}:
+    get:
+      summary: Get Destination Details
+      operationId: getDestinationDetails
+      description: Get details for a single destination.
+      tags:
+        - Destinations
+      security:
+        - api_key: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          example: 12345
+          description: The destination's unique identifier.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: Destination not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+    put:
+      summary: Update Destination
+      description: Update a destination.
+      operationId: updateDestination
+      tags:
+        - Destinations
+      security:
+        - api_key: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          example: 12345
+          description: The destination's unique identifier.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Destination'
+        '404':
+          description: Destination not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+    delete:
+      summary: Delete Destination
+      description: Delete a destination.
+      operationId: deleteDestination
+      tags:
+        - Destinations
+      security:
+        - api_key: []
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          example: 12345
+          description: The destination's unique identifier.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Success
+        '404':
+          description: Destination not found.
+        '500':
+          description: Error deleting the destination.
+components:
+  schemas:
+    Destination:
+      type: object
+      description: A physical location such as a warehouse or donation center to which returns are shipped.
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: The destination's unique identifier.
+        type:
+          type: string
+          enum:
+            - warehouse
+            - donate
+          example: warehouse
+          description: The type of location.
+        name:
+          type: string
+          example: Example Destination
+          description: The destination's name.
+        enabled:
+          type: boolean
+          example: true
+          description: Whether the destination is enabled as a return destination.
+        provider_location_id:
+          type:
+            - integer
+            - 'null'
+          example: 42424242
+          description: The numeric location identifier from the commerce platform (e.g. Shopify).
+        address:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      description: The destination's address.
+      properties:
+        address1:
+          type: string
+          example: 123 Main St
+        address2:
+          type:
+            - string
+            - 'null'
+          example: Unit 456
+        city:
+          type: string
+          example: Columbus
+        state:
+          type:
+            - string
+            - 'null'
+          example: Ohio
+        zip:
+          type:
+            - string
+            - 'null'
+          example: '43210'
+        country:
+          type: string
+          example: United States
+        country_code:
+          type: string
+          example: US
+    CreateDestinationRequest:
+      type: object
+      required:
+        - name
+        - type
+        - address
+      properties:
+        name:
+          type: string
+          example: Example Destination
+        type:
+          type: string
+          enum:
+            - warehouse
+            - donate
+          example: warehouse
+        enabled:
+          type: boolean
+          example: true
+        address:
+          $ref: '#/components/schemas/Address'
+    NotFoundResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: NOT_FOUND
+        message:
+          type: string
+          example: The destination could not be found.
+    UnauthorizedResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: '401'
+            http_code:
+              type: string
+              example: GEN-UNAUTHORIZED
+            message:
+              type: string
+              example: Unauthorized.
+    UnprocessableResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: The name field is required.
+    DestinationLimitExceeded:
+      type: object
+      properties:
+        code:
+          type: string
+          example: DESTINATION_LIMIT_EXCEEDED
+        message:
+          type: string
+          example: You have reached the destination limit. Please check your settings.
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Authorization
+      in: header

@@ -1,0 +1,159 @@
+openapi: 3.1.0
+info:
+  title: Loop Returns - Fraud Reports API
+  version: v1
+  description: API used for creating and retrieving fraud reports on returns.
+servers:
+  - url: https://api.loopreturns.com/api/v1
+tags:
+  - name: Fraud Reports
+paths:
+  /returns/{return_id}/fraud-report:
+    post:
+      summary: Create Fraud Report
+      operationId: createFraudReport
+      description: Attach a fraud report to a return to flag it for fraudulent activity.
+      tags:
+        - Fraud Reports
+      security:
+        - api_key: []
+      parameters:
+        - in: path
+          name: return_id
+          schema:
+            type: integer
+          required: true
+          description: The return's unique identifier.
+          example: 23141
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReturnFraudReportRequest'
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReturnFraudReport'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        example: '401'
+                      http_code:
+                        type: string
+                        example: GEN-UNAUTHORIZED
+                      message:
+                        type: string
+                        example: Unauthorized.
+        '404':
+          description: Return not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: No return found with this ID.
+        '409':
+          description: Fraud report already exists for this return.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        example: Fraud Report already exists.
+        '422':
+          description: Unprocessable entity.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/InvalidCategory'
+                  - $ref: '#/components/schemas/InvalidComment'
+components:
+  schemas:
+    FraudCategoryEnum:
+      type: string
+      description: The category under which the fraudulent return falls.
+      enum:
+        - package-never-received
+        - package-is-empty
+        - package-is-missing-items
+        - instant-return-charge-failed
+        - keep-item-abuse
+        - splitting-returns-to-avoid-restrictions
+        - item-is-worn
+        - other
+    ReturnFraudReport:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 87
+          description: The fraud report's unique identifier.
+        return_id:
+          type: integer
+          example: 23141
+          description: The return's unique identifier.
+        category:
+          $ref: '#/components/schemas/FraudCategoryEnum'
+        comment:
+          type: string
+          description: Additional context associated with the fraudulent return.
+          example: This is a sample comment.
+        created_at:
+          type: string
+          format: date-time
+          example: 2024-10-25T16:44:47.038Z
+    CreateReturnFraudReportRequest:
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/FraudCategoryEnum'
+        comment:
+          type: string
+          description: Additional context. Required if category is 'other'.
+          example: This is a sample comment.
+    InvalidComment:
+      type: object
+      properties:
+        message:
+          type: string
+          example: The comment field must not be greater than 512 characters.
+        errors:
+          type: object
+    InvalidCategory:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Must be one of the following values.
+        errors:
+          type: object
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Authorization
+      in: header
+      description: API key with Returns scope.

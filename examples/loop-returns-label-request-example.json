@@ -1,0 +1,50 @@
+{
+  "id": "67329889100573",
+  "return_id": 1001,
+  "shop_id": 50,
+  "status": "issued",
+  "addresses": {
+    "origin": {
+      "name": "Jane Smith",
+      "company": null,
+      "address1": "456 Customer Ave",
+      "address2": null,
+      "city": "Portland",
+      "region": "OR",
+      "postal_code": "97201",
+      "country": "United States of America",
+      "country_code": "US"
+    },
+    "destination": {
+      "name": "Acme Returns Warehouse",
+      "company": "Acme, Co",
+      "address1": "123 Warehouse Blvd",
+      "address2": "Dock 4",
+      "city": "Columbus",
+      "region": "OH",
+      "postal_code": "43210",
+      "country": "United States of America",
+      "country_code": "US"
+    }
+  },
+  "parcel": {
+    "height": 5,
+    "length": 20.2,
+    "width": 10.9,
+    "weight": 650
+  },
+  "products": [
+    {
+      "name": "Blue Running Shoes",
+      "sku": "SHOES-BLU-10",
+      "hs_code": "64021990",
+      "country_of_origin": "USA",
+      "price": {
+        "amount": 9500,
+        "currency": "USD"
+      }
+    }
+  ],
+  "errors": [],
+  "created_at": "2023-04-25T13:25:00-05:00"
+}

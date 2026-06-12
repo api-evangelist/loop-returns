@@ -57,6 +57,18 @@ apis:
         url: https://docs.loopreturns.com/webhook-reference/getting-started
       - type: IntegrationGuides
         url: https://docs.loopreturns.com/integration-guides/create-return-authorization
+      - type: OpenAPI
+        url: openapi/loop-returns-returns-openapi.yml
+      - type: OpenAPI
+        url: openapi/loop-returns-labels-openapi.yml
+      - type: OpenAPI
+        url: openapi/loop-returns-webhooks-openapi.yml
+      - type: OpenAPI
+        url: openapi/loop-returns-carts-openapi.yml
+      - type: OpenAPI
+        url: openapi/loop-returns-fraud-reports-openapi.yml
+      - type: OpenAPI
+        url: openapi/loop-returns-destinations-openapi.yml
 common:
   - type: Website
     url: https://www.loopreturns.com/
@@ -84,6 +96,10 @@ common:
     url: rate-limits/loop-returns-rate-limits.yml
   - type: FinOps
     url: finops/loop-returns-finops.yml
+  - type: Vocabulary
+    url: vocabulary/loop-returns-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/loop-returns-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,219 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "loop": "https://docs.loopreturns.com/vocabulary#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Return": "loop:Return",
+    "LabelRequest": "loop:LabelRequest",
+    "Label": "loop:Label",
+    "Destination": "loop:Destination",
+    "Cart": "loop:Cart",
+    "Webhook": "loop:Webhook",
+    "FraudReport": "loop:FraudReport",
+    "LineItem": "loop:LineItem",
+    "AsnReport": "loop:AsnReport",
+
+    "return_id": {
+      "@id": "loop:returnId",
+      "@type": "xsd:integer"
+    },
+    "state": {
+      "@id": "loop:returnState",
+      "@type": "xsd:string"
+    },
+    "outcome": {
+      "@id": "loop:returnOutcome",
+      "@type": "xsd:string"
+    },
+    "order_id": {
+      "@id": "loop:orderId",
+      "@type": "xsd:string"
+    },
+    "order_name": {
+      "@id": "loop:orderName",
+      "@type": "xsd:string"
+    },
+    "provider_order_id": {
+      "@id": "loop:providerOrderId",
+      "@type": "xsd:string"
+    },
+    "shop_id": {
+      "@id": "loop:shopId",
+      "@type": "xsd:integer"
+    },
+    "customer": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "total": {
+      "@id": "schema:totalPrice",
+      "@type": "xsd:string"
+    },
+    "currency": {
+      "@id": "schema:priceCurrency",
+      "@type": "xsd:string"
+    },
+    "refund": {
+      "@id": "loop:refundAmount",
+      "@type": "xsd:string"
+    },
+    "handling_fee": {
+      "@id": "loop:handlingFee",
+      "@type": "xsd:string"
+    },
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "closed_at": {
+      "@id": "loop:closedAt",
+      "@type": "xsd:dateTime"
+    },
+    "label_status": {
+      "@id": "loop:labelStatus",
+      "@type": "xsd:string"
+    },
+    "label_url": {
+      "@id": "loop:labelUrl",
+      "@type": "@id"
+    },
+    "tracking_number": {
+      "@id": "loop:trackingNumber",
+      "@type": "xsd:string"
+    },
+    "tracking_url": {
+      "@id": "loop:trackingUrl",
+      "@type": "@id"
+    },
+    "carrier": {
+      "@id": "loop:carrier",
+      "@type": "xsd:string"
+    },
+    "destination_id": {
+      "@id": "loop:destinationId",
+      "@type": "xsd:string"
+    },
+    "return_method": {
+      "@id": "loop:returnMethod",
+      "@type": "xsd:string"
+    },
+    "line_items": {
+      "@id": "loop:lineItems",
+      "@container": "@set"
+    },
+    "exchanges": {
+      "@id": "loop:exchanges",
+      "@container": "@set"
+    },
+    "token": {
+      "@id": "loop:cartToken",
+      "@type": "xsd:string"
+    },
+    "topic": {
+      "@id": "loop:webhookTopic",
+      "@type": "xsd:string"
+    },
+    "trigger": {
+      "@id": "loop:webhookTrigger",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "status": {
+      "@id": "loop:status",
+      "@type": "xsd:string"
+    },
+    "category": {
+      "@id": "loop:fraudCategory",
+      "@type": "xsd:string"
+    },
+    "comment": {
+      "@id": "schema:comment",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "address": {
+      "@id": "schema:address",
+      "@type": "schema:PostalAddress"
+    },
+    "address1": {
+      "@id": "schema:streetAddress",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "zip": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "schema:addressCountry",
+      "@type": "xsd:string"
+    },
+    "country_code": {
+      "@id": "loop:countryCode",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "schema:price",
+      "@type": "xsd:integer"
+    },
+    "currency_code": {
+      "@id": "schema:priceCurrency",
+      "@type": "xsd:string"
+    },
+    "sku": {
+      "@id": "schema:sku",
+      "@type": "xsd:string"
+    },
+    "barcode": {
+      "@id": "schema:gtin",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "purchase_price": {
+      "@id": "loop:purchasePrice",
+      "@type": "xsd:string"
+    },
+    "restock_status": {
+      "@id": "loop:restockStatus",
+      "@type": "xsd:string"
+    },
+    "deeplink_url": {
+      "@id": "loop:deeplinkUrl",
+      "@type": "@id"
+    },
+    "qr": {
+      "@id": "loop:qrCodeUrl",
+      "@type": "@id"
+    },
+    "enabled": {
+      "@id": "loop:enabled",
+      "@type": "xsd:boolean"
+    },
+    "type": {
+      "@id": "loop:destinationType",
+      "@type": "xsd:string"
+    }
+  }
+}
