@@ -1,0 +1,52 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: Loop Returns
+providerId: loop-returns
+created: '2026-06-12'
+modified: '2026-06-12'
+description: >-
+  The Loop Returns API enforces rate limits per API key. When the limit is
+  exceeded the API returns HTTP 429 Too Many Requests. Callers should pause
+  briefly before retrying. OAuth 2.0 access tokens used by the Label and
+  Webhooks APIs expire after 1 hour and must be refreshed using the refresh
+  token flow.
+retryAfter:
+  header: Retry-After
+  notes: >-
+    The official documentation advises pausing API calls briefly before
+    retrying upon receiving a 429 response. An explicit Retry-After header value
+    is not documented.
+throttled:
+  httpStatus: 429
+  description: Too Many Requests — rate limit exceeded for the API key
+authentication:
+  primaryMethod: apiKey
+  header: X-Authorization
+  notes: >-
+    API keys are scoped at generation time. Keys without the required scope
+    return 401 Unauthorized. OAuth 2.0 is required for the Label API and
+    Webhooks API; access tokens expire after 1 hour.
+  oauthTokenExpiry: 3600
+  scopes:
+    - name: returns
+      description: Return processing operations
+    - name: orders
+      description: Return deep links, blocklist and allowlist management
+    - name: carts
+      description: Cart CRUD operations
+    - name: developer_tools
+      description: Programmatic webhook management
+    - name: destinations:read
+      description: Read-only access to destination data
+    - name: destinations:write
+      description: Create and update destination data
+    - name: happy_returns_shipments:read
+      description: Retrieve Happy Returns shipment data
+limits:
+  - scope: per-api-key
+    metric: requests
+    limit: 300
+    timeFrame: minute
+    notes: >-
+      Applies uniformly across all endpoints per API key. No documented
+      scope-specific or endpoint-specific overrides.

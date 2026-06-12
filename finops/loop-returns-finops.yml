@@ -1,0 +1,81 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: Loop Returns
+providerId: loop-returns
+created: '2026-06-12'
+modified: '2026-06-12'
+description: >-
+  FinOps profile for Loop Returns API consumption. Loop Returns uses a hybrid
+  billing model combining a flat monthly SaaS subscription (plan tier) with
+  variable per-shipment costs for return labels. Cost optimization centers on
+  carrier selection, exchange rate conversion, and reducing outright refunds
+  through exchange nudges.
+billingModel: hybrid
+billingComponents:
+  - name: Platform Subscription
+    type: fixed
+    description: Monthly flat fee based on plan tier (Checkout+ free, Essential $155+, Advanced $340+)
+    currency: USD
+  - name: Return Shipping Labels
+    type: variable
+    description: Per-shipment label cost for carrier postage on return shipments, rate-shopped across carriers
+    currency: USD
+  - name: Instant Exchange Hold
+    type: conditional
+    description: Card hold placed at exchange creation; released or charged based on return outcome
+    currency: USD
+focusColumns:
+  - BilledCost
+  - EffectiveCost
+  - ServiceName
+  - SkuId
+  - UsageQuantity
+  - UsageUnit
+  - ResourceId
+  - ChargeCategory
+  - BillingPeriodStart
+  - BillingPeriodEnd
+meters:
+  - name: ReturnShipmentsProcessed
+    unit: shipments
+    description: Number of return shipments created and labeled through Loop
+    chargeCategory: Usage
+  - name: ExchangesCompleted
+    unit: exchanges
+    description: Number of exchange transactions completed (Shop Now, Instant Exchange)
+    chargeCategory: Usage
+  - name: PlatformSubscription
+    unit: months
+    description: Monthly platform subscription fee by plan tier
+    chargeCategory: Recurring
+  - name: FraudPrevention
+    unit: events
+    description: Fraud detection assessments applied to return requests
+    chargeCategory: Usage
+principles:
+  - name: Visibility
+    description: >-
+      Track per-shipment label costs alongside fixed subscription fees to
+      produce a full cost-per-return metric. Use Loop's reporting API endpoints
+      (Return Data) to pull return volume and reconcile against carrier invoices.
+    actions:
+      - Monitor monthly shipment volume via the Return Data API reports endpoint
+      - Tag return shipments by product category and reason code for cost attribution
+      - Export return data to FinOps tooling for blended cost-per-return dashboards
+  - name: Optimization
+    description: >-
+      Reduce total return cost by increasing exchange rate (exchanges vs.
+      refunds) and leveraging carrier rate shopping. Higher exchange rates lower
+      net refund liability and improve margin recovery.
+    actions:
+      - Enable Bonus Credit and Shop Now incentives to nudge customers toward exchanges
+      - Use carrier rate shopping to minimize per-shipment label cost
+      - Apply fraud prevention policies to reduce fraudulent return volume
+      - Upgrade to Advanced plan if exchange revenue offsets the higher subscription cost
+  - name: Accountability
+    description: >-
+      Align return cost ownership to merchandising and operations teams by
+      mapping return reasons to product SKUs and policies.
+    actions:
+      - Use item grading and disposition data from the API to attribute reverse logistics costs
+      - Review Loop Intelligence fraud signals to reduce policy abuse costs

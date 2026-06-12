@@ -1,0 +1,116 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: Loop Returns
+providerId: loop-returns
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+type: paid
+description: >-
+  Loop Returns offers tiered subscription plans with monthly fees plus
+  per-shipment return shipping costs. API and developer access is available
+  across plans, with advanced features gated to higher tiers. All plans require
+  a Shopify or e-commerce store integration.
+plans:
+  - name: Checkout+
+    description: >-
+      Free software plan covering all core Loop functionality. Return shipping
+      costs are paid per shipment. Best for brands starting with returns
+      management. Includes US and Canada domestic return labels and Return Bars
+      access.
+    type: free
+    features:
+      - type: boolean
+        name: Core Returns Management
+        value: true
+      - type: boolean
+        name: Unlimited Destinations
+        value: true
+      - type: boolean
+        name: Automated Return Policies
+        value: true
+      - type: boolean
+        name: Carrier Rate Shopping
+        value: true
+      - type: boolean
+        name: Return Bars
+        value: true
+      - type: boolean
+        name: US and Canada Domestic Labels
+        value: true
+      - type: boolean
+        name: API Access
+        value: true
+      - type: boolean
+        name: Webhooks
+        value: true
+    pricing:
+      model: per-shipment
+      monthlyFee: 0
+      currency: USD
+      notes: Return shipping costs billed per shipment
+  - name: Essential
+    description: >-
+      Mid-tier plan starting at $155/month that adds workflows and basic fraud
+      prevention to help cut costs and curate a perfect return experience.
+    type: paid
+    features:
+      - type: boolean
+        name: All Checkout+ Features
+        value: true
+      - type: boolean
+        name: Workflows
+        value: true
+      - type: boolean
+        name: Fraud Prevention (Basic)
+        value: true
+      - type: boolean
+        name: API Access
+        value: true
+      - type: boolean
+        name: Webhooks
+        value: true
+    pricing:
+      model: subscription
+      monthlyFee: 155
+      currency: USD
+      billingCycle: monthly
+      notes: Starting price; final pricing may vary by volume
+  - name: Advanced
+    description: >-
+      Premium plan starting at $340/month designed to turn returns into a new
+      revenue stream. Adds Shop Now, Instant Exchange, Bonus Credit, and
+      advanced fraud prevention capabilities.
+    type: paid
+    features:
+      - type: boolean
+        name: All Essential Features
+        value: true
+      - type: boolean
+        name: Shop Now
+        value: true
+      - type: boolean
+        name: Instant Exchange
+        value: true
+      - type: boolean
+        name: Bonus Credit
+        value: true
+      - type: boolean
+        name: Advanced Fraud Prevention
+        value: true
+      - type: boolean
+        name: API Access
+        value: true
+      - type: boolean
+        name: Webhooks
+        value: true
+      - type: boolean
+        name: Dedicated Merchant Success Manager
+        value: true
+        notes: Requires 20,000+ annual order volume
+    pricing:
+      model: subscription
+      monthlyFee: 340
+      currency: USD
+      billingCycle: monthly
+      notes: Starting price; final pricing may vary by volume
