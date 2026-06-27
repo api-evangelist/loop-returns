@@ -51,7 +51,7 @@ apis:
         url: https://docs.loopreturns.com/api-reference/getting-started
       - type: Authentication
         url: https://docs.loopreturns.com/api-reference/authentication
-      - type: RateLimit
+      - type: RateLimits
         url: https://docs.loopreturns.com/api-reference/rate-limit
       - type: WebhookReference
         url: https://docs.loopreturns.com/webhook-reference/getting-started
@@ -78,7 +78,7 @@ common:
     url: https://www.loopreturns.com/pricing
   - type: Blog
     url: https://www.loopreturns.com/blog/
-  - type: Changelog
+  - type: ChangeLog
     url: https://changelog.loopreturns.com/
   - type: StatusPage
     url: https://status.loopreturns.com/
