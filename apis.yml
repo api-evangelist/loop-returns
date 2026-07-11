@@ -70,6 +70,8 @@ apis:
       - type: OpenAPI
         url: openapi/loop-returns-destinations-openapi.yml
 common:
+  - type: OAuthScopes
+    url: scopes/loop-returns-scopes.yml
   - type: Website
     url: https://www.loopreturns.com/
   - type: Documentation

@@ -1,0 +1,54 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/loop-returns-labels-openapi.yml, openapi/loop-returns-webhooks-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/loop-returns-labels-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://oauth.loopreturns.com/authorize
+    tokenUrl: https://oauth.loopreturns.com/oauth/token
+- name: oauth2
+  source: openapi/loop-returns-webhooks-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://oauth.loopreturns.com/authorize
+    tokenUrl: https://oauth.loopreturns.com/oauth/token
+  description: OAuth 2.0 authorization
+scopes:
+- scope: developer_tools
+  description: Access to developer tools including webhooks
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/loop-returns-webhooks-openapi.yml
+- scope: label_requests:read
+  description: Read access to label requests
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/loop-returns-labels-openapi.yml
+- scope: label_requests:write
+  description: Create and modify label requests
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/loop-returns-labels-openapi.yml
+- scope: labels:read
+  description: Read access to labels
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/loop-returns-labels-openapi.yml
+- scope: labels:write
+  description: Create and modify labels
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/loop-returns-labels-openapi.yml
+- scope: returns
+  description: Access to returns operations
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/loop-returns-labels-openapi.yml
