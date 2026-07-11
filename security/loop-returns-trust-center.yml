@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.loopreturns.com/security/
+url: https://www.loopreturns.com/security/
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://www.loopreturns.com/security/
+  keywords:
+  - soc2
+  - trust center
+  - gdpr

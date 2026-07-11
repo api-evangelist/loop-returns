@@ -1,0 +1,35 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/loop-returns-carts-openapi.yml, openapi/loop-returns-destinations-openapi.yml,
+  openapi/loop-returns-fraud-reports-openapi.yml, openapi/loop-returns-labels-openapi.yml, openapi/loop-returns-returns-openapi.yml,
+  openapi/loop-returns-webhooks-openapi.yml
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: api_key
+  type: apiKey
+  in: header
+  parameter: X-Authorization
+  sources:
+  - openapi/loop-returns-carts-openapi.yml
+  - openapi/loop-returns-destinations-openapi.yml
+  - openapi/loop-returns-fraud-reports-openapi.yml
+  - openapi/loop-returns-labels-openapi.yml
+  - openapi/loop-returns-returns-openapi.yml
+  - openapi/loop-returns-webhooks-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://oauth.loopreturns.com/authorize
+    tokenUrl: https://oauth.loopreturns.com/oauth/token
+    scopes: 5
+  sources:
+  - openapi/loop-returns-labels-openapi.yml
+  - openapi/loop-returns-webhooks-openapi.yml
