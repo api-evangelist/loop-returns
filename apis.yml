@@ -70,6 +70,8 @@ apis:
       - type: OpenAPI
         url: openapi/loop-returns-destinations-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/loop-returns-agentic-access.yml
   - type: TrustCenter
     url: security/loop-returns-trust-center.yml
   - type: DomainSecurity
