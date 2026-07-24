@@ -1,21 +1,21 @@
 openapi: 3.1.0
 info:
-  title: Loop Returns - Programmatic Webhooks API
+  title: Loop Returns Cart Programmatic Webhooks API
+  description: API for managing shop carts in Shop Now On-Store exchanges.
   version: v1
-  description: API used for creating, retrieving, updating, and deleting programmatic webhook subscriptions.
 servers:
-  - url: https://api.loopreturns.com/api/v1
+- url: https://api.loopreturns.com/api/v1
 tags:
-  - name: Programmatic Webhooks
+- name: Programmatic Webhooks
 paths:
   /webhooks:
     get:
       tags:
-        - Programmatic Webhooks
+      - Programmatic Webhooks
       security:
-        - oauth2:
-            - developer_tools
-        - api_key: []
+      - oauth2:
+        - developer_tools
+      - api_key: []
       description: Get all webhook subscriptions, including webhooks created programmatically and in the Loop Admin.
       summary: Get Webhooks
       operationId: getWebhooks
@@ -33,11 +33,11 @@ paths:
                       $ref: '#/components/schemas/Webhook'
     post:
       tags:
-        - Programmatic Webhooks
+      - Programmatic Webhooks
       security:
-        - oauth2:
-            - developer_tools
-        - api_key: []
+      - oauth2:
+        - developer_tools
+      - api_key: []
       description: Create a new webhook subscription.
       summary: Create Webhook
       operationId: createWebhook
@@ -69,22 +69,22 @@ paths:
   /webhooks/{id}:
     delete:
       tags:
-        - Programmatic Webhooks
+      - Programmatic Webhooks
       security:
-        - oauth2:
-            - developer_tools
-        - api_key: []
+      - oauth2:
+        - developer_tools
+      - api_key: []
       description: Delete a webhook subscription.
       summary: Delete Webhook
       operationId: deleteWebhook
       parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-          example: 12345
-          description: The webhook's unique identifier.
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        example: 12345
+        description: The webhook's unique identifier.
       responses:
         '204':
           description: No Content
@@ -102,22 +102,22 @@ paths:
                 $ref: '#/components/schemas/NotFoundResponse'
     put:
       tags:
-        - Programmatic Webhooks
+      - Programmatic Webhooks
       security:
-        - oauth2:
-            - developer_tools
-        - api_key: []
+      - oauth2:
+        - developer_tools
+      - api_key: []
       description: Update a webhook subscription.
       summary: Update Webhook
       operationId: updateWebhook
       parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-          example: 12345
-          description: The webhook's unique identifier.
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        example: 12345
+        description: The webhook's unique identifier.
       requestBody:
         required: true
         content:
@@ -147,19 +147,40 @@ paths:
                 $ref: '#/components/schemas/UnprocessableResponse'
 components:
   schemas:
-    Webhook:
+    UnprocessableResponse:
       type: object
       properties:
-        id:
-          type: integer
-          description: The webhook's unique identifier.
+        message:
+          type: string
           examples:
-            - 12345
-        shop_id:
-          type: integer
-          description: The unique identifier of the shop that created the webhook.
-          examples:
-            - 65432
+          - Must be one of the following values:return,label,restock
+        errors:
+          type: object
+    UnauthorizedResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              examples:
+              - '401'
+            http_code:
+              type: string
+              examples:
+              - GEN-UNAUTHORIZED
+            message:
+              type: string
+              examples:
+              - Unauthorized.
+    UpdateWebhookRequest:
+      type: object
+      required:
+      - topic
+      - trigger
+      - url
+      properties:
         topic:
           $ref: '#/components/schemas/TopicEnum'
         trigger:
@@ -168,12 +189,28 @@ components:
           $ref: '#/components/schemas/WebhookUrl'
         status:
           $ref: '#/components/schemas/StatusEnum'
+    NotFoundResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            code:
+              type: string
+              examples:
+              - NOT_FOUND
+    StatusEnum:
+      type: string
+      description: The webhook's status.
+      enum:
+      - active
+      - inactive
     CreateWebhookRequest:
       type: object
       required:
-        - topic
-        - trigger
-        - url
+      - topic
+      - trigger
+      - url
       properties:
         topic:
           $ref: '#/components/schemas/TopicEnum'
@@ -184,13 +221,52 @@ components:
         status:
           default: inactive
           $ref: '#/components/schemas/StatusEnum'
-    UpdateWebhookRequest:
+    TriggerEnum:
+      type: string
+      description: The condition which triggers the webhook.
+      enum:
+      - return.created
+      - return.updated
+      - return.closed
+      - label.created
+      - label.updated
+      - restock.requested
+      - label.request.issued
+      - label.request.cancelled
+      - giftcard.requested
+      - shipment.processed
+      examples:
+      - return.created
+    TopicEnum:
+      type: string
+      description: The webhook's topic.
+      enum:
+      - return
+      - label
+      - restock
+      - label.request
+      - giftcard
+      - happy.returns.shipment
+      examples:
+      - return
+    WebhookUrl:
+      type: string
+      examples:
+      - https://example.com/webhook
+      description: The webhook's URL.
+    Webhook:
       type: object
-      required:
-        - topic
-        - trigger
-        - url
       properties:
+        id:
+          type: integer
+          description: The webhook's unique identifier.
+          examples:
+          - 12345
+        shop_id:
+          type: integer
+          description: The unique identifier of the shop that created the webhook.
+          examples:
+          - 65432
         topic:
           $ref: '#/components/schemas/TopicEnum'
         trigger:
@@ -199,93 +275,8 @@ components:
           $ref: '#/components/schemas/WebhookUrl'
         status:
           $ref: '#/components/schemas/StatusEnum'
-    StatusEnum:
-      type: string
-      description: The webhook's status.
-      enum:
-        - active
-        - inactive
-    TriggerEnum:
-      type: string
-      description: The condition which triggers the webhook.
-      enum:
-        - return.created
-        - return.updated
-        - return.closed
-        - label.created
-        - label.updated
-        - restock.requested
-        - label.request.issued
-        - label.request.cancelled
-        - giftcard.requested
-        - shipment.processed
-      examples:
-        - return.created
-    TopicEnum:
-      type: string
-      description: The webhook's topic.
-      enum:
-        - return
-        - label
-        - restock
-        - label.request
-        - giftcard
-        - happy.returns.shipment
-      examples:
-        - return
-    UnauthorizedResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              examples:
-                - '401'
-            http_code:
-              type: string
-              examples:
-                - GEN-UNAUTHORIZED
-            message:
-              type: string
-              examples:
-                - Unauthorized.
-    NotFoundResponse:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            code:
-              type: string
-              examples:
-                - NOT_FOUND
-    UnprocessableResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-            - Must be one of the following values:return,label,restock
-        errors:
-          type: object
-    WebhookUrl:
-      type: string
-      examples:
-        - https://example.com/webhook
-      description: The webhook's URL.
   securitySchemes:
     api_key:
       type: apiKey
       name: X-Authorization
       in: header
-    oauth2:
-      type: oauth2
-      description: OAuth 2.0 authorization
-      flows:
-        authorizationCode:
-          authorizationUrl: https://oauth.loopreturns.com/authorize
-          tokenUrl: https://oauth.loopreturns.com/oauth/token
-          scopes:
-            developer_tools: Access to developer tools including webhooks

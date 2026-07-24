@@ -1,12 +1,12 @@
 openapi: 3.1.0
 info:
-  title: Loop Returns - Labels API
-  description: API for managing label requests and shipping labels for returns.
+  title: Loop Returns Cart Label Requests API
+  description: API for managing shop carts in Shop Now On-Store exchanges.
   version: v1
 servers:
-  - url: https://api.loopreturns.com/api/v1
+- url: https://api.loopreturns.com/api/v1
 tags:
-  - name: Label Requests
+- name: Label Requests
 paths:
   /label-requests:
     get:
@@ -14,11 +14,11 @@ paths:
       description: Retrieve a list of label requests.
       operationId: list-label-requests
       tags:
-        - Label Requests
+      - Label Requests
       security:
-        - oauth2:
-            - label_requests:read
-        - label-requests-read: []
+      - oauth2:
+        - label_requests:read
+      - label-requests-read: []
       responses:
         '200':
           description: Success
@@ -36,58 +36,58 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       parameters:
-        - in: query
-          name: from
-          description: Returns label requests after or equal to a minimum date.
-          schema:
-            $ref: '#/components/schemas/Date'
-        - in: query
-          name: to
-          description: Returns label requests before a maximum date.
-          schema:
-            $ref: '#/components/schemas/Date'
-        - in: query
-          name: return_id
-          description: Return label requests associated with a specific return_id.
-          schema:
-            type: integer
-            example: 67329889100573
-        - in: query
-          name: status
-          schema:
-            $ref: '#/components/schemas/LabelRequestStatusEnum'
-        - in: query
-          name: limit
-          description: The per page limit of label requests to return.
-          schema:
-            type: integer
-            default: 50
-            minimum: 0
-            maximum: 250
-        - in: query
-          name: offset
-          description: The number of label requests to offset.
-          schema:
-            type: integer
+      - in: query
+        name: from
+        description: Returns label requests after or equal to a minimum date.
+        schema:
+          $ref: '#/components/schemas/Date'
+      - in: query
+        name: to
+        description: Returns label requests before a maximum date.
+        schema:
+          $ref: '#/components/schemas/Date'
+      - in: query
+        name: return_id
+        description: Return label requests associated with a specific return_id.
+        schema:
+          type: integer
+          example: 67329889100573
+      - in: query
+        name: status
+        schema:
+          $ref: '#/components/schemas/LabelRequestStatusEnum'
+      - in: query
+        name: limit
+        description: The per page limit of label requests to return.
+        schema:
+          type: integer
+          default: 50
+          minimum: 0
+          maximum: 250
+      - in: query
+        name: offset
+        description: The number of label requests to offset.
+        schema:
+          type: integer
   /label-requests/{id}:
     get:
       summary: Get Label Request
       description: Get details about a single label request.
       operationId: get-label-request
       tags:
-        - Label Requests
+      - Label Requests
       security:
-        - oauth2:
-            - label_requests:read
-        - label-requests-read: []
+      - oauth2:
+        - label_requests:read
+      - label-requests-read: []
       parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-            example: 67329889100573
-          required: true
-          description: The unique identifier for the label request, created by Loop.
+      - in: path
+        name: id
+        schema:
+          type: integer
+          example: 67329889100573
+        required: true
+        description: The unique identifier for the label request, created by Loop.
       responses:
         '200':
           description: Success
@@ -105,19 +105,19 @@ paths:
       description: Submit unrecoverable errors encountered when generating labels for merchants.
       operationId: create-label-request-error
       tags:
-        - Label Requests
+      - Label Requests
       security:
-        - oauth2:
-            - label_requests:write
-        - label-requests-write: []
+      - oauth2:
+        - label_requests:write
+      - label-requests-write: []
       parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-            example: 67329889100573
-          required: true
-          description: The unique identifier for the label request, created by Loop.
+      - in: path
+        name: id
+        schema:
+          type: integer
+          example: 67329889100573
+        required: true
+        description: The unique identifier for the label request, created by Loop.
       requestBody:
         required: true
         content:
@@ -141,11 +141,11 @@ paths:
       description: Create a label for a label request.
       operationId: create-label-request-label
       tags:
-        - Label Requests
+      - Label Requests
       security:
-        - oauth2:
-            - labels:write
-        - labels-write: []
+      - oauth2:
+        - labels:write
+      - labels-write: []
       requestBody:
         required: true
         content:
@@ -169,19 +169,19 @@ paths:
       description: Update the status of a label.
       operationId: update-label-status
       tags:
-        - Label Requests
+      - Label Requests
       security:
-        - oauth2:
-            - labels:write
-        - labels-write: []
+      - oauth2:
+        - labels:write
+      - labels-write: []
       parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-            example: 67329889100573
-          required: true
-          description: The unique identifier for the label, created by Loop.
+      - in: path
+        name: id
+        schema:
+          type: integer
+          example: 67329889100573
+        required: true
+        description: The unique identifier for the label, created by Loop.
       requestBody:
         required: true
         content:
@@ -201,19 +201,19 @@ paths:
       description: Queue label generation for a return. Triggers an asynchronous label generation process.
       operationId: generate-label
       tags:
-        - Label Requests
+      - Label Requests
       security:
-        - oauth2:
-            - returns
-        - returns: []
+      - oauth2:
+        - returns
+      - returns: []
       parameters:
-        - in: path
-          name: returnId
-          schema:
-            type: integer
-            example: 12345
-          required: true
-          description: The unique identifier for the return, created by Loop.
+      - in: path
+        name: returnId
+        schema:
+          type: integer
+          example: 12345
+        required: true
+        description: The unique identifier for the return, created by Loop.
       responses:
         '202':
           description: Label generation queued successfully.
@@ -233,139 +233,19 @@ paths:
           description: Internal server error.
 components:
   schemas:
-    LabelStatusEnum:
-      type: string
-      description: The status of the label.
-      enum:
-        - new
-        - pre_transit
-        - in_transit
-        - out_for_delivery
-        - delivered
-      example: new
-    LabelRequestStatusEnum:
-      type: string
-      description: The status of the label request.
-      enum:
-        - issued
-        - cancelled
-        - fulfilled
-      example: issued
-    ErrorReasonEnum:
-      type: string
-      description: The error reason.
-      enum:
-        - INSUFFICIENT_FUNDS
-        - INVALID_ADDRESS
-        - Other
-      example: INVALID_ADDRESS
-    Address:
+    GenerateLabelResponse:
       type: object
       properties:
-        name:
-          type: string
-          maxLength: 100
-        company:
-          type:
-            - string
-            - 'null'
-          maxLength: 100
-        address1:
-          type: string
-          maxLength: 125
-        address2:
-          type:
-            - string
-            - 'null'
-          maxLength: 125
-        city:
-          type: string
-          maxLength: 100
-        region:
-          type:
-            - string
-            - 'null'
-          maxLength: 100
-        postal_code:
-          type:
-            - string
-            - 'null'
-          maxLength: 16
-        country:
-          type:
-            - string
-            - 'null'
-          maxLength: 100
-        country_code:
-          type: string
-          maxLength: 2
-          description: The two-letter country code.
-      required:
-        - address1
-        - city
-        - country_code
-    MoneySet:
-      type: object
-      properties:
-        amount:
-          type: integer
-          format: int32
-          description: The amount in cents.
-          example: 25000
-        currency:
-          type: string
-          default: USD
-          example: USD
-          description: The ISO 4217 currency code.
-      required:
-        - amount
-        - currency
-    MoneySetData:
-      type: object
-      properties:
-        amount:
-          type: integer
-          format: int32
-          description: The amount in cents.
-          example: 25000
-        currency_code:
-          type: string
-          default: USD
-          example: USD
-          description: The ISO 4217 currency code.
-      required:
-        - amount
-        - currency_code
-    Date:
-      type: string
-      format: date-time
-      example: '2023-04-25T13:25:00-05:00'
-    CreateLabelRequestErrorRequest:
-      type: object
-      properties:
-        reason:
-          $ref: '#/components/schemas/ErrorReasonEnum'
         message:
           type: string
-          example: Failed to generate a label, the origin address is invalid
+          example: Label generation queued
+        returnId:
+          type: integer
+          format: int64
+          example: 12345
       required:
-        - reason
-    UpdateLabelStatusRequest:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/LabelStatusEnum'
-      required:
-        - status
-    LabelRequestErrorResponse:
-      type: object
-      properties:
-        reason:
-          $ref: '#/components/schemas/ErrorReasonEnum'
-        message:
-          type: string
-        created_at:
-          $ref: '#/components/schemas/Date'
+      - message
+      - returnId
     CreateLabelRequest:
       type: object
       properties:
@@ -378,8 +258,8 @@ components:
           example: '9400136105440512280610'
         tracking_url:
           type:
-            - string
-            - 'null'
+          - string
+          - 'null'
           maxLength: 2048
         carrier:
           type: string
@@ -396,11 +276,11 @@ components:
         rate:
           $ref: '#/components/schemas/MoneySetData'
       required:
-        - label_request_id
-        - tracking_number
-        - carrier
-        - label_url
-        - rate
+      - label_request_id
+      - tracking_number
+      - carrier
+      - label_url
+      - rate
     LabelResponse:
       type: object
       properties:
@@ -426,6 +306,37 @@ components:
           example: new
         created_at:
           $ref: '#/components/schemas/Date'
+    CreateLabelRequestErrorRequest:
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/ErrorReasonEnum'
+        message:
+          type: string
+          example: Failed to generate a label, the origin address is invalid
+      required:
+      - reason
+    Date:
+      type: string
+      format: date-time
+      example: '2023-04-25T13:25:00-05:00'
+    LabelRequestErrorResponse:
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/ErrorReasonEnum'
+        message:
+          type: string
+        created_at:
+          $ref: '#/components/schemas/Date'
+    LabelRequestStatusEnum:
+      type: string
+      description: The status of the label request.
+      enum:
+      - issued
+      - cancelled
+      - fulfilled
+      example: issued
     LabelRequestResponse:
       type: object
       properties:
@@ -474,19 +385,92 @@ components:
           $ref: '#/components/schemas/LabelRequestStatusEnum'
         created_at:
           $ref: '#/components/schemas/Date'
-    GenerateLabelResponse:
+    Address:
       type: object
       properties:
-        message:
+        name:
           type: string
-          example: Label generation queued
-        returnId:
-          type: integer
-          format: int64
-          example: 12345
+          maxLength: 100
+        company:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        address1:
+          type: string
+          maxLength: 125
+        address2:
+          type:
+          - string
+          - 'null'
+          maxLength: 125
+        city:
+          type: string
+          maxLength: 100
+        region:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        postal_code:
+          type:
+          - string
+          - 'null'
+          maxLength: 16
+        country:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        country_code:
+          type: string
+          maxLength: 2
+          description: The two-letter country code.
       required:
-        - message
-        - returnId
+      - address1
+      - city
+      - country_code
+    LabelStatusEnum:
+      type: string
+      description: The status of the label.
+      enum:
+      - new
+      - pre_transit
+      - in_transit
+      - out_for_delivery
+      - delivered
+      example: new
+    ErrorReasonEnum:
+      type: string
+      description: The error reason.
+      enum:
+      - INSUFFICIENT_FUNDS
+      - INVALID_ADDRESS
+      - Other
+      example: INVALID_ADDRESS
+    UpdateLabelStatusRequest:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/LabelStatusEnum'
+      required:
+      - status
+    MoneySetData:
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int32
+          description: The amount in cents.
+          example: 25000
+        currency_code:
+          type: string
+          default: USD
+          example: USD
+          description: The ISO 4217 currency code.
+      required:
+      - amount
+      - currency_code
   responses:
     NotFound:
       description: The requested entity could not be found.
@@ -499,6 +483,20 @@ components:
                 type: string
               message:
                 type: string
+    BadRequest:
+      description: The request could not be processed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
     Unauthorized:
       description: The request could not be authorized.
       content:
@@ -518,50 +516,8 @@ components:
                   message:
                     type: string
                     example: Unauthorized.
-    BadRequest:
-      description: The request could not be processed.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
   securitySchemes:
-    oauth2:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://oauth.loopreturns.com/authorize
-          tokenUrl: https://oauth.loopreturns.com/oauth/token
-          scopes:
-            labels:read: Read access to labels
-            labels:write: Create and modify labels
-            label_requests:read: Read access to label requests
-            label_requests:write: Create and modify label requests
-            returns: Access to returns operations
-    label-requests-read:
+    api_key:
       type: apiKey
-      in: header
       name: X-Authorization
-      description: 'API Scope: "Label Requests (read)"'
-    labels-write:
-      name: X-Authorization
-      type: apiKey
       in: header
-      description: 'API Scope: "Labels (write)"'
-    label-requests-write:
-      name: X-Authorization
-      type: apiKey
-      in: header
-      description: 'API Scope: "Label Requests (write)"'
-    returns:
-      name: X-Authorization
-      type: apiKey
-      in: header
-      description: 'API Scope: "Returns"'

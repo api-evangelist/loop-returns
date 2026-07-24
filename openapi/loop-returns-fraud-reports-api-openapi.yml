@@ -1,12 +1,12 @@
 openapi: 3.1.0
 info:
-  title: Loop Returns - Fraud Reports API
+  title: Loop Returns Cart Fraud Reports API
+  description: API for managing shop carts in Shop Now On-Store exchanges.
   version: v1
-  description: API used for creating and retrieving fraud reports on returns.
 servers:
-  - url: https://api.loopreturns.com/api/v1
+- url: https://api.loopreturns.com/api/v1
 tags:
-  - name: Fraud Reports
+- name: Fraud Reports
 paths:
   /returns/{return_id}/fraud-report:
     post:
@@ -14,17 +14,17 @@ paths:
       operationId: createFraudReport
       description: Attach a fraud report to a return to flag it for fraudulent activity.
       tags:
-        - Fraud Reports
+      - Fraud Reports
       security:
-        - api_key: []
+      - api_key: []
       parameters:
-        - in: path
-          name: return_id
-          schema:
-            type: integer
-          required: true
-          description: The return's unique identifier.
-          example: 23141
+      - in: path
+        name: return_id
+        schema:
+          type: integer
+        required: true
+        description: The return's unique identifier.
+        example: 23141
       requestBody:
         required: true
         content:
@@ -89,22 +89,39 @@ paths:
             application/json:
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/InvalidCategory'
-                  - $ref: '#/components/schemas/InvalidComment'
+                - $ref: '#/components/schemas/InvalidCategory'
+                - $ref: '#/components/schemas/InvalidComment'
 components:
   schemas:
     FraudCategoryEnum:
       type: string
       description: The category under which the fraudulent return falls.
       enum:
-        - package-never-received
-        - package-is-empty
-        - package-is-missing-items
-        - instant-return-charge-failed
-        - keep-item-abuse
-        - splitting-returns-to-avoid-restrictions
-        - item-is-worn
-        - other
+      - package-never-received
+      - package-is-empty
+      - package-is-missing-items
+      - instant-return-charge-failed
+      - keep-item-abuse
+      - splitting-returns-to-avoid-restrictions
+      - item-is-worn
+      - other
+    CreateReturnFraudReportRequest:
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/FraudCategoryEnum'
+        comment:
+          type: string
+          description: Additional context. Required if category is 'other'.
+          example: This is a sample comment.
+    InvalidCategory:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Must be one of the following values.
+        errors:
+          type: object
     ReturnFraudReport:
       type: object
       properties:
@@ -125,16 +142,7 @@ components:
         created_at:
           type: string
           format: date-time
-          example: 2024-10-25T16:44:47.038Z
-    CreateReturnFraudReportRequest:
-      type: object
-      properties:
-        category:
-          $ref: '#/components/schemas/FraudCategoryEnum'
-        comment:
-          type: string
-          description: Additional context. Required if category is 'other'.
-          example: This is a sample comment.
+          example: 2024-10-25 16:44:47.038000+00:00
     InvalidComment:
       type: object
       properties:
@@ -143,17 +151,8 @@ components:
           example: The comment field must not be greater than 512 characters.
         errors:
           type: object
-    InvalidCategory:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Must be one of the following values.
-        errors:
-          type: object
   securitySchemes:
     api_key:
       type: apiKey
       name: X-Authorization
       in: header
-      description: API key with Returns scope.

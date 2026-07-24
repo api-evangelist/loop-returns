@@ -1,0 +1,534 @@
+openapi: 3.1.0
+info:
+  title: Loop Returns Cart Return Actions API
+  description: API for managing shop carts in Shop Now On-Store exchanges.
+  version: v1
+servers:
+- url: https://api.loopreturns.com/api/v1
+tags:
+- name: Return Actions
+paths:
+  /warehouse/return/{return_id}/process:
+    post:
+      summary: Process Return
+      operationId: processReturn
+      description: 'Process a return in Loop based on the return ID. Processing a return will archive it in Loop and fulfill any remaining outcomes, such as placing exchange orders or creating gift cards. This endpoint queues the return for processing asynchronously.
+
+        '
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      parameters:
+      - in: path
+        name: return_id
+        schema:
+          type: integer
+        required: true
+        description: The unique identifier associated with the return.
+      responses:
+        '200':
+          description: Success - return queued for processing.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/SuccessMessage'
+                - $ref: '#/components/schemas/UnprocessableCancelledReturn'
+                - $ref: '#/components/schemas/UnprocessableStateReturn'
+                - $ref: '#/components/schemas/UnprocessableInReviewReturn'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /warehouse/return/{return_id}/remove:
+    post:
+      summary: Remove Line Items
+      operationId: removeLineItems
+      description: Remove line items from a return and process the return. Only line items tied to a refund or store credit outcome allow programmatic removal.
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      parameters:
+      - in: path
+        name: return_id
+        schema:
+          type: integer
+        required: true
+        description: The unique identifier associated with the return.
+      - in: query
+        name: line_item_id
+        description: The ID of the line item to remove. Optionally include more than one using comma separated values.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          description: Unprocessable
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/LineItemRequiredResponse'
+                - $ref: '#/components/schemas/ReturnCannotBeModifiedResponse'
+                - $ref: '#/components/schemas/NoLineItemsToRemoveResponse'
+                - $ref: '#/components/schemas/NotAllLineItemsQualifyForRemovalResponse'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedToProcess'
+  /warehouse/return/{return_id}/cancel:
+    post:
+      summary: Cancel Return
+      operationId: cancelReturn
+      description: Cancel a return in Loop. Canceling a return will allow a customer to make another return with the same items.
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      parameters:
+      - in: path
+        name: return_id
+        schema:
+          type: integer
+        required: true
+        description: The unique identifier associated with the return.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/SuccessMessage'
+                - $ref: '#/components/schemas/UnprocessableStateReturn'
+                - $ref: '#/components/schemas/ExpiredReturnCannotBeCancelled'
+                - $ref: '#/components/schemas/FlaggedReturnCannotBeCancelled'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /warehouse/return/{return_id}/flag:
+    post:
+      summary: Flag Return
+      operationId: flagReturn
+      description: Flag a return in Loop for review. This will prevent automated processing and require a human to review the return in the merchant admin.
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      parameters:
+      - in: path
+        name: return_id
+        schema:
+          type: integer
+        required: true
+        description: The unique identifier associated with the return.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/SuccessMessage'
+                - $ref: '#/components/schemas/UnprocessableStateReturn'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /warehouse/return/{return_id}/close:
+    post:
+      summary: Close Return
+      operationId: closeReturn
+      description: Close a return. Closing will not fulfill outcomes such as exchanges or gift cards, and items are not able to be used in a new return.
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      parameters:
+      - in: path
+        name: return_id
+        schema:
+          type: integer
+        required: true
+        description: The unique identifier associated with the return.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/SuccessMessage'
+                - $ref: '#/components/schemas/UnprocessableStateReturn'
+                - $ref: '#/components/schemas/UnprocessableCancelledReturn'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /warehouse/return/{return_id}/notes:
+    get:
+      summary: Get Return Notes
+      operationId: getReturnNotes
+      description: Get notes on a specific return using the return's ID.
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      parameters:
+      - in: path
+        name: return_id
+        schema:
+          type: integer
+        required: true
+        description: The unique identifier associated with the return.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReturnNote'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          description: No notes found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+  /warehouse/return/{return_id}/note:
+    post:
+      summary: Create Return Note
+      operationId: createReturnNote
+      description: Post a new note to a return.
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      parameters:
+      - in: path
+        name: return_id
+        schema:
+          type: integer
+        required: true
+        description: The unique identifier associated with the return.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReturnNoteRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessMessage'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          description: Unprocessable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidContentForNoteResponse'
+  /order/link:
+    post:
+      summary: Create Return Deep Link
+      operationId: createReturnDeepLink
+      description: Create a deep link URL for a customer to initiate a return. The zip value could be an email, phone number, or postal code depending on shop settings.
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeeplinkCreationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeeplinkCreationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestWithErrorCode'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /order/qr:
+    post:
+      summary: Create Return Deep Link with QR Code
+      operationId: createReturnDeepLinkWithQrCode
+      description: Generate a link to a QR code image that, when scanned, takes the user directly to their order in Loop to initiate a return.
+      tags:
+      - Return Actions
+      security:
+      - api_key: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QrCreationRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrCreationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestWithErrorCode'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    FailureMessage:
+      description: Value returned when the operation fails.
+      type: string
+      examples:
+      - 'false'
+    QrCreationResponse:
+      type: object
+      properties:
+        qr:
+          type: string
+          examples:
+          - https://api.loopreturns.com/api/v1/qr/i/example-uuid-for-qr-image
+        deeplink_url:
+          type: string
+          examples:
+          - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
+    ReturnNote:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier associated with the return note.
+        content:
+          type: string
+          description: The content of the note.
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time at which the note was created.
+    FlaggedReturnCannotBeCancelled:
+      type: object
+      properties:
+        content:
+          type: string
+          examples:
+          - Return is flagged and cannot be processed.
+    DeeplinkCreationResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          examples:
+          - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
+    LineItemRequiredResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - The line item id field is required.
+    InvalidContentForNoteResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - Content is required and must be less than 255 characters.
+    UnprocessableStateReturn:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - Return is closed and therefore cannot be processed.
+            code:
+              type: string
+              examples:
+              - UNPROCESSABLE_RETURN
+    DeeplinkCreationRequest:
+      type: object
+      required:
+      - name
+      - zip
+      properties:
+        name:
+          type: string
+          description: The name of the order in Shopify.
+          examples:
+          - Shopify Order Name
+        zip:
+          type: string
+          description: The order detail used to identify the order (ZIP code, email, or phone number).
+          examples:
+          - '43215'
+        gift:
+          type: boolean
+          description: Whether the return will use Loop's Gift flow.
+          examples:
+          - false
+    SuccessMessage:
+      description: Value returned when the operation succeeds.
+      type: string
+      examples:
+      - 'true'
+    ReturnCannotBeModifiedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Return cannot be modified.
+    UnprocessableCancelledReturn:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Return is cancelled and therefore cannot be processed.
+    CreateReturnNoteRequest:
+      type: object
+      required:
+      - content
+      properties:
+        content:
+          description: The content of the note.
+          type: string
+          examples:
+          - This is a new note
+    QrCreationRequest:
+      type: object
+      required:
+      - name
+      - zip
+      properties:
+        name:
+          type: string
+          examples:
+          - Shopify Order Name
+        zip:
+          type: string
+          examples:
+          - '43215'
+        gift:
+          type: boolean
+          examples:
+          - false
+        type:
+          type: string
+          enum:
+          - png
+          - eps
+          - svg
+          examples:
+          - png
+        size:
+          type: integer
+          examples:
+          - 250
+    NotAllLineItemsQualifyForRemovalResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Not all line items qualify for removal
+    FailedToProcess:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - An error was encountered during processing.
+    BadRequestWithErrorCode:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+    UnprocessableInReviewReturn:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Return is review and therefore cannot be processed.
+    ExpiredReturnCannotBeCancelled:
+      type: object
+      properties:
+        content:
+          type: string
+          examples:
+          - Return is expired and cannot be processed.
+    NoLineItemsToRemoveResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - There are no line items that qualify for removal
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    examples:
+                    - '401'
+                  http_code:
+                    type: string
+                    examples:
+                    - GEN-UNAUTHORIZED
+                  message:
+                    type: string
+                    examples:
+                    - Unauthorized.
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Authorization
+      in: header

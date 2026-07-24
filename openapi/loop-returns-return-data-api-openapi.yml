@@ -1,0 +1,329 @@
+openapi: 3.1.0
+info:
+  title: Loop Returns Cart Return Data API
+  description: API for managing shop carts in Shop Now On-Store exchanges.
+  version: v1
+servers:
+- url: https://api.loopreturns.com/api/v1
+tags:
+- name: Return Data
+paths:
+  /warehouse/return/list:
+    get:
+      summary: Detailed Returns List
+      operationId: getDetailedReturnsList
+      description: Pull a detailed list of returns created within a given timeframe. Supports pagination. Maximum date range is 120 days.
+      tags:
+      - Return Data
+      security:
+      - api_key: []
+      parameters:
+      - name: from
+        in: query
+        description: The start date and time for the returns list.
+        schema:
+          type: string
+          examples:
+          - 2022-01-01 00:00:00+00:00
+      - name: to
+        in: query
+        description: The end date and time for the returns list.
+        schema:
+          type: string
+          examples:
+          - 2022-03-31 23:59:59+00:00
+      - name: filter
+        in: query
+        description: The date field used to filter results.
+        schema:
+          type: string
+          enum:
+          - created_at
+          - updated_at
+          default: created_at
+      - name: state
+        in: query
+        description: Filter by return state.
+        schema:
+          type: string
+          enum:
+          - open
+          - closed
+          - cancelled
+          - expired
+          - review
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DetailedReturnList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          description: Unprocessable
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/InvalidFromDate'
+                - $ref: '#/components/schemas/InvalidToDate'
+                - $ref: '#/components/schemas/InvalidState'
+  /warehouse/return/details:
+    get:
+      summary: Get Return Details
+      operationId: getReturnDetails
+      description: Get the details of a specific return based on return ID, order name, or Shopify order ID.
+      tags:
+      - Return Data
+      security:
+      - api_key: []
+      parameters:
+      - name: return_id
+        description: The unique identifier associated with the return.
+        example: 37603922
+        in: query
+        schema:
+          type: integer
+      - name: order_id
+        description: The unique identifier associated with the order.
+        example: 2347613440760
+        in: query
+        schema:
+          type: integer
+      - name: order_name
+        description: The Shopify order name.
+        example: '2222'
+        in: query
+        schema:
+          type: string
+      - name: currency_type
+        description: The currency type of the return (shop or presentment).
+        in: query
+        schema:
+          type: string
+          enum:
+          - shop
+          - presentment
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReturnDetails'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /warehouse/reporting/asn:
+    get:
+      summary: Advanced Shipping Notice
+      operationId: getAdvancedShippingNotice
+      description: Pull all packages by tracking statuses/timeframe. Returns an array of objects containing order and return information.
+      tags:
+      - Return Data
+      security:
+      - api_key: []
+      parameters:
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date
+          examples:
+          - 2023-08-21 00:00:00+00:00
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date
+          examples:
+          - 2023-08-22 00:00:00+00:00
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AsnReport'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    InvalidFromDate:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+    DetailedReturnList:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier associated with the return.
+        state:
+          type: string
+          description: The current state of the return.
+          examples:
+          - open
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        total:
+          type: string
+          examples:
+          - '63.30'
+        order_id:
+          type: string
+        order_name:
+          type: string
+        customer:
+          type: string
+          description: The customer's email address.
+        currency:
+          type: string
+          examples:
+          - USD
+        refund:
+          type: string
+          examples:
+          - '63.30'
+        carrier:
+          type: string
+        tracking_number:
+          type: string
+        label_status:
+          type: string
+        label_url:
+          type:
+          - string
+          - 'null'
+        destination_id:
+          type:
+          - string
+          - 'null'
+    ReturnDetails:
+      type: object
+      description: Detailed information about a specific return.
+      properties:
+        id:
+          type: string
+          description: The unique identifier associated with the return.
+        state:
+          type: string
+          description: The current state of the return.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        total:
+          type: string
+          description: The total cost of the return.
+        outcome:
+          type: string
+          description: The outcome of the return.
+        order_id:
+          type: string
+        order_name:
+          type: string
+        customer:
+          type: string
+          description: The customer's email address.
+    InvalidToDate:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+    AsnReport:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier associated with the ASN report.
+        return_line_item_id:
+          type: string
+        order_id:
+          type: string
+        order_name:
+          type: string
+        state:
+          type: string
+          description: The status of the return.
+        customer_email:
+          type: string
+        title:
+          type: string
+          description: The product's name.
+        purchase_price:
+          type: string
+        sku:
+          type: string
+        barcode:
+          type: string
+        carrier:
+          type: string
+        tracking_number:
+          type: string
+        label_status:
+          type: string
+        restock_status:
+          type: string
+        currency:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        closed_at:
+          type: string
+          format: date-time
+    InvalidState:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    examples:
+                    - '401'
+                  http_code:
+                    type: string
+                    examples:
+                    - GEN-UNAUTHORIZED
+                  message:
+                    type: string
+                    examples:
+                    - Unauthorized.
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Authorization
+      in: header
