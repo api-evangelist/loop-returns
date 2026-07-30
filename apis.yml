@@ -13,7 +13,20 @@ description: >-
   keys passed via the X-Authorization header, with OAuth 2.0 required for the
   Label and Webhooks APIs.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/loop-returns.png
 tags:
   - Returns
   - E-Commerce
@@ -29,47 +42,150 @@ created: '2026-06-12'
 modified: '2026-06-12'
 specificationVersion: '0.19'
 apis:
-  - aid: loop-returns:loop-returns-api
-    name: Loop Returns API
-    description: >-
-      REST API for managing returns and exchanges, including creating return
-      authorizations, retrieving return data, processing returns, managing
-      carts, destinations, allowlists/blocklists, label requests, item grading,
-      and programmatic webhook management. Supports both API key and OAuth 2.0
-      authentication.
-    humanURL: https://docs.loopreturns.com/api-reference/getting-started
-    baseURL: https://api.loopreturns.com
-    tags:
-      - Returns
-      - Exchanges
-      - Refunds
-      - Labels
-      - Webhooks
-      - Fraud Prevention
-    properties:
-      - type: Documentation
-        url: https://docs.loopreturns.com/api-reference/getting-started
-      - type: Authentication
-        url: https://docs.loopreturns.com/api-reference/authentication
-      - type: RateLimits
-        url: https://docs.loopreturns.com/api-reference/rate-limit
-      - type: WebhookReference
-        url: https://docs.loopreturns.com/webhook-reference/getting-started
-      - type: IntegrationGuides
-        url: https://docs.loopreturns.com/integration-guides/create-return-authorization
-      - type: OpenAPI
-        url: openapi/loop-returns-returns-openapi.yml
-      - type: OpenAPI
-        url: openapi/loop-returns-labels-openapi.yml
-      - type: OpenAPI
-        url: openapi/loop-returns-webhooks-openapi.yml
-      - type: OpenAPI
-        url: openapi/loop-returns-carts-openapi.yml
-      - type: OpenAPI
-        url: openapi/loop-returns-fraud-reports-openapi.yml
-      - type: OpenAPI
-        url: openapi/loop-returns-destinations-openapi.yml
+- aid: loop-returns:loop-returns-cart-api
+  name: Loop Returns Cart API
+  description: The Cart API from Loop Returns — 2 operation(s) for cart.
+  humanURL: https://docs.loopreturns.com/api-reference/getting-started
+  baseURL: https://api.loopreturns.com
+  tags:
+  - Cart
+  properties:
+  - type: OpenAPI
+    url: openapi/loop-returns-cart-api-openapi.yml
+  - type: Documentation
+    url: https://docs.loopreturns.com/api-reference/getting-started
+  - type: Authentication
+    url: https://docs.loopreturns.com/api-reference/authentication
+  - type: RateLimits
+    url: https://docs.loopreturns.com/api-reference/rate-limit
+  - type: WebhookReference
+    url: https://docs.loopreturns.com/webhook-reference/getting-started
+  - type: IntegrationGuides
+    url: https://docs.loopreturns.com/integration-guides/create-return-authorization
+- aid: loop-returns:loop-returns-destinations-api
+  name: Loop Returns Destinations API
+  description: The Destinations API from Loop Returns — 2 operation(s) for destinations.
+  humanURL: https://docs.loopreturns.com/api-reference/getting-started
+  baseURL: https://api.loopreturns.com
+  tags:
+  - Destinations
+  properties:
+  - type: OpenAPI
+    url: openapi/loop-returns-destinations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.loopreturns.com/api-reference/getting-started
+  - type: Authentication
+    url: https://docs.loopreturns.com/api-reference/authentication
+  - type: RateLimits
+    url: https://docs.loopreturns.com/api-reference/rate-limit
+  - type: WebhookReference
+    url: https://docs.loopreturns.com/webhook-reference/getting-started
+  - type: IntegrationGuides
+    url: https://docs.loopreturns.com/integration-guides/create-return-authorization
+- aid: loop-returns:loop-returns-fraud-reports-api
+  name: Loop Returns Fraud Reports API
+  description: The Fraud Reports API from Loop Returns — 1 operation(s) for fraud reports.
+  humanURL: https://docs.loopreturns.com/api-reference/getting-started
+  baseURL: https://api.loopreturns.com
+  tags:
+  - Fraud Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/loop-returns-fraud-reports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.loopreturns.com/api-reference/getting-started
+  - type: Authentication
+    url: https://docs.loopreturns.com/api-reference/authentication
+  - type: RateLimits
+    url: https://docs.loopreturns.com/api-reference/rate-limit
+  - type: WebhookReference
+    url: https://docs.loopreturns.com/webhook-reference/getting-started
+  - type: IntegrationGuides
+    url: https://docs.loopreturns.com/integration-guides/create-return-authorization
+- aid: loop-returns:loop-returns-label-requests-api
+  name: Loop Returns Label Requests API
+  description: The Label Requests API from Loop Returns — 6 operation(s) for label requests.
+  humanURL: https://docs.loopreturns.com/api-reference/getting-started
+  baseURL: https://api.loopreturns.com
+  tags:
+  - Label Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/loop-returns-label-requests-api-openapi.yml
+  - type: Documentation
+    url: https://docs.loopreturns.com/api-reference/getting-started
+  - type: Authentication
+    url: https://docs.loopreturns.com/api-reference/authentication
+  - type: RateLimits
+    url: https://docs.loopreturns.com/api-reference/rate-limit
+  - type: WebhookReference
+    url: https://docs.loopreturns.com/webhook-reference/getting-started
+  - type: IntegrationGuides
+    url: https://docs.loopreturns.com/integration-guides/create-return-authorization
+- aid: loop-returns:loop-returns-programmatic-webhooks-api
+  name: Loop Returns Programmatic Webhooks API
+  description: >-
+    The Programmatic Webhooks API from Loop Returns — 2 operation(s) for programmatic webhooks.
+  humanURL: https://docs.loopreturns.com/api-reference/getting-started
+  baseURL: https://api.loopreturns.com
+  tags:
+  - Programmatic Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/loop-returns-programmatic-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.loopreturns.com/api-reference/getting-started
+  - type: Authentication
+    url: https://docs.loopreturns.com/api-reference/authentication
+  - type: RateLimits
+    url: https://docs.loopreturns.com/api-reference/rate-limit
+  - type: WebhookReference
+    url: https://docs.loopreturns.com/webhook-reference/getting-started
+  - type: IntegrationGuides
+    url: https://docs.loopreturns.com/integration-guides/create-return-authorization
+- aid: loop-returns:loop-returns-return-actions-api
+  name: Loop Returns Return Actions API
+  description: The Return Actions API from Loop Returns — 9 operation(s) for return actions.
+  humanURL: https://docs.loopreturns.com/api-reference/getting-started
+  baseURL: https://api.loopreturns.com
+  tags:
+  - Return Actions
+  properties:
+  - type: OpenAPI
+    url: openapi/loop-returns-return-actions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.loopreturns.com/api-reference/getting-started
+  - type: Authentication
+    url: https://docs.loopreturns.com/api-reference/authentication
+  - type: RateLimits
+    url: https://docs.loopreturns.com/api-reference/rate-limit
+  - type: WebhookReference
+    url: https://docs.loopreturns.com/webhook-reference/getting-started
+  - type: IntegrationGuides
+    url: https://docs.loopreturns.com/integration-guides/create-return-authorization
+- aid: loop-returns:loop-returns-return-data-api
+  name: Loop Returns Return Data API
+  description: The Return Data API from Loop Returns — 3 operation(s) for return data.
+  humanURL: https://docs.loopreturns.com/api-reference/getting-started
+  baseURL: https://api.loopreturns.com
+  tags:
+  - Return Data
+  properties:
+  - type: OpenAPI
+    url: openapi/loop-returns-return-data-api-openapi.yml
+  - type: Documentation
+    url: https://docs.loopreturns.com/api-reference/getting-started
+  - type: Authentication
+    url: https://docs.loopreturns.com/api-reference/authentication
+  - type: RateLimits
+    url: https://docs.loopreturns.com/api-reference/rate-limit
+  - type: WebhookReference
+    url: https://docs.loopreturns.com/webhook-reference/getting-started
+  - type: IntegrationGuides
+    url: https://docs.loopreturns.com/integration-guides/create-return-authorization
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/loop-returns/overview
   - type: AgenticAccess
     url: agentic-access/loop-returns-agentic-access.yml
   - type: TrustCenter
