@@ -1,0 +1,872 @@
+{
+  "info": {
+    "_postman_id": "240c5431-1f4a-4455-ace5-e12cae101e28",
+    "name": "Loop Returns Cart Programmatic Webhooks API",
+    "description": "API for managing shop carts in Shop Now On-Store exchanges.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:08:06.000Z",
+    "updatedAt": "2026-07-28T02:08:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-240c5431-1f4a-4455-ace5-e12cae101e28"
+  },
+  "item": [
+    {
+      "name": "webhooks",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Delete Webhook",
+              "id": "14651799-1f64-4e4b-96a2-fc8d873e883c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1cb60670-b5d2-49b4-a909-cc6cfbd99c81",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The webhook's unique identifier."
+                    }
+                  ]
+                },
+                "description": "Delete a webhook subscription."
+              },
+              "response": [
+                {
+                  "id": "a40d23c3-ca88-4ffe-bc7f-164897446131",
+                  "name": "No Content",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-a40d23c3-ca88-4ffe-bc7f-164897446131"
+                },
+                {
+                  "id": "60623aa0-432b-4ece-83ea-19eb3720a2fd",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-60623aa0-432b-4ece-83ea-19eb3720a2fd"
+                },
+                {
+                  "id": "635785f1-1598-40e0-abe3-2710643eb6f3",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-635785f1-1598-40e0-abe3-2710643eb6f3"
+                }
+              ],
+              "createdAt": "2026-07-28T02:08:06.000Z",
+              "updatedAt": "2026-07-28T02:08:06.000Z",
+              "uid": "35240-14651799-1f64-4e4b-96a2-fc8d873e883c"
+            },
+            {
+              "name": "Update Webhook",
+              "id": "24b91e4e-7865-491a-a943-151a16997158",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "01eeeb60-7ce8-4f61-984c-86c61f0012c9",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The webhook's unique identifier."
+                    }
+                  ]
+                },
+                "description": "Update a webhook subscription."
+              },
+              "response": [
+                {
+                  "id": "2df60df1-ebd4-4127-ab11-3d7e216dc6cb",
+                  "name": "No Content",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-2df60df1-ebd4-4127-ab11-3d7e216dc6cb"
+                },
+                {
+                  "id": "63b536f7-b9a5-40a1-bb32-f03856d6dde0",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-63b536f7-b9a5-40a1-bb32-f03856d6dde0"
+                },
+                {
+                  "id": "5344eaaa-45a0-46cf-830f-900618f1640e",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": {\n    \"code\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-5344eaaa-45a0-46cf-830f-900618f1640e"
+                },
+                {
+                  "id": "af46f20f-901c-417d-951c-0ce8d63365e2",
+                  "name": "Unprocessable",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/webhooks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhooks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"errors\": {}\n}",
+                  "createdAt": "2026-07-28T02:08:06.000Z",
+                  "updatedAt": "2026-07-28T02:08:06.000Z",
+                  "uid": "35240-af46f20f-901c-417d-951c-0ce8d63365e2"
+                }
+              ],
+              "createdAt": "2026-07-28T02:08:06.000Z",
+              "updatedAt": "2026-07-28T02:08:06.000Z",
+              "uid": "35240-24b91e4e-7865-491a-a943-151a16997158"
+            }
+          ],
+          "id": "81bb98a0-680b-48db-b001-84decc57c99e",
+          "createdAt": "2026-07-28T02:08:06.000Z",
+          "updatedAt": "2026-07-28T02:08:06.000Z",
+          "uid": "35240-81bb98a0-680b-48db-b001-84decc57c99e"
+        },
+        {
+          "name": "Get Webhooks",
+          "id": "50eec2a3-d158-49cd-b6c8-8b2565ccf455",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webhooks"
+              ]
+            },
+            "description": "Get all webhook subscriptions, including webhooks created programmatically and in the Loop Admin."
+          },
+          "response": [
+            {
+              "id": "ae32a169-00d8-4999-a570-a31b1ee33247",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"webhooks\": [\n    {\n      \"id\": \"<integer>\",\n      \"shop_id\": \"<integer>\",\n      \"topic\": \"return\",\n      \"trigger\": \"shipment.processed\",\n      \"url\": \"<string>\",\n      \"status\": \"active\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"shop_id\": \"<integer>\",\n      \"topic\": \"return\",\n      \"trigger\": \"return.updated\",\n      \"url\": \"<string>\",\n      \"status\": \"active\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:08:06.000Z",
+              "updatedAt": "2026-07-28T02:08:06.000Z",
+              "uid": "35240-ae32a169-00d8-4999-a570-a31b1ee33247"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:06.000Z",
+          "updatedAt": "2026-07-28T02:08:06.000Z",
+          "uid": "35240-50eec2a3-d158-49cd-b6c8-8b2565ccf455"
+        },
+        {
+          "name": "Create Webhook",
+          "id": "d4d24f1b-7980-473a-a39b-f5fb6e086750",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "webhooks"
+              ]
+            },
+            "description": "Create a new webhook subscription."
+          },
+          "response": [
+            {
+              "id": "56d8c2b7-b69b-459c-ab76-668506581ec4",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<integer>\",\n  \"shop_id\": \"<integer>\",\n  \"topic\": \"happy.returns.shipment\",\n  \"trigger\": \"label.updated\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+              "createdAt": "2026-07-28T02:08:06.000Z",
+              "updatedAt": "2026-07-28T02:08:06.000Z",
+              "uid": "35240-56d8c2b7-b69b-459c-ab76-668506581ec4"
+            },
+            {
+              "id": "2d7016da-17b1-4a3e-b7c1-2ce57d1e679d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:08:06.000Z",
+              "updatedAt": "2026-07-28T02:08:06.000Z",
+              "uid": "35240-2d7016da-17b1-4a3e-b7c1-2ce57d1e679d"
+            },
+            {
+              "id": "eaa0d3fa-9d2d-423f-b53e-efadc2b52ded",
+              "name": "Unprocessable",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"topic\": \"restock\",\n  \"trigger\": \"restock.requested\",\n  \"url\": \"<string>\",\n  \"status\": \"active\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/webhooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "webhooks"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"errors\": {}\n}",
+              "createdAt": "2026-07-28T02:08:06.000Z",
+              "updatedAt": "2026-07-28T02:08:06.000Z",
+              "uid": "35240-eaa0d3fa-9d2d-423f-b53e-efadc2b52ded"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:06.000Z",
+          "updatedAt": "2026-07-28T02:08:06.000Z",
+          "uid": "35240-d4d24f1b-7980-473a-a39b-f5fb6e086750"
+        }
+      ],
+      "id": "0fb40f96-b4a0-4157-9be6-67fa5ff05d67",
+      "createdAt": "2026-07-28T02:08:06.000Z",
+      "updatedAt": "2026-07-28T02:08:06.000Z",
+      "uid": "35240-0fb40f96-b4a0-4157-9be6-67fa5ff05d67"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.loopreturns.com/api/v1"
+    }
+  ]
+}

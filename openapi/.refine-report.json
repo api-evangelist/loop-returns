@@ -1,0 +1,26 @@
+{
+  "provider": "loop-returns",
+  "sources": [
+    "loop-returns-cart-api-openapi.yml",
+    "loop-returns-destinations-api-openapi.yml",
+    "loop-returns-fraud-reports-api-openapi.yml",
+    "loop-returns-label-requests-api-openapi.yml",
+    "loop-returns-programmatic-webhooks-api-openapi.yml",
+    "loop-returns-return-actions-api-openapi.yml",
+    "loop-returns-return-data-api-openapi.yml"
+  ],
+  "outputs": [
+    "loop-returns-cart-api-openapi.yml",
+    "loop-returns-destinations-api-openapi.yml",
+    "loop-returns-fraud-reports-api-openapi.yml",
+    "loop-returns-label-requests-api-openapi.yml",
+    "loop-returns-programmatic-webhooks-api-openapi.yml",
+    "loop-returns-return-actions-api-openapi.yml",
+    "loop-returns-return-data-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

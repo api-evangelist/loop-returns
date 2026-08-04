@@ -1,0 +1,725 @@
+{
+  "info": {
+    "_postman_id": "9e8b41b5-a099-4531-8891-f5a7788cf157",
+    "name": "Loop Returns Cart Return Data API",
+    "description": "API for managing shop carts in Shop Now On-Store exchanges.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:08:08.000Z",
+    "updatedAt": "2026-07-28T02:08:08.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9e8b41b5-a099-4531-8891-f5a7788cf157"
+  },
+  "item": [
+    {
+      "name": "warehouse",
+      "item": [
+        {
+          "name": "return",
+          "item": [
+            {
+              "name": "list",
+              "item": [
+                {
+                  "name": "Detailed Returns List",
+                  "id": "16b05220-59f6-4191-9acd-d470a81f0c53",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/warehouse/return/list?from=<string>&to=<string>&filter=created_at&state=cancelled",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "warehouse",
+                        "return",
+                        "list"
+                      ],
+                      "query": [
+                        {
+                          "description": "The start date and time for the returns list.",
+                          "key": "from",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The end date and time for the returns list.",
+                          "key": "to",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The date field used to filter results.",
+                          "key": "filter",
+                          "value": "created_at"
+                        },
+                        {
+                          "description": "Filter by return state.",
+                          "key": "state",
+                          "value": "cancelled"
+                        }
+                      ]
+                    },
+                    "description": "Pull a detailed list of returns created within a given timeframe. Supports pagination. Maximum date range is 120 days."
+                  },
+                  "response": [
+                    {
+                      "id": "f15b3375-b05e-4025-94de-766948321128",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/warehouse/return/list?from=<string>&to=<string>&filter=created_at&state=cancelled",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "warehouse",
+                            "return",
+                            "list"
+                          ],
+                          "query": [
+                            {
+                              "description": "The start date and time for the returns list.",
+                              "key": "from",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The end date and time for the returns list.",
+                              "key": "to",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The date field used to filter results.",
+                              "key": "filter",
+                              "value": "created_at"
+                            },
+                            {
+                              "description": "Filter by return state.",
+                              "key": "state",
+                              "value": "cancelled"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"state\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"total\": \"<string>\",\n    \"order_id\": \"<string>\",\n    \"order_name\": \"<string>\",\n    \"customer\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"refund\": \"<string>\",\n    \"carrier\": \"<string>\",\n    \"tracking_number\": \"<string>\",\n    \"label_status\": \"<string>\",\n    \"label_url\": \"<string,null>\",\n    \"destination_id\": \"<string,null>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"state\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"total\": \"<string>\",\n    \"order_id\": \"<string>\",\n    \"order_name\": \"<string>\",\n    \"customer\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"refund\": \"<string>\",\n    \"carrier\": \"<string>\",\n    \"tracking_number\": \"<string>\",\n    \"label_status\": \"<string>\",\n    \"label_url\": \"<string,null>\",\n    \"destination_id\": \"<string,null>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:08:08.000Z",
+                      "updatedAt": "2026-07-28T02:08:08.000Z",
+                      "uid": "35240-f15b3375-b05e-4025-94de-766948321128"
+                    },
+                    {
+                      "id": "f1d70c0f-d011-4ffd-9eed-96dbd061ea68",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/warehouse/return/list?from=<string>&to=<string>&filter=created_at&state=cancelled",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "warehouse",
+                            "return",
+                            "list"
+                          ],
+                          "query": [
+                            {
+                              "description": "The start date and time for the returns list.",
+                              "key": "from",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The end date and time for the returns list.",
+                              "key": "to",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The date field used to filter results.",
+                              "key": "filter",
+                              "value": "created_at"
+                            },
+                            {
+                              "description": "Filter by return state.",
+                              "key": "state",
+                              "value": "cancelled"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:08:08.000Z",
+                      "updatedAt": "2026-07-28T02:08:08.000Z",
+                      "uid": "35240-f1d70c0f-d011-4ffd-9eed-96dbd061ea68"
+                    },
+                    {
+                      "id": "52ebba29-c3bb-485c-9515-d3c9f397a50a",
+                      "name": "Unprocessable",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/warehouse/return/list?from=<string>&to=<string>&filter=created_at&state=cancelled",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "warehouse",
+                            "return",
+                            "list"
+                          ],
+                          "query": [
+                            {
+                              "description": "The start date and time for the returns list.",
+                              "key": "from",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The end date and time for the returns list.",
+                              "key": "to",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The date field used to filter results.",
+                              "key": "filter",
+                              "value": "created_at"
+                            },
+                            {
+                              "description": "Filter by return state.",
+                              "key": "state",
+                              "value": "cancelled"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"errors\": {}\n}",
+                      "createdAt": "2026-07-28T02:08:08.000Z",
+                      "updatedAt": "2026-07-28T02:08:08.000Z",
+                      "uid": "35240-52ebba29-c3bb-485c-9515-d3c9f397a50a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:08:08.000Z",
+                  "updatedAt": "2026-07-28T02:08:08.000Z",
+                  "uid": "35240-16b05220-59f6-4191-9acd-d470a81f0c53"
+                }
+              ],
+              "id": "5632b8c7-12d8-4a8a-a879-fb58426bc751",
+              "createdAt": "2026-07-28T02:08:08.000Z",
+              "updatedAt": "2026-07-28T02:08:08.000Z",
+              "uid": "35240-5632b8c7-12d8-4a8a-a879-fb58426bc751"
+            },
+            {
+              "name": "details",
+              "item": [
+                {
+                  "name": "Get Return Details",
+                  "id": "63c110b4-b39e-4472-8e66-e22eec72635c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/warehouse/return/details?return_id=<integer>&order_id=<integer>&order_name=<string>&currency_type=shop",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "warehouse",
+                        "return",
+                        "details"
+                      ],
+                      "query": [
+                        {
+                          "description": "The unique identifier associated with the return.",
+                          "key": "return_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The unique identifier associated with the order.",
+                          "key": "order_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The Shopify order name.",
+                          "key": "order_name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The currency type of the return (shop or presentment).",
+                          "key": "currency_type",
+                          "value": "shop"
+                        }
+                      ]
+                    },
+                    "description": "Get the details of a specific return based on return ID, order name, or Shopify order ID."
+                  },
+                  "response": [
+                    {
+                      "id": "56014ff5-4fb7-43f1-ac1b-7b8264245a34",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/warehouse/return/details?return_id=<integer>&order_id=<integer>&order_name=<string>&currency_type=shop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "warehouse",
+                            "return",
+                            "details"
+                          ],
+                          "query": [
+                            {
+                              "description": "The unique identifier associated with the return.",
+                              "key": "return_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The unique identifier associated with the order.",
+                              "key": "order_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The Shopify order name.",
+                              "key": "order_name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The currency type of the return (shop or presentment).",
+                              "key": "currency_type",
+                              "value": "shop"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"state\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"total\": \"<string>\",\n  \"outcome\": \"<string>\",\n  \"order_id\": \"<string>\",\n  \"order_name\": \"<string>\",\n  \"customer\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:08:08.000Z",
+                      "updatedAt": "2026-07-28T02:08:08.000Z",
+                      "uid": "35240-56014ff5-4fb7-43f1-ac1b-7b8264245a34"
+                    },
+                    {
+                      "id": "7339de04-67e2-4d07-83a7-6b52f1c7dc05",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/warehouse/return/details?return_id=<integer>&order_id=<integer>&order_name=<string>&currency_type=shop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "warehouse",
+                            "return",
+                            "details"
+                          ],
+                          "query": [
+                            {
+                              "description": "The unique identifier associated with the return.",
+                              "key": "return_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The unique identifier associated with the order.",
+                              "key": "order_id",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The Shopify order name.",
+                              "key": "order_name",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The currency type of the return (shop or presentment).",
+                              "key": "currency_type",
+                              "value": "shop"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:08:08.000Z",
+                      "updatedAt": "2026-07-28T02:08:08.000Z",
+                      "uid": "35240-7339de04-67e2-4d07-83a7-6b52f1c7dc05"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:08:08.000Z",
+                  "updatedAt": "2026-07-28T02:08:08.000Z",
+                  "uid": "35240-63c110b4-b39e-4472-8e66-e22eec72635c"
+                }
+              ],
+              "id": "c11062d4-42ec-4d5e-9add-6595a366ffe5",
+              "createdAt": "2026-07-28T02:08:08.000Z",
+              "updatedAt": "2026-07-28T02:08:08.000Z",
+              "uid": "35240-c11062d4-42ec-4d5e-9add-6595a366ffe5"
+            }
+          ],
+          "id": "61a4ff21-7720-40d9-a9c1-2f170e32ca96",
+          "createdAt": "2026-07-28T02:08:08.000Z",
+          "updatedAt": "2026-07-28T02:08:08.000Z",
+          "uid": "35240-61a4ff21-7720-40d9-a9c1-2f170e32ca96"
+        },
+        {
+          "name": "reporting",
+          "item": [
+            {
+              "name": "asn",
+              "item": [
+                {
+                  "name": "Advanced Shipping Notice",
+                  "id": "799e4608-b4f1-4666-9611-ea1dd074922e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "X-Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/warehouse/reporting/asn?from=<date>&to=<date>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "warehouse",
+                        "reporting",
+                        "asn"
+                      ],
+                      "query": [
+                        {
+                          "key": "from",
+                          "value": "<date>"
+                        },
+                        {
+                          "key": "to",
+                          "value": "<date>"
+                        }
+                      ]
+                    },
+                    "description": "Pull all packages by tracking statuses/timeframe. Returns an array of objects containing order and return information."
+                  },
+                  "response": [
+                    {
+                      "id": "7eaca2dd-2368-4ca9-b663-9c4eb1c339b7",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/warehouse/reporting/asn?from=<date>&to=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "warehouse",
+                            "reporting",
+                            "asn"
+                          ],
+                          "query": [
+                            {
+                              "key": "from",
+                              "value": "<date>"
+                            },
+                            {
+                              "key": "to",
+                              "value": "<date>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"return_line_item_id\": \"<string>\",\n    \"order_id\": \"<string>\",\n    \"order_name\": \"<string>\",\n    \"state\": \"<string>\",\n    \"customer_email\": \"<string>\",\n    \"title\": \"<string>\",\n    \"purchase_price\": \"<string>\",\n    \"sku\": \"<string>\",\n    \"barcode\": \"<string>\",\n    \"carrier\": \"<string>\",\n    \"tracking_number\": \"<string>\",\n    \"label_status\": \"<string>\",\n    \"restock_status\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"closed_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"return_line_item_id\": \"<string>\",\n    \"order_id\": \"<string>\",\n    \"order_name\": \"<string>\",\n    \"state\": \"<string>\",\n    \"customer_email\": \"<string>\",\n    \"title\": \"<string>\",\n    \"purchase_price\": \"<string>\",\n    \"sku\": \"<string>\",\n    \"barcode\": \"<string>\",\n    \"carrier\": \"<string>\",\n    \"tracking_number\": \"<string>\",\n    \"label_status\": \"<string>\",\n    \"restock_status\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"closed_at\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:08:08.000Z",
+                      "updatedAt": "2026-07-28T02:08:08.000Z",
+                      "uid": "35240-7eaca2dd-2368-4ca9-b663-9c4eb1c339b7"
+                    },
+                    {
+                      "id": "dd2b0044-912d-4b05-9456-a091cc4a917c",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/warehouse/reporting/asn?from=<date>&to=<date>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "warehouse",
+                            "reporting",
+                            "asn"
+                          ],
+                          "query": [
+                            {
+                              "key": "from",
+                              "value": "<date>"
+                            },
+                            {
+                              "key": "to",
+                              "value": "<date>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:08:08.000Z",
+                      "updatedAt": "2026-07-28T02:08:08.000Z",
+                      "uid": "35240-dd2b0044-912d-4b05-9456-a091cc4a917c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:08:08.000Z",
+                  "updatedAt": "2026-07-28T02:08:08.000Z",
+                  "uid": "35240-799e4608-b4f1-4666-9611-ea1dd074922e"
+                }
+              ],
+              "id": "d1cd9efa-3e36-478b-894f-17feac67a88a",
+              "createdAt": "2026-07-28T02:08:08.000Z",
+              "updatedAt": "2026-07-28T02:08:08.000Z",
+              "uid": "35240-d1cd9efa-3e36-478b-894f-17feac67a88a"
+            }
+          ],
+          "id": "e8b27fb6-0f2a-479b-8798-06beb9b2491a",
+          "createdAt": "2026-07-28T02:08:08.000Z",
+          "updatedAt": "2026-07-28T02:08:08.000Z",
+          "uid": "35240-e8b27fb6-0f2a-479b-8798-06beb9b2491a"
+        }
+      ],
+      "id": "6b06a549-4720-4d2a-9f9b-c5f61467947e",
+      "createdAt": "2026-07-28T02:08:08.000Z",
+      "updatedAt": "2026-07-28T02:08:08.000Z",
+      "uid": "35240-6b06a549-4720-4d2a-9f9b-c5f61467947e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.loopreturns.com/api/v1"
+    }
+  ]
+}

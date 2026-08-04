@@ -1,0 +1,952 @@
+{
+  "info": {
+    "_postman_id": "d17aafb2-1318-4d05-bc84-0e495eb91a10",
+    "name": "Loop Returns Cart Destinations API",
+    "description": "API for managing shop carts in Shop Now On-Store exchanges.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:57.000Z",
+    "updatedAt": "2026-07-28T02:07:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d17aafb2-1318-4d05-bc84-0e495eb91a10"
+  },
+  "item": [
+    {
+      "name": "destinations",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Destination Details",
+              "id": "8a836b4f-eb4d-4556-a9f6-9ae4ba758c0a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/destinations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "destinations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "aa475e11-d0ee-4668-bf16-968d74021316",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The destination's unique identifier."
+                    }
+                  ]
+                },
+                "description": "Get details for a single destination."
+              },
+              "response": [
+                {
+                  "id": "c7c80665-3c1e-41d9-9671-060274d79fee",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"type\": \"warehouse\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"provider_location_id\": \"<integer,null>\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"address2\": \"<string,null>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string,null>\",\n    \"zip\": \"<string,null>\",\n    \"country\": \"<string>\",\n    \"country_code\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:07:57.000Z",
+                  "updatedAt": "2026-07-28T02:07:57.000Z",
+                  "uid": "35240-c7c80665-3c1e-41d9-9671-060274d79fee"
+                },
+                {
+                  "id": "1e4f036d-b098-44d1-ae68-5ffded78ab99",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:07:57.000Z",
+                  "updatedAt": "2026-07-28T02:07:57.000Z",
+                  "uid": "35240-1e4f036d-b098-44d1-ae68-5ffded78ab99"
+                },
+                {
+                  "id": "26a0768c-d1ba-4953-bc44-0032c9434608",
+                  "name": "Destination not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:07:57.000Z",
+                  "updatedAt": "2026-07-28T02:07:57.000Z",
+                  "uid": "35240-26a0768c-d1ba-4953-bc44-0032c9434608"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:57.000Z",
+              "updatedAt": "2026-07-28T02:07:57.000Z",
+              "uid": "35240-8a836b4f-eb4d-4556-a9f6-9ae4ba758c0a"
+            },
+            {
+              "name": "Update Destination",
+              "id": "0b51757d-c300-4b53-afb7-92acbb97af1d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/destinations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "destinations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "86e49f2b-a529-4432-9f16-2c44a6c6b30f",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The destination's unique identifier."
+                    }
+                  ]
+                },
+                "description": "Update a destination."
+              },
+              "response": [
+                {
+                  "id": "7d8d85a5-c785-4dd9-a6c6-d5b59a68c9d3",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"type\": \"warehouse\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"provider_location_id\": \"<integer,null>\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"address2\": \"<string,null>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string,null>\",\n    \"zip\": \"<string,null>\",\n    \"country\": \"<string>\",\n    \"country_code\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:07:57.000Z",
+                  "updatedAt": "2026-07-28T02:07:57.000Z",
+                  "uid": "35240-7d8d85a5-c785-4dd9-a6c6-d5b59a68c9d3"
+                },
+                {
+                  "id": "1bfdbd55-3df0-4633-bd5c-164669f95a74",
+                  "name": "Destination not found.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:07:57.000Z",
+                  "updatedAt": "2026-07-28T02:07:57.000Z",
+                  "uid": "35240-1bfdbd55-3df0-4633-bd5c-164669f95a74"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:57.000Z",
+              "updatedAt": "2026-07-28T02:07:57.000Z",
+              "uid": "35240-0b51757d-c300-4b53-afb7-92acbb97af1d"
+            },
+            {
+              "name": "Delete Destination",
+              "id": "63aeed6e-7b80-4185-85eb-12d40f5874bd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/destinations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "destinations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1e1bb49a-3160-4db0-b19f-40b077af8104",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The destination's unique identifier."
+                    }
+                  ]
+                },
+                "description": "Delete a destination."
+              },
+              "response": [
+                {
+                  "id": "7660d4a8-09ad-4a5b-9e8a-67ef2a90f8c6",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T02:07:57.000Z",
+                  "updatedAt": "2026-07-28T02:07:57.000Z",
+                  "uid": "35240-7660d4a8-09ad-4a5b-9e8a-67ef2a90f8c6"
+                },
+                {
+                  "id": "5b9ac8d7-611b-43a9-bdeb-8e8c8bf225ca",
+                  "name": "Destination not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:07:57.000Z",
+                  "updatedAt": "2026-07-28T02:07:57.000Z",
+                  "uid": "35240-5b9ac8d7-611b-43a9-bdeb-8e8c8bf225ca"
+                },
+                {
+                  "id": "dc8a81e0-b262-43e1-9228-34648b7c32cd",
+                  "name": "Error deleting the destination.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/destinations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "destinations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:07:57.000Z",
+                  "updatedAt": "2026-07-28T02:07:57.000Z",
+                  "uid": "35240-dc8a81e0-b262-43e1-9228-34648b7c32cd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:57.000Z",
+              "updatedAt": "2026-07-28T02:07:57.000Z",
+              "uid": "35240-63aeed6e-7b80-4185-85eb-12d40f5874bd"
+            }
+          ],
+          "id": "bec0eb3c-639e-4819-b268-7c8e91d97bb5",
+          "createdAt": "2026-07-28T02:07:57.000Z",
+          "updatedAt": "2026-07-28T02:07:57.000Z",
+          "uid": "35240-bec0eb3c-639e-4819-b268-7c8e91d97bb5"
+        },
+        {
+          "name": "Get All Destinations",
+          "id": "42d959f9-7c28-4890-b064-1bc96342677c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/destinations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "destinations"
+              ]
+            },
+            "description": "Retrieve all destinations."
+          },
+          "response": [
+            {
+              "id": "14188971-e0ae-4828-b572-0f37462b341a",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/destinations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "destinations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"destinations\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"warehouse\",\n      \"name\": \"<string>\",\n      \"enabled\": \"<boolean>\",\n      \"provider_location_id\": \"<integer,null>\",\n      \"address\": {\n        \"address1\": \"<string>\",\n        \"address2\": \"<string,null>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string,null>\",\n        \"zip\": \"<string,null>\",\n        \"country\": \"<string>\",\n        \"country_code\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"warehouse\",\n      \"name\": \"<string>\",\n      \"enabled\": \"<boolean>\",\n      \"provider_location_id\": \"<integer,null>\",\n      \"address\": {\n        \"address1\": \"<string>\",\n        \"address2\": \"<string,null>\",\n        \"city\": \"<string>\",\n        \"state\": \"<string,null>\",\n        \"zip\": \"<string,null>\",\n        \"country\": \"<string>\",\n        \"country_code\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:07:57.000Z",
+              "updatedAt": "2026-07-28T02:07:57.000Z",
+              "uid": "35240-14188971-e0ae-4828-b572-0f37462b341a"
+            },
+            {
+              "id": "40e241fe-4ca0-4440-aaf3-6fc80ab66f7a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/destinations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "destinations"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:07:57.000Z",
+              "updatedAt": "2026-07-28T02:07:57.000Z",
+              "uid": "35240-40e241fe-4ca0-4440-aaf3-6fc80ab66f7a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:07:57.000Z",
+          "updatedAt": "2026-07-28T02:07:57.000Z",
+          "uid": "35240-42d959f9-7c28-4890-b064-1bc96342677c"
+        },
+        {
+          "name": "Create Destination",
+          "id": "d26c6c35-5f4a-44c6-98fc-41d076d27cb7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"warehouse\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"address2\": \"<string,null>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string,null>\",\n    \"zip\": \"<string,null>\",\n    \"country\": \"<string>\",\n    \"country_code\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/destinations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "destinations"
+              ]
+            },
+            "description": "Create a destination."
+          },
+          "response": [
+            {
+              "id": "6bb113ac-b46e-4ed6-b603-62c1e744274e",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"warehouse\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"address2\": \"<string,null>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string,null>\",\n    \"zip\": \"<string,null>\",\n    \"country\": \"<string>\",\n    \"country_code\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/destinations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "destinations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<integer>\",\n  \"type\": \"warehouse\",\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"provider_location_id\": \"<integer,null>\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"address2\": \"<string,null>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string,null>\",\n    \"zip\": \"<string,null>\",\n    \"country\": \"<string>\",\n    \"country_code\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:07:57.000Z",
+              "updatedAt": "2026-07-28T02:07:57.000Z",
+              "uid": "35240-6bb113ac-b46e-4ed6-b603-62c1e744274e"
+            },
+            {
+              "id": "afa86cd9-615b-435a-b9af-13adad97f64f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"warehouse\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"address2\": \"<string,null>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string,null>\",\n    \"zip\": \"<string,null>\",\n    \"country\": \"<string>\",\n    \"country_code\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/destinations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "destinations"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:07:57.000Z",
+              "updatedAt": "2026-07-28T02:07:57.000Z",
+              "uid": "35240-afa86cd9-615b-435a-b9af-13adad97f64f"
+            },
+            {
+              "id": "275e97f4-d8c9-4bc8-a898-515b136f1f29",
+              "name": "Unprocessable",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"warehouse\",\n  \"address\": {\n    \"address1\": \"<string>\",\n    \"address2\": \"<string,null>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string,null>\",\n    \"zip\": \"<string,null>\",\n    \"country\": \"<string>\",\n    \"country_code\": \"<string>\"\n  },\n  \"enabled\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/destinations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "destinations"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:07:57.000Z",
+              "updatedAt": "2026-07-28T02:07:57.000Z",
+              "uid": "35240-275e97f4-d8c9-4bc8-a898-515b136f1f29"
+            }
+          ],
+          "createdAt": "2026-07-28T02:07:57.000Z",
+          "updatedAt": "2026-07-28T02:07:57.000Z",
+          "uid": "35240-d26c6c35-5f4a-44c6-98fc-41d076d27cb7"
+        }
+      ],
+      "id": "1581bb54-4c37-48bb-ba08-9475f301f9a2",
+      "createdAt": "2026-07-28T02:07:57.000Z",
+      "updatedAt": "2026-07-28T02:07:57.000Z",
+      "uid": "35240-1581bb54-4c37-48bb-ba08-9475f301f9a2"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.loopreturns.com/api/v1"
+    }
+  ]
+}

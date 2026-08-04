@@ -1,0 +1,725 @@
+{
+  "info": {
+    "_postman_id": "60e10f0c-71db-4f1b-adf1-65f6b703fd6a",
+    "name": "Loop Returns Cart API",
+    "description": "API for managing shop carts in Shop Now On-Store exchanges.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:07:56.000Z",
+    "updatedAt": "2026-07-28T02:07:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-60e10f0c-71db-4f1b-adf1-65f6b703fd6a"
+  },
+  "item": [
+    {
+      "name": "cart",
+      "item": [
+        {
+          "name": "{token}",
+          "item": [
+            {
+              "name": "Get Cart",
+              "id": "63af69ea-aca3-496b-972a-45890ca97f40",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/cart/:token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cart",
+                    ":token"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f2e2f4dc-51b5-46d5-966a-4f6b4a9df99f",
+                      "key": "token",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier token associated with a cart."
+                    }
+                  ]
+                },
+                "description": "Get an existing cart by cart token."
+              },
+              "response": [
+                {
+                  "id": "5ddc7b5a-6ab6-481f-852c-95c8bac5c7b6",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cart/:token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":token"
+                      ],
+                      "variable": [
+                        {
+                          "key": "token"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cart\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T02:07:56.000Z",
+                  "updatedAt": "2026-07-28T02:07:56.000Z",
+                  "uid": "35240-5ddc7b5a-6ab6-481f-852c-95c8bac5c7b6"
+                },
+                {
+                  "id": "b8d4bc2c-872d-44c6-9ae5-56a12075a6d6",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cart/:token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":token"
+                      ],
+                      "variable": [
+                        {
+                          "key": "token"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:07:56.000Z",
+                  "updatedAt": "2026-07-28T02:07:56.000Z",
+                  "uid": "35240-b8d4bc2c-872d-44c6-9ae5-56a12075a6d6"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:56.000Z",
+              "updatedAt": "2026-07-28T02:07:56.000Z",
+              "uid": "35240-63af69ea-aca3-496b-972a-45890ca97f40"
+            },
+            {
+              "name": "Update Cart",
+              "id": "392dc089-8637-4dd7-a614-2f7bd3c2be2c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cart/:token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cart",
+                    ":token"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c81dad07-3be3-4cf0-8259-81dd4e8ba85b",
+                      "key": "token",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier token associated with a cart."
+                    }
+                  ]
+                },
+                "description": "Modify an existing cart. The array of product variants will overwrite the cart's existing contents."
+              },
+              "response": [
+                {
+                  "id": "baf2fc50-cd5b-4ed8-ba8a-15cc52f42787",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cart\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cart/:token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":token"
+                      ],
+                      "variable": [
+                        {
+                          "key": "token"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"updated\": \"<boolean>\",\n  \"data\": {\n    \"cart\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:07:56.000Z",
+                  "updatedAt": "2026-07-28T02:07:56.000Z",
+                  "uid": "35240-baf2fc50-cd5b-4ed8-ba8a-15cc52f42787"
+                },
+                {
+                  "id": "7ed47e68-f094-462c-a28d-96163b9d1020",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cart\": [\n    \"<number>\",\n    \"<number>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/cart/:token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":token"
+                      ],
+                      "variable": [
+                        {
+                          "key": "token"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:07:56.000Z",
+                  "updatedAt": "2026-07-28T02:07:56.000Z",
+                  "uid": "35240-7ed47e68-f094-462c-a28d-96163b9d1020"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:56.000Z",
+              "updatedAt": "2026-07-28T02:07:56.000Z",
+              "uid": "35240-392dc089-8637-4dd7-a614-2f7bd3c2be2c"
+            },
+            {
+              "name": "Delete Cart",
+              "id": "a286b041-9eae-4d38-a30b-d578f0f897c9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "X-Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/cart/:token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cart",
+                    ":token"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5633b8d7-9ff8-42bf-a734-3a2d40a0d2a8",
+                      "key": "token",
+                      "value": "<string>",
+                      "description": "(Required) The unique identifier token associated with a cart."
+                    }
+                  ]
+                },
+                "description": "Delete an existing cart in Shop Now On-Store."
+              },
+              "response": [
+                {
+                  "id": "4f4de7b1-d9d0-49f2-a513-230bf12b99df",
+                  "name": "Successful",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cart/:token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":token"
+                      ],
+                      "variable": [
+                        {
+                          "key": "token"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": {\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:07:56.000Z",
+                  "updatedAt": "2026-07-28T02:07:56.000Z",
+                  "uid": "35240-4f4de7b1-d9d0-49f2-a513-230bf12b99df"
+                },
+                {
+                  "id": "9911cab3-1032-49b0-b340-0a0d2d2c3f5f",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/cart/:token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "cart",
+                        ":token"
+                      ],
+                      "variable": [
+                        {
+                          "key": "token"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:07:56.000Z",
+                  "updatedAt": "2026-07-28T02:07:56.000Z",
+                  "uid": "35240-9911cab3-1032-49b0-b340-0a0d2d2c3f5f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:07:56.000Z",
+              "updatedAt": "2026-07-28T02:07:56.000Z",
+              "uid": "35240-a286b041-9eae-4d38-a30b-d578f0f897c9"
+            }
+          ],
+          "id": "c464ecb2-7e3f-47ff-9d48-88669a558326",
+          "createdAt": "2026-07-28T02:07:56.000Z",
+          "updatedAt": "2026-07-28T02:07:56.000Z",
+          "uid": "35240-c464ecb2-7e3f-47ff-9d48-88669a558326"
+        },
+        {
+          "name": "Create Cart",
+          "id": "f2f5c281-ca2d-4f2c-b546-b4e5a3b1de1d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Authorization",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"shopify\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cart",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cart"
+              ]
+            },
+            "description": "Create a cart object and populate it with one or more product variants."
+          },
+          "response": [
+            {
+              "id": "b5a80441-bc25-42d9-90fa-f7b49410f741",
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"shopify\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cart",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cart"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"token\": \"<string>\",\n  \"data\": {\n    \"cart\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:07:56.000Z",
+              "updatedAt": "2026-07-28T02:07:56.000Z",
+              "uid": "35240-b5a80441-bc25-42d9-90fa-f7b49410f741"
+            },
+            {
+              "id": "fff22333-ba62-46ee-8eea-13b0d668010c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "X-Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart\": [\n    \"<number>\",\n    \"<number>\"\n  ],\n  \"shopify\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cart",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cart"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:07:56.000Z",
+              "updatedAt": "2026-07-28T02:07:56.000Z",
+              "uid": "35240-fff22333-ba62-46ee-8eea-13b0d668010c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:07:56.000Z",
+          "updatedAt": "2026-07-28T02:07:56.000Z",
+          "uid": "35240-f2f5c281-ca2d-4f2c-b546-b4e5a3b1de1d"
+        }
+      ],
+      "id": "0313f45e-b15c-4fd3-b7e8-75e4ef759db1",
+      "createdAt": "2026-07-28T02:07:56.000Z",
+      "updatedAt": "2026-07-28T02:07:56.000Z",
+      "uid": "35240-0313f45e-b15c-4fd3-b7e8-75e4ef759db1"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.loopreturns.com/api/v1"
+    }
+  ]
+}

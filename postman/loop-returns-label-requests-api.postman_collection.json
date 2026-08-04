@@ -1,0 +1,1435 @@
+{
+  "info": {
+    "_postman_id": "954a8cc0-864c-4074-a62a-2da6a03ae1ee",
+    "name": "Loop Returns Cart Label Requests API",
+    "description": "API for managing shop carts in Shop Now On-Store exchanges.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:08:00.000Z",
+    "updatedAt": "2026-07-28T02:08:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-954a8cc0-864c-4074-a62a-2da6a03ae1ee"
+  },
+  "item": [
+    {
+      "name": "label-requests",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "errors",
+              "item": [
+                {
+                  "name": "Create Label Request Error",
+                  "id": "e522df2e-b85f-4151-bde2-4fc3debe22ef",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reason\": \"Other\",\n  \"message\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/label-requests/:id/errors",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "label-requests",
+                        ":id",
+                        "errors"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9ab70ec8-0316-4afd-86f0-7c57721ac24b",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier for the label request, created by Loop."
+                        }
+                      ]
+                    },
+                    "description": "Submit unrecoverable errors encountered when generating labels for merchants."
+                  },
+                  "response": [
+                    {
+                      "id": "f0196704-3f3b-4ec4-b33f-421cbcfc5b43",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"Other\",\n  \"message\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/label-requests/:id/errors",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "label-requests",
+                            ":id",
+                            "errors"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"reason\": \"Other\",\n  \"message\": \"<string>\",\n  \"created_at\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-f0196704-3f3b-4ec4-b33f-421cbcfc5b43"
+                    },
+                    {
+                      "id": "d33a5e68-d5b1-471b-9f5a-109d6913a1b1",
+                      "name": "The request could not be processed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"Other\",\n  \"message\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/label-requests/:id/errors",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "label-requests",
+                            ":id",
+                            "errors"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-d33a5e68-d5b1-471b-9f5a-109d6913a1b1"
+                    },
+                    {
+                      "id": "c67578eb-f9ff-49f3-9123-9fda55ed98a8",
+                      "name": "The request could not be authorized.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reason\": \"Other\",\n  \"message\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/label-requests/:id/errors",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "label-requests",
+                            ":id",
+                            "errors"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-c67578eb-f9ff-49f3-9123-9fda55ed98a8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:08:00.000Z",
+                  "updatedAt": "2026-07-28T02:08:00.000Z",
+                  "uid": "35240-e522df2e-b85f-4151-bde2-4fc3debe22ef"
+                }
+              ],
+              "id": "ee7e1581-bb1b-4190-ab85-2a74b0df87e3",
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-ee7e1581-bb1b-4190-ab85-2a74b0df87e3"
+            },
+            {
+              "name": "Get Label Request",
+              "id": "51251e99-864d-464b-88b5-335254339a64",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/label-requests/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "label-requests",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "28f14782-bde5-409a-8d35-0198a86120f0",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier for the label request, created by Loop."
+                    }
+                  ]
+                },
+                "description": "Get details about a single label request."
+              },
+              "response": [
+                {
+                  "id": "9580d3b8-4e32-4d23-85bc-2766333210b9",
+                  "name": "Success",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/label-requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "label-requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"addresses\": {\n    \"origin\": {\n      \"address1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"name\": \"<string>\",\n      \"company\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"region\": \"<string,null>\",\n      \"postal_code\": \"<string,null>\",\n      \"country\": \"<string,null>\"\n    },\n    \"destination\": {\n      \"address1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"name\": \"<string>\",\n      \"company\": \"<string,null>\",\n      \"address2\": \"<string,null>\",\n      \"region\": \"<string,null>\",\n      \"postal_code\": \"<string,null>\",\n      \"country\": \"<string,null>\"\n    }\n  },\n  \"parcel\": {\n    \"height\": \"<double>\",\n    \"length\": \"<double>\",\n    \"width\": \"<double>\",\n    \"weight\": \"<double>\"\n  },\n  \"return_id\": \"<long>\",\n  \"shop_id\": \"<long>\",\n  \"status\": \"issued\",\n  \"created_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:08:00.000Z",
+                  "updatedAt": "2026-07-28T02:08:00.000Z",
+                  "uid": "35240-9580d3b8-4e32-4d23-85bc-2766333210b9"
+                },
+                {
+                  "id": "132dea86-8595-4a1b-a8a1-57d46d8a3953",
+                  "name": "The request could not be authorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/label-requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "label-requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:08:00.000Z",
+                  "updatedAt": "2026-07-28T02:08:00.000Z",
+                  "uid": "35240-132dea86-8595-4a1b-a8a1-57d46d8a3953"
+                },
+                {
+                  "id": "f5861b70-bcf2-4e93-a2a0-5fef85cd0541",
+                  "name": "The requested entity could not be found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/label-requests/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "label-requests",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:08:00.000Z",
+                  "updatedAt": "2026-07-28T02:08:00.000Z",
+                  "uid": "35240-f5861b70-bcf2-4e93-a2a0-5fef85cd0541"
+                }
+              ],
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-51251e99-864d-464b-88b5-335254339a64"
+            }
+          ],
+          "id": "2fbe43e6-9536-420b-b2cb-1dbef75fc375",
+          "createdAt": "2026-07-28T02:08:00.000Z",
+          "updatedAt": "2026-07-28T02:08:00.000Z",
+          "uid": "35240-2fbe43e6-9536-420b-b2cb-1dbef75fc375"
+        },
+        {
+          "name": "List Label Requests",
+          "id": "3b85474d-6438-426f-8735-3b0274c30cd8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/label-requests?from=<dateTime>&to=<dateTime>&return_id=<integer>&status=fulfilled&limit=50&offset=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "label-requests"
+              ],
+              "query": [
+                {
+                  "description": "Returns label requests after or equal to a minimum date.",
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Returns label requests before a maximum date.",
+                  "key": "to",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Return label requests associated with a specific return_id.",
+                  "key": "return_id",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "status",
+                  "value": "fulfilled"
+                },
+                {
+                  "description": "The per page limit of label requests to return.",
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "description": "The number of label requests to offset.",
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Retrieve a list of label requests."
+          },
+          "response": [
+            {
+              "id": "e603478a-fe0a-4617-b3d0-872b1dee2da1",
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/label-requests?from=<dateTime>&to=<dateTime>&return_id=<integer>&status=fulfilled&limit=50&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "label-requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "Returns label requests after or equal to a minimum date.",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Returns label requests before a maximum date.",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Return label requests associated with a specific return_id.",
+                      "key": "return_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "fulfilled"
+                    },
+                    {
+                      "description": "The per page limit of label requests to return.",
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "description": "The number of label requests to offset.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"addresses\": {\n        \"origin\": {\n          \"address1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"country_code\": \"<string>\",\n          \"name\": \"<string>\",\n          \"company\": \"<string,null>\",\n          \"address2\": \"<string,null>\",\n          \"region\": \"<string,null>\",\n          \"postal_code\": \"<string,null>\",\n          \"country\": \"<string,null>\"\n        },\n        \"destination\": {\n          \"address1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"country_code\": \"<string>\",\n          \"name\": \"<string>\",\n          \"company\": \"<string,null>\",\n          \"address2\": \"<string,null>\",\n          \"region\": \"<string,null>\",\n          \"postal_code\": \"<string,null>\",\n          \"country\": \"<string,null>\"\n        }\n      },\n      \"parcel\": {\n        \"height\": \"<double>\",\n        \"length\": \"<double>\",\n        \"width\": \"<double>\",\n        \"weight\": \"<double>\"\n      },\n      \"return_id\": \"<long>\",\n      \"shop_id\": \"<long>\",\n      \"status\": \"issued\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"addresses\": {\n        \"origin\": {\n          \"address1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"country_code\": \"<string>\",\n          \"name\": \"<string>\",\n          \"company\": \"<string,null>\",\n          \"address2\": \"<string,null>\",\n          \"region\": \"<string,null>\",\n          \"postal_code\": \"<string,null>\",\n          \"country\": \"<string,null>\"\n        },\n        \"destination\": {\n          \"address1\": \"<string>\",\n          \"city\": \"<string>\",\n          \"country_code\": \"<string>\",\n          \"name\": \"<string>\",\n          \"company\": \"<string,null>\",\n          \"address2\": \"<string,null>\",\n          \"region\": \"<string,null>\",\n          \"postal_code\": \"<string,null>\",\n          \"country\": \"<string,null>\"\n        }\n      },\n      \"parcel\": {\n        \"height\": \"<double>\",\n        \"length\": \"<double>\",\n        \"width\": \"<double>\",\n        \"weight\": \"<double>\"\n      },\n      \"return_id\": \"<long>\",\n      \"shop_id\": \"<long>\",\n      \"status\": \"fulfilled\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-e603478a-fe0a-4617-b3d0-872b1dee2da1"
+            },
+            {
+              "id": "9ba3ae9c-21e2-4fc7-bfee-38b1db8e9213",
+              "name": "The request could not be authorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/label-requests?from=<dateTime>&to=<dateTime>&return_id=<integer>&status=fulfilled&limit=50&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "label-requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "Returns label requests after or equal to a minimum date.",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Returns label requests before a maximum date.",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Return label requests associated with a specific return_id.",
+                      "key": "return_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "fulfilled"
+                    },
+                    {
+                      "description": "The per page limit of label requests to return.",
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "description": "The number of label requests to offset.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-9ba3ae9c-21e2-4fc7-bfee-38b1db8e9213"
+            },
+            {
+              "id": "e1f05331-d7a7-4fd3-8d5d-a05d35ebd69f",
+              "name": "The requested entity could not be found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/label-requests?from=<dateTime>&to=<dateTime>&return_id=<integer>&status=fulfilled&limit=50&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "label-requests"
+                  ],
+                  "query": [
+                    {
+                      "description": "Returns label requests after or equal to a minimum date.",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Returns label requests before a maximum date.",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Return label requests associated with a specific return_id.",
+                      "key": "return_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "fulfilled"
+                    },
+                    {
+                      "description": "The per page limit of label requests to return.",
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "description": "The number of label requests to offset.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-e1f05331-d7a7-4fd3-8d5d-a05d35ebd69f"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:00.000Z",
+          "updatedAt": "2026-07-28T02:08:00.000Z",
+          "uid": "35240-3b85474d-6438-426f-8735-3b0274c30cd8"
+        }
+      ],
+      "id": "ac6ace06-9ba3-4698-b136-2db45f1fa308",
+      "createdAt": "2026-07-28T02:08:00.000Z",
+      "updatedAt": "2026-07-28T02:08:00.000Z",
+      "uid": "35240-ac6ace06-9ba3-4698-b136-2db45f1fa308"
+    },
+    {
+      "name": "labels",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Update Label Status",
+              "id": "8566ce75-150a-439a-a6b0-1b700ced685b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"delivered\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/labels/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "labels",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7a24295a-b4ea-4ac3-b191-62fb6e7200af",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) The unique identifier for the label, created by Loop."
+                    }
+                  ]
+                },
+                "description": "Update the status of a label."
+              },
+              "response": [
+                {
+                  "id": "7a21a940-fc6b-4dd3-a249-a972c590babb",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"delivered\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/labels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "labels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:08:00.000Z",
+                  "updatedAt": "2026-07-28T02:08:00.000Z",
+                  "uid": "35240-7a21a940-fc6b-4dd3-a249-a972c590babb"
+                },
+                {
+                  "id": "d52db9d9-92f5-4208-a266-e9539148099e",
+                  "name": "The request could not be processed.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"delivered\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/labels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "labels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:08:00.000Z",
+                  "updatedAt": "2026-07-28T02:08:00.000Z",
+                  "uid": "35240-d52db9d9-92f5-4208-a266-e9539148099e"
+                },
+                {
+                  "id": "69d65770-cf67-4938-9397-5773e7b59581",
+                  "name": "The request could not be authorized.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"delivered\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/labels/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "labels",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:08:00.000Z",
+                  "updatedAt": "2026-07-28T02:08:00.000Z",
+                  "uid": "35240-69d65770-cf67-4938-9397-5773e7b59581"
+                }
+              ],
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-8566ce75-150a-439a-a6b0-1b700ced685b"
+            }
+          ],
+          "id": "207942d6-a008-4fff-be87-d8fa5f518858",
+          "createdAt": "2026-07-28T02:08:00.000Z",
+          "updatedAt": "2026-07-28T02:08:00.000Z",
+          "uid": "35240-207942d6-a008-4fff-be87-d8fa5f518858"
+        },
+        {
+          "name": "Create Label",
+          "id": "0118107e-5f70-4f68-a3da-68b6c7b07575",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label_request_id\": \"<integer>\",\n  \"tracking_number\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"label_url\": \"<string>\",\n  \"rate\": {\n    \"amount\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"tracking_url\": \"<string,null>\",\n  \"qrcode_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/labels",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "labels"
+              ]
+            },
+            "description": "Create a label for a label request."
+          },
+          "response": [
+            {
+              "id": "1dd48fb4-b8d2-4149-8e4a-2fe8b6a0aa9e",
+              "name": "OK",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label_request_id\": \"<integer>\",\n  \"tracking_number\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"label_url\": \"<string>\",\n  \"rate\": {\n    \"amount\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"tracking_url\": \"<string,null>\",\n  \"qrcode_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/labels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "labels"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<long>\",\n  \"tracking_number\": \"<string>\",\n  \"tracking_url\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"label_url\": \"<string>\",\n  \"qrcode_url\": \"<string>\",\n  \"rate\": {\n    \"amount\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-1dd48fb4-b8d2-4149-8e4a-2fe8b6a0aa9e"
+            },
+            {
+              "id": "10b774c8-da2a-4d1b-be8d-15484ba2d4ba",
+              "name": "The request could not be processed.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label_request_id\": \"<integer>\",\n  \"tracking_number\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"label_url\": \"<string>\",\n  \"rate\": {\n    \"amount\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"tracking_url\": \"<string,null>\",\n  \"qrcode_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/labels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "labels"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-10b774c8-da2a-4d1b-be8d-15484ba2d4ba"
+            },
+            {
+              "id": "e6992cc9-116a-4087-9b79-4b82ec354977",
+              "name": "The request could not be authorized.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label_request_id\": \"<integer>\",\n  \"tracking_number\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"label_url\": \"<string>\",\n  \"rate\": {\n    \"amount\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"tracking_url\": \"<string,null>\",\n  \"qrcode_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/labels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "labels"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-e6992cc9-116a-4087-9b79-4b82ec354977"
+            }
+          ],
+          "createdAt": "2026-07-28T02:08:00.000Z",
+          "updatedAt": "2026-07-28T02:08:00.000Z",
+          "uid": "35240-0118107e-5f70-4f68-a3da-68b6c7b07575"
+        }
+      ],
+      "id": "9fa59af7-9574-41ac-8459-a7052dbcc5bb",
+      "createdAt": "2026-07-28T02:08:00.000Z",
+      "updatedAt": "2026-07-28T02:08:00.000Z",
+      "uid": "35240-9fa59af7-9574-41ac-8459-a7052dbcc5bb"
+    },
+    {
+      "name": "returns",
+      "item": [
+        {
+          "name": "{returnId}",
+          "item": [
+            {
+              "name": "labels",
+              "item": [
+                {
+                  "name": "Generate Label",
+                  "id": "64fcc11a-b952-454e-9c12-f14bd9c82ceb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/returns/:returnId/labels",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "returns",
+                        ":returnId",
+                        "labels"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c5c62e3e-d3a0-4f43-9edb-07cf53905372",
+                          "key": "returnId",
+                          "value": "<integer>",
+                          "description": "(Required) The unique identifier for the return, created by Loop."
+                        }
+                      ]
+                    },
+                    "description": "Queue label generation for a return. Triggers an asynchronous label generation process."
+                  },
+                  "response": [
+                    {
+                      "id": "2c0857bb-d2dc-49d3-8f54-5e6ab6977a79",
+                      "name": "Label generation queued successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/returns/:returnId/labels",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "returns",
+                            ":returnId",
+                            "labels"
+                          ],
+                          "variable": [
+                            {
+                              "key": "returnId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"returnId\": \"<long>\"\n}",
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-2c0857bb-d2dc-49d3-8f54-5e6ab6977a79"
+                    },
+                    {
+                      "id": "47ce12e7-2500-4959-b35d-48fadcdbbccc",
+                      "name": "The request could not be authorized.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/returns/:returnId/labels",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "returns",
+                            ":returnId",
+                            "labels"
+                          ],
+                          "variable": [
+                            {
+                              "key": "returnId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"http_code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-47ce12e7-2500-4959-b35d-48fadcdbbccc"
+                    },
+                    {
+                      "id": "b0d2db83-2052-4183-9c87-123ed8bf7cea",
+                      "name": "Return not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/returns/:returnId/labels",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "returns",
+                            ":returnId",
+                            "labels"
+                          ],
+                          "variable": [
+                            {
+                              "key": "returnId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-b0d2db83-2052-4183-9c87-123ed8bf7cea"
+                    },
+                    {
+                      "id": "1fb3b427-bd55-4af0-81d1-66b080b10f59",
+                      "name": "Label already exists for this return.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/returns/:returnId/labels",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "returns",
+                            ":returnId",
+                            "labels"
+                          ],
+                          "variable": [
+                            {
+                              "key": "returnId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-1fb3b427-bd55-4af0-81d1-66b080b10f59"
+                    },
+                    {
+                      "id": "3a2d74d2-4e76-4dc2-bfca-04dad55ea62b",
+                      "name": "Return cannot receive a label or label generation failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/returns/:returnId/labels",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "returns",
+                            ":returnId",
+                            "labels"
+                          ],
+                          "variable": [
+                            {
+                              "key": "returnId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-3a2d74d2-4e76-4dc2-bfca-04dad55ea62b"
+                    },
+                    {
+                      "id": "0f95cbda-5ff6-4771-9a22-efb96a06ba74",
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/returns/:returnId/labels",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "returns",
+                            ":returnId",
+                            "labels"
+                          ],
+                          "variable": [
+                            {
+                              "key": "returnId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:08:00.000Z",
+                      "updatedAt": "2026-07-28T02:08:00.000Z",
+                      "uid": "35240-0f95cbda-5ff6-4771-9a22-efb96a06ba74"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:08:00.000Z",
+                  "updatedAt": "2026-07-28T02:08:00.000Z",
+                  "uid": "35240-64fcc11a-b952-454e-9c12-f14bd9c82ceb"
+                }
+              ],
+              "id": "6346f9f2-99f9-412f-89a1-a79bf11d6ec0",
+              "createdAt": "2026-07-28T02:08:00.000Z",
+              "updatedAt": "2026-07-28T02:08:00.000Z",
+              "uid": "35240-6346f9f2-99f9-412f-89a1-a79bf11d6ec0"
+            }
+          ],
+          "id": "33382c5c-e13e-4b6a-9304-9c658acbfc7c",
+          "createdAt": "2026-07-28T02:08:00.000Z",
+          "updatedAt": "2026-07-28T02:08:00.000Z",
+          "uid": "35240-33382c5c-e13e-4b6a-9304-9c658acbfc7c"
+        }
+      ],
+      "id": "491187db-af5b-45c2-8885-1cb5dcc3962d",
+      "createdAt": "2026-07-28T02:08:00.000Z",
+      "updatedAt": "2026-07-28T02:08:00.000Z",
+      "uid": "35240-491187db-af5b-45c2-8885-1cb5dcc3962d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.loopreturns.com/api/v1"
+    }
+  ]
+}

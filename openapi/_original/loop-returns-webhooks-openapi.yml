@@ -1,0 +1,291 @@
+openapi: 3.1.0
+info:
+  title: Loop Returns - Programmatic Webhooks API
+  version: v1
+  description: API used for creating, retrieving, updating, and deleting programmatic webhook subscriptions.
+servers:
+  - url: https://api.loopreturns.com/api/v1
+tags:
+  - name: Programmatic Webhooks
+paths:
+  /webhooks:
+    get:
+      tags:
+        - Programmatic Webhooks
+      security:
+        - oauth2:
+            - developer_tools
+        - api_key: []
+      description: Get all webhook subscriptions, including webhooks created programmatically and in the Loop Admin.
+      summary: Get Webhooks
+      operationId: getWebhooks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                properties:
+                  webhooks:
+                    type: array
+                    description: An array of webhook subscriptions.
+                    items:
+                      $ref: '#/components/schemas/Webhook'
+    post:
+      tags:
+        - Programmatic Webhooks
+      security:
+        - oauth2:
+            - developer_tools
+        - api_key: []
+      description: Create a new webhook subscription.
+      summary: Create Webhook
+      operationId: createWebhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '422':
+          description: Unprocessable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableResponse'
+  /webhooks/{id}:
+    delete:
+      tags:
+        - Programmatic Webhooks
+      security:
+        - oauth2:
+            - developer_tools
+        - api_key: []
+      description: Delete a webhook subscription.
+      summary: Delete Webhook
+      operationId: deleteWebhook
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          example: 12345
+          description: The webhook's unique identifier.
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+    put:
+      tags:
+        - Programmatic Webhooks
+      security:
+        - oauth2:
+            - developer_tools
+        - api_key: []
+      description: Update a webhook subscription.
+      summary: Update Webhook
+      operationId: updateWebhook
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          example: 12345
+          description: The webhook's unique identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWebhookRequest'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+        '422':
+          description: Unprocessable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnprocessableResponse'
+components:
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The webhook's unique identifier.
+          examples:
+            - 12345
+        shop_id:
+          type: integer
+          description: The unique identifier of the shop that created the webhook.
+          examples:
+            - 65432
+        topic:
+          $ref: '#/components/schemas/TopicEnum'
+        trigger:
+          $ref: '#/components/schemas/TriggerEnum'
+        url:
+          $ref: '#/components/schemas/WebhookUrl'
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+    CreateWebhookRequest:
+      type: object
+      required:
+        - topic
+        - trigger
+        - url
+      properties:
+        topic:
+          $ref: '#/components/schemas/TopicEnum'
+        trigger:
+          $ref: '#/components/schemas/TriggerEnum'
+        url:
+          $ref: '#/components/schemas/WebhookUrl'
+        status:
+          default: inactive
+          $ref: '#/components/schemas/StatusEnum'
+    UpdateWebhookRequest:
+      type: object
+      required:
+        - topic
+        - trigger
+        - url
+      properties:
+        topic:
+          $ref: '#/components/schemas/TopicEnum'
+        trigger:
+          $ref: '#/components/schemas/TriggerEnum'
+        url:
+          $ref: '#/components/schemas/WebhookUrl'
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+    StatusEnum:
+      type: string
+      description: The webhook's status.
+      enum:
+        - active
+        - inactive
+    TriggerEnum:
+      type: string
+      description: The condition which triggers the webhook.
+      enum:
+        - return.created
+        - return.updated
+        - return.closed
+        - label.created
+        - label.updated
+        - restock.requested
+        - label.request.issued
+        - label.request.cancelled
+        - giftcard.requested
+        - shipment.processed
+      examples:
+        - return.created
+    TopicEnum:
+      type: string
+      description: The webhook's topic.
+      enum:
+        - return
+        - label
+        - restock
+        - label.request
+        - giftcard
+        - happy.returns.shipment
+      examples:
+        - return
+    UnauthorizedResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              examples:
+                - '401'
+            http_code:
+              type: string
+              examples:
+                - GEN-UNAUTHORIZED
+            message:
+              type: string
+              examples:
+                - Unauthorized.
+    NotFoundResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            code:
+              type: string
+              examples:
+                - NOT_FOUND
+    UnprocessableResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+            - Must be one of the following values:return,label,restock
+        errors:
+          type: object
+    WebhookUrl:
+      type: string
+      examples:
+        - https://example.com/webhook
+      description: The webhook's URL.
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Authorization
+      in: header
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.loopreturns.com/authorize
+          tokenUrl: https://oauth.loopreturns.com/oauth/token
+          scopes:
+            developer_tools: Access to developer tools including webhooks
