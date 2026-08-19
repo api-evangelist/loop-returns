@@ -1,0 +1,245 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loop Returns Cart Return Actions API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Return Actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Process Return",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/:return_id/process",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier associated with the return."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Process a return in Loop based on the return ID. Processing a return will archive it in Loop and fulfill any remaining outcomes, such as placing exchange orders or creating gift cards. This endpoint queues the return for processing asynchronously.\n"
+        },
+        {
+          "info": {
+            "name": "Remove Line Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/:return_id/remove",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier associated with the return."
+              },
+              {
+                "name": "line_item_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the line item to remove. Optionally include more than one using comma separated values."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove line items from a return and process the return. Only line items tied to a refund or store credit outcome allow programmatic removal."
+        },
+        {
+          "info": {
+            "name": "Cancel Return",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/:return_id/cancel",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier associated with the return."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Cancel a return in Loop. Canceling a return will allow a customer to make another return with the same items."
+        },
+        {
+          "info": {
+            "name": "Flag Return",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/:return_id/flag",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier associated with the return."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Flag a return in Loop for review. This will prevent automated processing and require a human to review the return in the merchant admin."
+        },
+        {
+          "info": {
+            "name": "Close Return",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/:return_id/close",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier associated with the return."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Close a return. Closing will not fulfill outcomes such as exchanges or gift cards, and items are not able to be used in a new return."
+        },
+        {
+          "info": {
+            "name": "Get Return Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/:return_id/notes",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier associated with the return."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get notes on a specific return using the return's ID."
+        },
+        {
+          "info": {
+            "name": "Create Return Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/:return_id/note",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier associated with the return."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Post a new note to a return."
+        },
+        {
+          "info": {
+            "name": "Create Return Deep Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/order/link",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a deep link URL for a customer to initiate a return. The zip value could be an email, phone number, or postal code depending on shop settings."
+        },
+        {
+          "info": {
+            "name": "Create Return Deep Link with QR Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/order/qr",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Generate a link to a QR code image that, when scanned, takes the user directly to their order in Loop to initiate a return."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loop Returns Cart Return Data API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Return Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Detailed Returns List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/list",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "The start date and time for the returns list."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "The end date and time for the returns list."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "The date field used to filter results."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter by return state."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Pull a detailed list of returns created within a given timeframe. Supports pagination. Maximum date range is 120 days."
+        },
+        {
+          "info": {
+            "name": "Get Return Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/return/details",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "37603922",
+                "type": "query",
+                "description": "The unique identifier associated with the return."
+              },
+              {
+                "name": "order_id",
+                "value": "2347613440760",
+                "type": "query",
+                "description": "The unique identifier associated with the order."
+              },
+              {
+                "name": "order_name",
+                "value": "2222",
+                "type": "query",
+                "description": "The Shopify order name."
+              },
+              {
+                "name": "currency_type",
+                "value": "",
+                "type": "query",
+                "description": "The currency type of the return (shop or presentment)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the details of a specific return based on return ID, order name, or Shopify order ID."
+        },
+        {
+          "info": {
+            "name": "Advanced Shipping Notice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/warehouse/reporting/asn",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Pull all packages by tracking statuses/timeframe. Returns an array of objects containing order and return information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

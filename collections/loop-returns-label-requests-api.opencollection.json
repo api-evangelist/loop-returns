@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loop Returns Cart Label Requests API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Label Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Label Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/label-requests",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Returns label requests after or equal to a minimum date."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Returns label requests before a maximum date."
+              },
+              {
+                "name": "return_id",
+                "value": "",
+                "type": "query",
+                "description": "Return label requests associated with a specific return_id."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The per page limit of label requests to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of label requests to offset."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of label requests."
+        },
+        {
+          "info": {
+            "name": "Get Label Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/label-requests/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the label request, created by Loop."
+              }
+            ]
+          },
+          "docs": "Get details about a single label request."
+        },
+        {
+          "info": {
+            "name": "Create Label Request Error",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/label-requests/:id/errors",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the label request, created by Loop."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit unrecoverable errors encountered when generating labels for merchants."
+        },
+        {
+          "info": {
+            "name": "Create Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/labels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a label for a label request."
+        },
+        {
+          "info": {
+            "name": "Update Label Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.loopreturns.com/api/v1/labels/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the label, created by Loop."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the status of a label."
+        },
+        {
+          "info": {
+            "name": "Generate Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/returns/:returnId/labels",
+            "params": [
+              {
+                "name": "returnId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the return, created by Loop."
+              }
+            ]
+          },
+          "docs": "Queue label generation for a return. Triggers an asynchronous label generation process."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

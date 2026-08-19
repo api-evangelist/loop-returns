@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loop Returns Cart Fraud Reports API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fraud Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Fraud Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/returns/:return_id/fraud-report",
+            "params": [
+              {
+                "name": "return_id",
+                "value": "23141",
+                "type": "path",
+                "description": "The return's unique identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Attach a fraud report to a return to flag it for fraudulent activity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

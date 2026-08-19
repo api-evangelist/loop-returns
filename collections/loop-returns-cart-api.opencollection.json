@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loop Returns Cart API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a cart object and populate it with one or more product variants."
+        },
+        {
+          "info": {
+            "name": "Get Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/cart/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier token associated with a cart."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get an existing cart by cart token."
+        },
+        {
+          "info": {
+            "name": "Update Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/cart/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier token associated with a cart."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Modify an existing cart. The array of product variants will overwrite the cart's existing contents."
+        },
+        {
+          "info": {
+            "name": "Delete Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.loopreturns.com/api/v1/cart/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier token associated with a cart."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an existing cart in Shop Now On-Store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

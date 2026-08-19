@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loop Returns Cart Destinations API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Destinations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Destinations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/destinations",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve all destinations."
+        },
+        {
+          "info": {
+            "name": "Create Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/destinations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a destination."
+        },
+        {
+          "info": {
+            "name": "Get Destination Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/destinations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path",
+                "description": "The destination's unique identifier."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get details for a single destination."
+        },
+        {
+          "info": {
+            "name": "Update Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.loopreturns.com/api/v1/destinations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path",
+                "description": "The destination's unique identifier."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a destination."
+        },
+        {
+          "info": {
+            "name": "Delete Destination",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.loopreturns.com/api/v1/destinations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path",
+                "description": "The destination's unique identifier."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Authorization",
+              "value": "{{X-Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a destination."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

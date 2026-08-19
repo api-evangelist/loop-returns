@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Loop Returns Cart Programmatic Webhooks API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Programmatic Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.loopreturns.com/api/v1/webhooks"
+          },
+          "docs": "Get all webhook subscriptions, including webhooks created programmatically and in the Loop Admin."
+        },
+        {
+          "info": {
+            "name": "Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.loopreturns.com/api/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new webhook subscription."
+        },
+        {
+          "info": {
+            "name": "Update Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.loopreturns.com/api/v1/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path",
+                "description": "The webhook's unique identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a webhook subscription."
+        },
+        {
+          "info": {
+            "name": "Delete Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.loopreturns.com/api/v1/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "12345",
+                "type": "path",
+                "description": "The webhook's unique identifier."
+              }
+            ]
+          },
+          "docs": "Delete a webhook subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

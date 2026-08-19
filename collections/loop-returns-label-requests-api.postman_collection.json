@@ -1,0 +1,1345 @@
+{
+  "item": [
+    {
+      "id": "6a6a99bd-6c42-48da-867f-2cd1b5ae8030",
+      "name": "Label Requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9ec0944-b746-4cca-b156-a4b9ed93d18d",
+          "name": "List Label Requests",
+          "request": {
+            "name": "List Label Requests",
+            "description": {
+              "content": "Retrieve a list of label requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "label-requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "Returns label requests after or equal to a minimum date."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "Returns label requests before a maximum date."
+                },
+                {
+                  "disabled": false,
+                  "key": "return_id",
+                  "value": "<integer>",
+                  "description": "Return label requests associated with a specific return_id."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "The per page limit of label requests to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The number of label requests to offset."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "143e3a9b-bc45-463c-a1bc-455804e31313",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2023-04-25T13:25:00-05:00"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-04-25T13:25:00-05:00"
+                    },
+                    {
+                      "key": "return_id",
+                      "value": "67329889100573"
+                    },
+                    {
+                      "key": "status",
+                      "value": "issued"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"67329889100573\",\n      \"addresses\": {\n        \"origin\": {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"country_code\": \"st\",\n          \"name\": \"string\",\n          \"company\": \"string\",\n          \"address2\": \"string\",\n          \"region\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        },\n        \"destination\": {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"country_code\": \"st\",\n          \"name\": \"string\",\n          \"company\": \"string\",\n          \"address2\": \"string\",\n          \"region\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        }\n      },\n      \"parcel\": {\n        \"height\": 5,\n        \"length\": 20.2,\n        \"width\": 10.9,\n        \"weight\": 65.9\n      },\n      \"return_id\": 1001,\n      \"shop_id\": 50,\n      \"status\": \"issued\",\n      \"created_at\": \"2023-04-25T13:25:00-05:00\"\n    },\n    {\n      \"id\": \"67329889100573\",\n      \"addresses\": {\n        \"origin\": {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"country_code\": \"st\",\n          \"name\": \"string\",\n          \"company\": \"string\",\n          \"address2\": \"string\",\n          \"region\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        },\n        \"destination\": {\n          \"address1\": \"string\",\n          \"city\": \"string\",\n          \"country_code\": \"st\",\n          \"name\": \"string\",\n          \"company\": \"string\",\n          \"address2\": \"string\",\n          \"region\": \"string\",\n          \"postal_code\": \"string\",\n          \"country\": \"string\"\n        }\n      },\n      \"parcel\": {\n        \"height\": 5,\n        \"length\": 20.2,\n        \"width\": 10.9,\n        \"weight\": 65.9\n      },\n      \"return_id\": 1001,\n      \"shop_id\": 50,\n      \"status\": \"issued\",\n      \"created_at\": \"2023-04-25T13:25:00-05:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0cfb924-1bcc-4f4a-8966-01ffc1855a39",
+              "name": "The request could not be authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2023-04-25T13:25:00-05:00"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-04-25T13:25:00-05:00"
+                    },
+                    {
+                      "key": "return_id",
+                      "value": "67329889100573"
+                    },
+                    {
+                      "key": "status",
+                      "value": "issued"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"401\",\n    \"http_code\": \"GEN-UNAUTHORIZED\",\n    \"message\": \"Unauthorized.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2515603-e716-4d1a-9cbe-f6f176606b08",
+              "name": "The requested entity could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "2023-04-25T13:25:00-05:00"
+                    },
+                    {
+                      "key": "to",
+                      "value": "2023-04-25T13:25:00-05:00"
+                    },
+                    {
+                      "key": "return_id",
+                      "value": "67329889100573"
+                    },
+                    {
+                      "key": "status",
+                      "value": "issued"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d18a5497-9681-4047-b317-759bd75efff8",
+          "name": "Get Label Request",
+          "request": {
+            "name": "Get Label Request",
+            "description": {
+              "content": "Get details about a single label request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "label-requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the label request, created by Loop."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "f901d57e-a05e-4ab4-8909-023a1e92dafc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label request, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"67329889100573\",\n  \"addresses\": {\n    \"origin\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"country_code\": \"st\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"address2\": \"string\",\n      \"region\": \"string\",\n      \"postal_code\": \"string\",\n      \"country\": \"string\"\n    },\n    \"destination\": {\n      \"address1\": \"string\",\n      \"city\": \"string\",\n      \"country_code\": \"st\",\n      \"name\": \"string\",\n      \"company\": \"string\",\n      \"address2\": \"string\",\n      \"region\": \"string\",\n      \"postal_code\": \"string\",\n      \"country\": \"string\"\n    }\n  },\n  \"parcel\": {\n    \"height\": 5,\n    \"length\": 20.2,\n    \"width\": 10.9,\n    \"weight\": 65.9\n  },\n  \"return_id\": 1001,\n  \"shop_id\": 50,\n  \"status\": \"issued\",\n  \"created_at\": \"2023-04-25T13:25:00-05:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "318d4c29-9ea0-4ff3-9e7b-739a4c0e244b",
+              "name": "The request could not be authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label request, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"401\",\n    \"http_code\": \"GEN-UNAUTHORIZED\",\n    \"message\": \"Unauthorized.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94f72e49-b650-4355-b78e-374ba4cef7e4",
+              "name": "The requested entity could not be found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label request, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "618f1959-de0b-496e-b454-c140aee4438e",
+          "name": "Create Label Request Error",
+          "request": {
+            "name": "Create Label Request Error",
+            "description": {
+              "content": "Submit unrecoverable errors encountered when generating labels for merchants.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "label-requests",
+                ":id",
+                "errors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the label request, created by Loop."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70031d07-024d-45ca-90cd-fde8f9c5ff5c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests",
+                    ":id",
+                    "errors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label request, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"INVALID_ADDRESS\",\n  \"message\": \"Failed to generate a label, the origin address is invalid\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reason\": \"INVALID_ADDRESS\",\n  \"message\": \"string\",\n  \"created_at\": \"2023-04-25T13:25:00-05:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b263c98e-fdaf-49e1-9e03-306b2dba37bb",
+              "name": "The request could not be processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests",
+                    ":id",
+                    "errors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label request, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"INVALID_ADDRESS\",\n  \"message\": \"Failed to generate a label, the origin address is invalid\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "595daecf-65d3-43db-bc5a-211822fcdea6",
+              "name": "The request could not be authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "label-requests",
+                    ":id",
+                    "errors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label request, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"INVALID_ADDRESS\",\n  \"message\": \"Failed to generate a label, the origin address is invalid\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"401\",\n    \"http_code\": \"GEN-UNAUTHORIZED\",\n    \"message\": \"Unauthorized.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c5b30f1-53f3-4c67-a7ae-1e5755d6d737",
+          "name": "Create Label",
+          "request": {
+            "name": "Create Label",
+            "description": {
+              "content": "Create a label for a label request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label_request_id\": \"<integer>\",\n  \"tracking_number\": \"<string>\",\n  \"carrier\": \"<string>\",\n  \"label_url\": \"<string>\",\n  \"rate\": {\n    \"amount\": \"<integer>\",\n    \"currency_code\": \"USD\"\n  },\n  \"tracking_url\": \"<string,null>\",\n  \"qrcode_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "486f4b52-6601-4018-8147-72818470bc5b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label_request_id\": 67329889100573,\n  \"tracking_number\": \"9400136105440512280610\",\n  \"carrier\": \"USPS\",\n  \"label_url\": \"https://s3.amazonaws.com/example-bucket/label.pdf\",\n  \"rate\": {\n    \"amount\": 25000,\n    \"currency_code\": \"USD\"\n  },\n  \"tracking_url\": \"<string,null>\",\n  \"qrcode_url\": \"https://s3.amazonaws.com/example-bucket/qrcode.pdf\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 67329889100573,\n  \"tracking_number\": \"string\",\n  \"tracking_url\": \"string\",\n  \"carrier\": \"USPS\",\n  \"label_url\": \"string\",\n  \"qrcode_url\": \"string\",\n  \"rate\": {\n    \"amount\": 25000,\n    \"currency_code\": \"USD\"\n  },\n  \"status\": \"new\",\n  \"created_at\": \"2023-04-25T13:25:00-05:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ac27c50-d7fa-4163-9b84-41c78849ea9f",
+              "name": "The request could not be processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label_request_id\": 67329889100573,\n  \"tracking_number\": \"9400136105440512280610\",\n  \"carrier\": \"USPS\",\n  \"label_url\": \"https://s3.amazonaws.com/example-bucket/label.pdf\",\n  \"rate\": {\n    \"amount\": 25000,\n    \"currency_code\": \"USD\"\n  },\n  \"tracking_url\": \"<string,null>\",\n  \"qrcode_url\": \"https://s3.amazonaws.com/example-bucket/qrcode.pdf\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8908a47a-68eb-4d00-be68-023b32807452",
+              "name": "The request could not be authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label_request_id\": 67329889100573,\n  \"tracking_number\": \"9400136105440512280610\",\n  \"carrier\": \"USPS\",\n  \"label_url\": \"https://s3.amazonaws.com/example-bucket/label.pdf\",\n  \"rate\": {\n    \"amount\": 25000,\n    \"currency_code\": \"USD\"\n  },\n  \"tracking_url\": \"<string,null>\",\n  \"qrcode_url\": \"https://s3.amazonaws.com/example-bucket/qrcode.pdf\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"401\",\n    \"http_code\": \"GEN-UNAUTHORIZED\",\n    \"message\": \"Unauthorized.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "adc1d014-023c-4407-95f3-307770e8c12e",
+          "name": "Update Label Status",
+          "request": {
+            "name": "Update Label Status",
+            "description": {
+              "content": "Update the status of a label.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "labels",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The unique identifier for the label, created by Loop."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b9f9a07-2a32-44f5-8b52-d4d22ebdc047",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "labels",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label, created by Loop."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"new\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2b78635-c7fc-4cee-8580-f5cf71c075d0",
+              "name": "The request could not be processed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "labels",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"new\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4266176-224c-430c-bc65-56c733b51b6e",
+              "name": "The request could not be authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "labels",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The unique identifier for the label, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"new\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"401\",\n    \"http_code\": \"GEN-UNAUTHORIZED\",\n    \"message\": \"Unauthorized.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aecb05a4-dbe0-4caa-baf3-8048d504a460",
+          "name": "Generate Label",
+          "request": {
+            "name": "Generate Label",
+            "description": {
+              "content": "Queue label generation for a return. Triggers an asynchronous label generation process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "returns",
+                ":returnId",
+                "labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "returnId",
+                  "description": "(Required) The unique identifier for the return, created by Loop."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST"
+          },
+          "response": [
+            {
+              "id": "95bd7a5a-11b1-4937-9a8e-a1b3d68cffbb",
+              "name": "Label generation queued successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "returns",
+                    ":returnId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "returnId",
+                      "description": "(Required) The unique identifier for the return, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Label generation queued\",\n  \"returnId\": 12345\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ff1045a-0050-4e18-89c2-060a50afc29c",
+              "name": "The request could not be authorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "returns",
+                    ":returnId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "returnId",
+                      "description": "(Required) The unique identifier for the return, created by Loop."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"401\",\n    \"http_code\": \"GEN-UNAUTHORIZED\",\n    \"message\": \"Unauthorized.\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "868fa2ff-542c-4fd4-9a69-46d14f098a0a",
+              "name": "Return not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "returns",
+                    ":returnId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "returnId",
+                      "description": "(Required) The unique identifier for the return, created by Loop."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5beb82c9-aed6-4bee-95fa-99b687f45732",
+              "name": "Label already exists for this return.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "returns",
+                    ":returnId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "returnId",
+                      "description": "(Required) The unique identifier for the return, created by Loop."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f3bc907-a888-484e-99fd-921c0e004550",
+              "name": "Return cannot receive a label or label generation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "returns",
+                    ":returnId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "returnId",
+                      "description": "(Required) The unique identifier for the return, created by Loop."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f6f6fee-cb32-456d-b82e-a4ab4a68279f",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "returns",
+                    ":returnId",
+                    "labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "returnId",
+                      "description": "(Required) The unique identifier for the return, created by Loop."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.loopreturns.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ce7326d9-e345-47b3-8016-7715d4d72d84",
+    "name": "Loop Returns Cart Label Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing shop carts in Shop Now On-Store exchanges.",
+      "type": "text/plain"
+    }
+  }
+}
