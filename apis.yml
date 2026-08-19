@@ -40,7 +40,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/loop-returns/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: loop-returns:loop-returns-cart-api
   name: Loop Returns Cart API
