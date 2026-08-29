@@ -1,0 +1,33 @@
+slug: loop-returns
+provider: Loop Returns
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Return Actions
+  spec_file: loop-returns-return-actions-api-openapi.yml
+  capability_id: BC-2460.50
+  capability_id_l1: BC-2460
+  capability_name: Returns and Reverse Operations Management
+  confidence: 0.8
+  evidence: POST /warehouse/return/{return_id}/process  processReturn  Process Return; POST /warehouse/return/{return_id}/flag  flagReturn
+  reason: Warehouse-side processing, flagging, cancelling and closing of returns with line-item removal
+    is receipt, triage and disposition of returned goods — reverse operations management.
+- tag: Return Data
+  spec_file: loop-returns-return-data-api-openapi.yml
+  capability_id: BC-2460.50
+  capability_id_l1: BC-2460
+  capability_name: Returns and Reverse Operations Management
+  confidence: 0.7
+  evidence: GET /warehouse/return/list  getDetailedReturnsList  Detailed Returns List; GET /warehouse/reporting/asn  getAdvancedShippingNotice
+  reason: Read/reporting surface over warehouse returns including advanced shipping notices for inbound
+    returned goods; supports reverse-logistics operations, though it is reporting rather than execution.

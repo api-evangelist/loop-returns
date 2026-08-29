@@ -196,6 +196,9 @@ apis:
   - type: IntegrationGuides
     url: https://docs.loopreturns.com/integration-guides/create-return-authorization
 common:
+  - type: CapabilityMap
+    url: capabilities/loop-returns-capability-edges.yml
+    name: Loop Returns Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/loop-returns/overview
   - type: AgenticAccess
