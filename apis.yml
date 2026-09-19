@@ -42,6 +42,16 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/loop-retur
 tags:
   - Returns
   - E-Commerce
+  - Exchange
+  - Refunds
+  - Shipping
+  - Post-Purchase
+  - Shopify
+  - Fraud Prevention
+  - Retail
+tags_raw:
+  - Returns
+  - E-Commerce
   - Exchanges
   - Refunds
   - Shipping
@@ -80,6 +90,8 @@ apis:
   humanURL: https://docs.loopreturns.com/api-reference/getting-started
   baseURL: https://api.loopreturns.com
   tags:
+  - Destination
+  tags_raw:
   - Destinations
   properties:
   - type: OpenAPI
