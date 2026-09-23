@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loop Returns Cart Label Requests API
-  description: API for managing shop carts in Shop Now On-Store exchanges.
+  title: Loop Returns - Labels Label Requests API
+  description: API for managing label requests and shipping labels for returns.
   version: v1
 servers:
 - url: https://api.loopreturns.com/api/v1
@@ -233,110 +233,6 @@ paths:
           description: Internal server error.
 components:
   schemas:
-    GenerateLabelResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Label generation queued
-        returnId:
-          type: integer
-          format: int64
-          example: 12345
-      required:
-      - message
-      - returnId
-    CreateLabelRequest:
-      type: object
-      properties:
-        label_request_id:
-          type: integer
-          example: 67329889100573
-        tracking_number:
-          type: string
-          maxLength: 256
-          example: '9400136105440512280610'
-        tracking_url:
-          type:
-          - string
-          - 'null'
-          maxLength: 2048
-        carrier:
-          type: string
-          maxLength: 32
-          example: USPS
-        label_url:
-          type: string
-          maxLength: 2048
-          example: https://s3.amazonaws.com/example-bucket/label.pdf
-        qrcode_url:
-          type: string
-          maxLength: 512
-          example: https://s3.amazonaws.com/example-bucket/qrcode.pdf
-        rate:
-          $ref: '#/components/schemas/MoneySetData'
-      required:
-      - label_request_id
-      - tracking_number
-      - carrier
-      - label_url
-      - rate
-    LabelResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 67329889100573
-        tracking_number:
-          type: string
-        tracking_url:
-          type: string
-        carrier:
-          type: string
-          example: USPS
-        label_url:
-          type: string
-        qrcode_url:
-          type: string
-        rate:
-          $ref: '#/components/schemas/MoneySetData'
-        status:
-          type: string
-          example: new
-        created_at:
-          $ref: '#/components/schemas/Date'
-    CreateLabelRequestErrorRequest:
-      type: object
-      properties:
-        reason:
-          $ref: '#/components/schemas/ErrorReasonEnum'
-        message:
-          type: string
-          example: Failed to generate a label, the origin address is invalid
-      required:
-      - reason
-    Date:
-      type: string
-      format: date-time
-      example: '2023-04-25T13:25:00-05:00'
-    LabelRequestErrorResponse:
-      type: object
-      properties:
-        reason:
-          $ref: '#/components/schemas/ErrorReasonEnum'
-        message:
-          type: string
-        created_at:
-          $ref: '#/components/schemas/Date'
-    LabelRequestStatusEnum:
-      type: string
-      description: The status of the label request.
-      enum:
-      - issued
-      - cancelled
-      - fulfilled
-      example: issued
     LabelRequestResponse:
       type: object
       properties:
@@ -385,6 +281,43 @@ components:
           $ref: '#/components/schemas/LabelRequestStatusEnum'
         created_at:
           $ref: '#/components/schemas/Date'
+    Date:
+      type: string
+      format: date-time
+      example: '2023-04-25T13:25:00-05:00'
+    LabelResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 67329889100573
+        tracking_number:
+          type: string
+        tracking_url:
+          type: string
+        carrier:
+          type: string
+          example: USPS
+        label_url:
+          type: string
+        qrcode_url:
+          type: string
+        rate:
+          $ref: '#/components/schemas/MoneySetData'
+        status:
+          type: string
+          example: new
+        created_at:
+          $ref: '#/components/schemas/Date'
+    LabelRequestStatusEnum:
+      type: string
+      description: The status of the label request.
+      enum:
+      - issued
+      - cancelled
+      - fulfilled
+      example: issued
     Address:
       type: object
       properties:
@@ -430,24 +363,6 @@ components:
       - address1
       - city
       - country_code
-    LabelStatusEnum:
-      type: string
-      description: The status of the label.
-      enum:
-      - new
-      - pre_transit
-      - in_transit
-      - out_for_delivery
-      - delivered
-      example: new
-    ErrorReasonEnum:
-      type: string
-      description: The error reason.
-      enum:
-      - INSUFFICIENT_FUNDS
-      - INVALID_ADDRESS
-      - Other
-      example: INVALID_ADDRESS
     UpdateLabelStatusRequest:
       type: object
       properties:
@@ -471,6 +386,91 @@ components:
       required:
       - amount
       - currency_code
+    ErrorReasonEnum:
+      type: string
+      description: The error reason.
+      enum:
+      - INSUFFICIENT_FUNDS
+      - INVALID_ADDRESS
+      - Other
+      example: INVALID_ADDRESS
+    LabelRequestErrorResponse:
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/ErrorReasonEnum'
+        message:
+          type: string
+        created_at:
+          $ref: '#/components/schemas/Date'
+    LabelStatusEnum:
+      type: string
+      description: The status of the label.
+      enum:
+      - new
+      - pre_transit
+      - in_transit
+      - out_for_delivery
+      - delivered
+      example: new
+    GenerateLabelResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Label generation queued
+        returnId:
+          type: integer
+          format: int64
+          example: 12345
+      required:
+      - message
+      - returnId
+    CreateLabelRequestErrorRequest:
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/ErrorReasonEnum'
+        message:
+          type: string
+          example: Failed to generate a label, the origin address is invalid
+      required:
+      - reason
+    CreateLabelRequest:
+      type: object
+      properties:
+        label_request_id:
+          type: integer
+          example: 67329889100573
+        tracking_number:
+          type: string
+          maxLength: 256
+          example: '9400136105440512280610'
+        tracking_url:
+          type:
+          - string
+          - 'null'
+          maxLength: 2048
+        carrier:
+          type: string
+          maxLength: 32
+          example: USPS
+        label_url:
+          type: string
+          maxLength: 2048
+          example: https://s3.amazonaws.com/example-bucket/label.pdf
+        qrcode_url:
+          type: string
+          maxLength: 512
+          example: https://s3.amazonaws.com/example-bucket/qrcode.pdf
+        rate:
+          $ref: '#/components/schemas/MoneySetData'
+      required:
+      - label_request_id
+      - tracking_number
+      - carrier
+      - label_url
+      - rate
   responses:
     NotFound:
       description: The requested entity could not be found.
@@ -517,7 +517,35 @@ components:
                     type: string
                     example: Unauthorized.
   securitySchemes:
-    api_key:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.loopreturns.com/authorize
+          tokenUrl: https://oauth.loopreturns.com/oauth/token
+          scopes:
+            labels:read: Read access to labels
+            labels:write: Create and modify labels
+            label_requests:read: Read access to label requests
+            label_requests:write: Create and modify label requests
+            returns: Access to returns operations
+    label-requests-read:
       type: apiKey
-      name: X-Authorization
       in: header
+      name: X-Authorization
+      description: 'API Scope: "Label Requests (read)"'
+    labels-write:
+      name: X-Authorization
+      type: apiKey
+      in: header
+      description: 'API Scope: "Labels (write)"'
+    label-requests-write:
+      name: X-Authorization
+      type: apiKey
+      in: header
+      description: 'API Scope: "Label Requests (write)"'
+    returns:
+      name: X-Authorization
+      type: apiKey
+      in: header
+      description: 'API Scope: "Returns"'

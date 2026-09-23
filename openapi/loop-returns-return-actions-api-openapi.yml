@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loop Returns Cart Return Actions API
-  description: API for managing shop carts in Shop Now On-Store exchanges.
+  title: Loop Returns - Returns Return Actions API
   version: v1
+  description: API used for performing operations on returns, including processing, cancelling, flagging, closing, managing notes, listing returns, and creating deep links.
 servers:
 - url: https://api.loopreturns.com/api/v1
 tags:
@@ -12,9 +12,7 @@ paths:
     post:
       summary: Process Return
       operationId: processReturn
-      description: 'Process a return in Loop based on the return ID. Processing a return will archive it in Loop and fulfill any remaining outcomes, such as placing exchange orders or creating gift cards. This endpoint queues the return for processing asynchronously.
-
-        '
+      description: Process a return in Loop based on the return ID. Processing a return will archive it in Loop and fulfill any remaining outcomes, such as placing exchange orders or creating gift cards. This endpoint queues the return for processing asynchronously.
       tags:
       - Return Actions
       security:
@@ -305,35 +303,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    FailureMessage:
-      description: Value returned when the operation fails.
-      type: string
-      examples:
-      - 'false'
-    QrCreationResponse:
-      type: object
-      properties:
-        qr:
-          type: string
-          examples:
-          - https://api.loopreturns.com/api/v1/qr/i/example-uuid-for-qr-image
-        deeplink_url:
-          type: string
-          examples:
-          - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
-    ReturnNote:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier associated with the return note.
-        content:
-          type: string
-          description: The content of the note.
-        created_at:
-          type: string
-          format: date-time
-          description: The date and time at which the note was created.
     FlaggedReturnCannotBeCancelled:
       type: object
       properties:
@@ -341,33 +310,13 @@ components:
           type: string
           examples:
           - Return is flagged and cannot be processed.
-    DeeplinkCreationResponse:
+    FailedToProcess:
       type: object
       properties:
-        url:
+        message:
           type: string
           examples:
-          - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
-    LineItemRequiredResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-              examples:
-              - The line item id field is required.
-    InvalidContentForNoteResponse:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            message:
-              type: string
-              examples:
-              - Content is required and must be less than 255 characters.
+          - An error was encountered during processing.
     UnprocessableStateReturn:
       type: object
       properties:
@@ -382,46 +331,37 @@ components:
               type: string
               examples:
               - UNPROCESSABLE_RETURN
-    DeeplinkCreationRequest:
-      type: object
-      required:
-      - name
-      - zip
-      properties:
-        name:
-          type: string
-          description: The name of the order in Shopify.
-          examples:
-          - Shopify Order Name
-        zip:
-          type: string
-          description: The order detail used to identify the order (ZIP code, email, or phone number).
-          examples:
-          - '43215'
-        gift:
-          type: boolean
-          description: Whether the return will use Loop's Gift flow.
-          examples:
-          - false
-    SuccessMessage:
-      description: Value returned when the operation succeeds.
-      type: string
-      examples:
-      - 'true'
-    ReturnCannotBeModifiedResponse:
+    NoLineItemsToRemoveResponse:
       type: object
       properties:
         message:
           type: string
           examples:
-          - Return cannot be modified.
-    UnprocessableCancelledReturn:
+          - There are no line items that qualify for removal
+    LineItemRequiredResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - The line item id field is required.
+    UnprocessableInReviewReturn:
       type: object
       properties:
         message:
           type: string
           examples:
-          - Return is cancelled and therefore cannot be processed.
+          - Return is review and therefore cannot be processed.
+    NotAllLineItemsQualifyForRemovalResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Not all line items qualify for removal
     CreateReturnNoteRequest:
       type: object
       required:
@@ -432,6 +372,62 @@ components:
           type: string
           examples:
           - This is a new note
+    FailureMessage:
+      description: Value returned when the operation fails.
+      type: string
+      examples:
+      - 'false'
+    ReturnCannotBeModifiedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Return cannot be modified.
+    ReturnNote:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier associated with the return note.
+        content:
+          type: string
+          description: The content of the note.
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time at which the note was created.
+    ExpiredReturnCannotBeCancelled:
+      type: object
+      properties:
+        content:
+          type: string
+          examples:
+          - Return is expired and cannot be processed.
+    InvalidContentForNoteResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - Content is required and must be less than 255 characters.
+    UnprocessableCancelledReturn:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Return is cancelled and therefore cannot be processed.
+    DeeplinkCreationResponse:
+      type: object
+      properties:
+        url:
+          type: string
+          examples:
+          - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
     QrCreationRequest:
       type: object
       required:
@@ -462,20 +458,27 @@ components:
           type: integer
           examples:
           - 250
-    NotAllLineItemsQualifyForRemovalResponse:
+    DeeplinkCreationRequest:
       type: object
+      required:
+      - name
+      - zip
       properties:
-        message:
+        name:
           type: string
+          description: The name of the order in Shopify.
           examples:
-          - Not all line items qualify for removal
-    FailedToProcess:
-      type: object
-      properties:
-        message:
+          - Shopify Order Name
+        zip:
           type: string
+          description: The order detail used to identify the order (ZIP code, email, or phone number).
           examples:
-          - An error was encountered during processing.
+          - '43215'
+        gift:
+          type: boolean
+          description: Whether the return will use Loop's Gift flow.
+          examples:
+          - false
     BadRequestWithErrorCode:
       type: object
       properties:
@@ -483,27 +486,22 @@ components:
           type: array
           items:
             type: string
-    UnprocessableInReviewReturn:
+    SuccessMessage:
+      description: Value returned when the operation succeeds.
+      type: string
+      examples:
+      - 'true'
+    QrCreationResponse:
       type: object
       properties:
-        message:
+        qr:
           type: string
           examples:
-          - Return is review and therefore cannot be processed.
-    ExpiredReturnCannotBeCancelled:
-      type: object
-      properties:
-        content:
+          - https://api.loopreturns.com/api/v1/qr/i/example-uuid-for-qr-image
+        deeplink_url:
           type: string
           examples:
-          - Return is expired and cannot be processed.
-    NoLineItemsToRemoveResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - There are no line items that qualify for removal
+          - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
   responses:
     Unauthorized:
       description: Unauthorized
@@ -532,3 +530,4 @@ components:
       type: apiKey
       name: X-Authorization
       in: header
+      description: API key passed via X-Authorization header. Scope required depends on endpoint.

@@ -1,26 +1,42 @@
 {
   "provider": "loop-returns",
   "sources": [
-    "loop-returns-cart-api-openapi.yml",
-    "loop-returns-destinations-api-openapi.yml",
-    "loop-returns-fraud-reports-api-openapi.yml",
-    "loop-returns-label-requests-api-openapi.yml",
-    "loop-returns-programmatic-webhooks-api-openapi.yml",
-    "loop-returns-return-actions-api-openapi.yml",
-    "loop-returns-return-data-api-openapi.yml"
+    "_original/loop-returns-carts-openapi.yml",
+    "_original/loop-returns-destinations-openapi.yml",
+    "_original/loop-returns-fraud-reports-openapi.yml",
+    "_original/loop-returns-labels-openapi.yml",
+    "_original/loop-returns-returns-openapi.yml",
+    "_original/loop-returns-webhooks-openapi.yml"
   ],
   "outputs": [
     "loop-returns-cart-api-openapi.yml",
     "loop-returns-destinations-api-openapi.yml",
     "loop-returns-fraud-reports-api-openapi.yml",
     "loop-returns-label-requests-api-openapi.yml",
-    "loop-returns-programmatic-webhooks-api-openapi.yml",
     "loop-returns-return-actions-api-openapi.yml",
-    "loop-returns-return-data-api-openapi.yml"
+    "loop-returns-return-data-api-openapi.yml",
+    "loop-returns-programmatic-webhooks-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (6 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "loop-returns-carts-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "loop-returns-destinations-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "loop-returns-fraud-reports-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "loop-returns-labels-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "loop-returns-returns-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "loop-returns-webhooks-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "loop-returns-cart-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loop-returns-destinations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loop-returns-fraud-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loop-returns-label-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loop-returns-programmatic-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loop-returns-return-actions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "loop-returns-return-data-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

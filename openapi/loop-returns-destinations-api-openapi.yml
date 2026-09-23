@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loop Returns Cart Destinations API
-  description: API for managing shop carts in Shop Now On-Store exchanges.
+  title: Loop Returns Destinations API
+  description: API for managing return destinations (warehouses and donation centers).
   version: v1
 servers:
 - url: https://api.loopreturns.com/api/v1
@@ -171,6 +171,67 @@ components:
         message:
           type: string
           example: The name field is required.
+    NotFoundResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: NOT_FOUND
+        message:
+          type: string
+          example: The destination could not be found.
+    CreateDestinationRequest:
+      type: object
+      required:
+      - name
+      - type
+      - address
+      properties:
+        name:
+          type: string
+          example: Example Destination
+        type:
+          type: string
+          enum:
+          - warehouse
+          - donate
+          example: warehouse
+        enabled:
+          type: boolean
+          example: true
+        address:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      description: The destination's address.
+      properties:
+        address1:
+          type: string
+          example: 123 Main St
+        address2:
+          type:
+          - string
+          - 'null'
+          example: Unit 456
+        city:
+          type: string
+          example: Columbus
+        state:
+          type:
+          - string
+          - 'null'
+          example: Ohio
+        zip:
+          type:
+          - string
+          - 'null'
+          example: '43210'
+        country:
+          type: string
+          example: United States
+        country_code:
+          type: string
+          example: US
     UnauthorizedResponse:
       type: object
       properties:
@@ -186,15 +247,6 @@ components:
             message:
               type: string
               example: Unauthorized.
-    NotFoundResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          example: NOT_FOUND
-        message:
-          type: string
-          example: The destination could not be found.
     DestinationLimitExceeded:
       type: object
       properties:
@@ -233,58 +285,6 @@ components:
           - 'null'
           example: 42424242
           description: The numeric location identifier from the commerce platform (e.g. Shopify).
-        address:
-          $ref: '#/components/schemas/Address'
-    Address:
-      type: object
-      description: The destination's address.
-      properties:
-        address1:
-          type: string
-          example: 123 Main St
-        address2:
-          type:
-          - string
-          - 'null'
-          example: Unit 456
-        city:
-          type: string
-          example: Columbus
-        state:
-          type:
-          - string
-          - 'null'
-          example: Ohio
-        zip:
-          type:
-          - string
-          - 'null'
-          example: '43210'
-        country:
-          type: string
-          example: United States
-        country_code:
-          type: string
-          example: US
-    CreateDestinationRequest:
-      type: object
-      required:
-      - name
-      - type
-      - address
-      properties:
-        name:
-          type: string
-          example: Example Destination
-        type:
-          type: string
-          enum:
-          - warehouse
-          - donate
-          example: warehouse
-        enabled:
-          type: boolean
-          example: true
         address:
           $ref: '#/components/schemas/Address'
   securitySchemes:

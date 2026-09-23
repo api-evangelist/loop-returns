@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loop Returns Cart Return Data API
-  description: API for managing shop carts in Shop Now On-Store exchanges.
+  title: Loop Returns - Returns Return Data API
   version: v1
+  description: API used for performing operations on returns, including processing, cancelling, flagging, closing, managing notes, listing returns, and creating deep links.
 servers:
 - url: https://api.loopreturns.com/api/v1
 tags:
@@ -154,13 +154,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    InvalidFromDate:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
     DetailedReturnList:
       type: object
       properties:
@@ -211,42 +204,6 @@ components:
           type:
           - string
           - 'null'
-    ReturnDetails:
-      type: object
-      description: Detailed information about a specific return.
-      properties:
-        id:
-          type: string
-          description: The unique identifier associated with the return.
-        state:
-          type: string
-          description: The current state of the return.
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        total:
-          type: string
-          description: The total cost of the return.
-        outcome:
-          type: string
-          description: The outcome of the return.
-        order_id:
-          type: string
-        order_name:
-          type: string
-        customer:
-          type: string
-          description: The customer's email address.
-    InvalidToDate:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
     AsnReport:
       type: object
       properties:
@@ -292,7 +249,50 @@ components:
         closed_at:
           type: string
           format: date-time
+    ReturnDetails:
+      type: object
+      description: Detailed information about a specific return.
+      properties:
+        id:
+          type: string
+          description: The unique identifier associated with the return.
+        state:
+          type: string
+          description: The current state of the return.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        total:
+          type: string
+          description: The total cost of the return.
+        outcome:
+          type: string
+          description: The outcome of the return.
+        order_id:
+          type: string
+        order_name:
+          type: string
+        customer:
+          type: string
+          description: The customer's email address.
+    InvalidToDate:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
     InvalidState:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+    InvalidFromDate:
       type: object
       properties:
         message:
@@ -327,3 +327,4 @@ components:
       type: apiKey
       name: X-Authorization
       in: header
+      description: API key passed via X-Authorization header. Scope required depends on endpoint.

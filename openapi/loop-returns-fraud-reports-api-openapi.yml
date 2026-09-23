@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Loop Returns Cart Fraud Reports API
-  description: API for managing shop carts in Shop Now On-Store exchanges.
+  title: Loop Returns Fraud Reports API
   version: v1
+  description: API used for creating and retrieving fraud reports on returns.
 servers:
 - url: https://api.loopreturns.com/api/v1
 tags:
@@ -93,6 +93,27 @@ paths:
                 - $ref: '#/components/schemas/InvalidComment'
 components:
   schemas:
+    ReturnFraudReport:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 87
+          description: The fraud report's unique identifier.
+        return_id:
+          type: integer
+          example: 23141
+          description: The return's unique identifier.
+        category:
+          $ref: '#/components/schemas/FraudCategoryEnum'
+        comment:
+          type: string
+          description: Additional context associated with the fraudulent return.
+          example: This is a sample comment.
+        created_at:
+          type: string
+          format: date-time
+          example: 2024-10-25 16:44:47.038000+00:00
     FraudCategoryEnum:
       type: string
       description: The category under which the fraudulent return falls.
@@ -122,27 +143,6 @@ components:
           example: Must be one of the following values.
         errors:
           type: object
-    ReturnFraudReport:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 87
-          description: The fraud report's unique identifier.
-        return_id:
-          type: integer
-          example: 23141
-          description: The return's unique identifier.
-        category:
-          $ref: '#/components/schemas/FraudCategoryEnum'
-        comment:
-          type: string
-          description: Additional context associated with the fraudulent return.
-          example: This is a sample comment.
-        created_at:
-          type: string
-          format: date-time
-          example: 2024-10-25 16:44:47.038000+00:00
     InvalidComment:
       type: object
       properties:
@@ -156,3 +156,4 @@ components:
       type: apiKey
       name: X-Authorization
       in: header
+      description: API key with Returns scope.
