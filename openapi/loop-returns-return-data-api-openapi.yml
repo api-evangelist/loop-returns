@@ -154,6 +154,42 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    InvalidToDate:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+    ReturnDetails:
+      type: object
+      description: Detailed information about a specific return.
+      properties:
+        id:
+          type: string
+          description: The unique identifier associated with the return.
+        state:
+          type: string
+          description: The current state of the return.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        total:
+          type: string
+          description: The total cost of the return.
+        outcome:
+          type: string
+          description: The outcome of the return.
+        order_id:
+          type: string
+        order_name:
+          type: string
+        customer:
+          type: string
+          description: The customer's email address.
     DetailedReturnList:
       type: object
       properties:
@@ -204,6 +240,13 @@ components:
           type:
           - string
           - 'null'
+    InvalidState:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
     AsnReport:
       type: object
       properties:
@@ -249,49 +292,6 @@ components:
         closed_at:
           type: string
           format: date-time
-    ReturnDetails:
-      type: object
-      description: Detailed information about a specific return.
-      properties:
-        id:
-          type: string
-          description: The unique identifier associated with the return.
-        state:
-          type: string
-          description: The current state of the return.
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        total:
-          type: string
-          description: The total cost of the return.
-        outcome:
-          type: string
-          description: The outcome of the return.
-        order_id:
-          type: string
-        order_name:
-          type: string
-        customer:
-          type: string
-          description: The customer's email address.
-    InvalidToDate:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
-    InvalidState:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
     InvalidFromDate:
       type: object
       properties:

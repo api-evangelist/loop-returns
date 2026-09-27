@@ -303,87 +303,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    FlaggedReturnCannotBeCancelled:
-      type: object
-      properties:
-        content:
-          type: string
-          examples:
-          - Return is flagged and cannot be processed.
-    FailedToProcess:
+    UnprocessableCancelledReturn:
       type: object
       properties:
         message:
           type: string
           examples:
-          - An error was encountered during processing.
-    UnprocessableStateReturn:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            message:
-              type: string
-              examples:
-              - Return is closed and therefore cannot be processed.
-            code:
-              type: string
-              examples:
-              - UNPROCESSABLE_RETURN
-    NoLineItemsToRemoveResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - There are no line items that qualify for removal
-    LineItemRequiredResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-              examples:
-              - The line item id field is required.
-    UnprocessableInReviewReturn:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - Return is review and therefore cannot be processed.
-    NotAllLineItemsQualifyForRemovalResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - Not all line items qualify for removal
-    CreateReturnNoteRequest:
-      type: object
-      required:
-      - content
-      properties:
-        content:
-          description: The content of the note.
-          type: string
-          examples:
-          - This is a new note
-    FailureMessage:
-      description: Value returned when the operation fails.
-      type: string
-      examples:
-      - 'false'
-    ReturnCannotBeModifiedResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - Return cannot be modified.
+          - Return is cancelled and therefore cannot be processed.
     ReturnNote:
       type: object
       properties:
@@ -397,6 +323,34 @@ components:
           type: string
           format: date-time
           description: The date and time at which the note was created.
+    DeeplinkCreationRequest:
+      type: object
+      required:
+      - name
+      - zip
+      properties:
+        name:
+          type: string
+          description: The name of the order in Shopify.
+          examples:
+          - Shopify Order Name
+        zip:
+          type: string
+          description: The order detail used to identify the order (ZIP code, email, or phone number).
+          examples:
+          - '43215'
+        gift:
+          type: boolean
+          description: Whether the return will use Loop's Gift flow.
+          examples:
+          - false
+    BadRequestWithErrorCode:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
     ExpiredReturnCannotBeCancelled:
       type: object
       properties:
@@ -404,23 +358,6 @@ components:
           type: string
           examples:
           - Return is expired and cannot be processed.
-    InvalidContentForNoteResponse:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            message:
-              type: string
-              examples:
-              - Content is required and must be less than 255 characters.
-    UnprocessableCancelledReturn:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - Return is cancelled and therefore cannot be processed.
     DeeplinkCreationResponse:
       type: object
       properties:
@@ -428,6 +365,57 @@ components:
           type: string
           examples:
           - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
+    NotAllLineItemsQualifyForRemovalResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Not all line items qualify for removal
+    SuccessMessage:
+      description: Value returned when the operation succeeds.
+      type: string
+      examples:
+      - 'true'
+    ReturnCannotBeModifiedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Return cannot be modified.
+    UnprocessableInReviewReturn:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Return is review and therefore cannot be processed.
+    FailureMessage:
+      description: Value returned when the operation fails.
+      type: string
+      examples:
+      - 'false'
+    LineItemRequiredResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - The line item id field is required.
+    CreateReturnNoteRequest:
+      type: object
+      required:
+      - content
+      properties:
+        content:
+          description: The content of the note.
+          type: string
+          examples:
+          - This is a new note
     QrCreationRequest:
       type: object
       required:
@@ -458,39 +446,44 @@ components:
           type: integer
           examples:
           - 250
-    DeeplinkCreationRequest:
+    NoLineItemsToRemoveResponse:
       type: object
-      required:
-      - name
-      - zip
       properties:
-        name:
+        message:
           type: string
-          description: The name of the order in Shopify.
           examples:
-          - Shopify Order Name
-        zip:
-          type: string
-          description: The order detail used to identify the order (ZIP code, email, or phone number).
-          examples:
-          - '43215'
-        gift:
-          type: boolean
-          description: Whether the return will use Loop's Gift flow.
-          examples:
-          - false
-    BadRequestWithErrorCode:
+          - There are no line items that qualify for removal
+    UnprocessableStateReturn:
       type: object
       properties:
         errors:
-          type: array
-          items:
-            type: string
-    SuccessMessage:
-      description: Value returned when the operation succeeds.
-      type: string
-      examples:
-      - 'true'
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - Return is closed and therefore cannot be processed.
+            code:
+              type: string
+              examples:
+              - UNPROCESSABLE_RETURN
+    InvalidContentForNoteResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - Content is required and must be less than 255 characters.
+    FailedToProcess:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - An error was encountered during processing.
     QrCreationResponse:
       type: object
       properties:
@@ -502,6 +495,13 @@ components:
           type: string
           examples:
           - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
+    FlaggedReturnCannotBeCancelled:
+      type: object
+      properties:
+        content:
+          type: string
+          examples:
+          - Return is flagged and cannot be processed.
   responses:
     Unauthorized:
       description: Unauthorized

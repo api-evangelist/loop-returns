@@ -233,6 +233,140 @@ paths:
           description: Internal server error.
 components:
   schemas:
+    ErrorReasonEnum:
+      type: string
+      description: The error reason.
+      enum:
+      - INSUFFICIENT_FUNDS
+      - INVALID_ADDRESS
+      - Other
+      example: INVALID_ADDRESS
+    Address:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        company:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        address1:
+          type: string
+          maxLength: 125
+        address2:
+          type:
+          - string
+          - 'null'
+          maxLength: 125
+        city:
+          type: string
+          maxLength: 100
+        region:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        postal_code:
+          type:
+          - string
+          - 'null'
+          maxLength: 16
+        country:
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+        country_code:
+          type: string
+          maxLength: 2
+          description: The two-letter country code.
+      required:
+      - address1
+      - city
+      - country_code
+    MoneySetData:
+      type: object
+      properties:
+        amount:
+          type: integer
+          format: int32
+          description: The amount in cents.
+          example: 25000
+        currency_code:
+          type: string
+          default: USD
+          example: USD
+          description: The ISO 4217 currency code.
+      required:
+      - amount
+      - currency_code
+    GenerateLabelResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Label generation queued
+        returnId:
+          type: integer
+          format: int64
+          example: 12345
+      required:
+      - message
+      - returnId
+    CreateLabelRequest:
+      type: object
+      properties:
+        label_request_id:
+          type: integer
+          example: 67329889100573
+        tracking_number:
+          type: string
+          maxLength: 256
+          example: '9400136105440512280610'
+        tracking_url:
+          type:
+          - string
+          - 'null'
+          maxLength: 2048
+        carrier:
+          type: string
+          maxLength: 32
+          example: USPS
+        label_url:
+          type: string
+          maxLength: 2048
+          example: https://s3.amazonaws.com/example-bucket/label.pdf
+        qrcode_url:
+          type: string
+          maxLength: 512
+          example: https://s3.amazonaws.com/example-bucket/qrcode.pdf
+        rate:
+          $ref: '#/components/schemas/MoneySetData'
+      required:
+      - label_request_id
+      - tracking_number
+      - carrier
+      - label_url
+      - rate
+    UpdateLabelStatusRequest:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/LabelStatusEnum'
+      required:
+      - status
+    CreateLabelRequestErrorRequest:
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/ErrorReasonEnum'
+        message:
+          type: string
+          example: Failed to generate a label, the origin address is invalid
+      required:
+      - reason
     LabelRequestResponse:
       type: object
       properties:
@@ -281,6 +415,25 @@ components:
           $ref: '#/components/schemas/LabelRequestStatusEnum'
         created_at:
           $ref: '#/components/schemas/Date'
+    LabelRequestErrorResponse:
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/ErrorReasonEnum'
+        message:
+          type: string
+        created_at:
+          $ref: '#/components/schemas/Date'
+    LabelStatusEnum:
+      type: string
+      description: The status of the label.
+      enum:
+      - new
+      - pre_transit
+      - in_transit
+      - out_for_delivery
+      - delivered
+      example: new
     Date:
       type: string
       format: date-time
@@ -318,185 +471,7 @@ components:
       - cancelled
       - fulfilled
       example: issued
-    Address:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        company:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        address1:
-          type: string
-          maxLength: 125
-        address2:
-          type:
-          - string
-          - 'null'
-          maxLength: 125
-        city:
-          type: string
-          maxLength: 100
-        region:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        postal_code:
-          type:
-          - string
-          - 'null'
-          maxLength: 16
-        country:
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-        country_code:
-          type: string
-          maxLength: 2
-          description: The two-letter country code.
-      required:
-      - address1
-      - city
-      - country_code
-    UpdateLabelStatusRequest:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/LabelStatusEnum'
-      required:
-      - status
-    MoneySetData:
-      type: object
-      properties:
-        amount:
-          type: integer
-          format: int32
-          description: The amount in cents.
-          example: 25000
-        currency_code:
-          type: string
-          default: USD
-          example: USD
-          description: The ISO 4217 currency code.
-      required:
-      - amount
-      - currency_code
-    ErrorReasonEnum:
-      type: string
-      description: The error reason.
-      enum:
-      - INSUFFICIENT_FUNDS
-      - INVALID_ADDRESS
-      - Other
-      example: INVALID_ADDRESS
-    LabelRequestErrorResponse:
-      type: object
-      properties:
-        reason:
-          $ref: '#/components/schemas/ErrorReasonEnum'
-        message:
-          type: string
-        created_at:
-          $ref: '#/components/schemas/Date'
-    LabelStatusEnum:
-      type: string
-      description: The status of the label.
-      enum:
-      - new
-      - pre_transit
-      - in_transit
-      - out_for_delivery
-      - delivered
-      example: new
-    GenerateLabelResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Label generation queued
-        returnId:
-          type: integer
-          format: int64
-          example: 12345
-      required:
-      - message
-      - returnId
-    CreateLabelRequestErrorRequest:
-      type: object
-      properties:
-        reason:
-          $ref: '#/components/schemas/ErrorReasonEnum'
-        message:
-          type: string
-          example: Failed to generate a label, the origin address is invalid
-      required:
-      - reason
-    CreateLabelRequest:
-      type: object
-      properties:
-        label_request_id:
-          type: integer
-          example: 67329889100573
-        tracking_number:
-          type: string
-          maxLength: 256
-          example: '9400136105440512280610'
-        tracking_url:
-          type:
-          - string
-          - 'null'
-          maxLength: 2048
-        carrier:
-          type: string
-          maxLength: 32
-          example: USPS
-        label_url:
-          type: string
-          maxLength: 2048
-          example: https://s3.amazonaws.com/example-bucket/label.pdf
-        qrcode_url:
-          type: string
-          maxLength: 512
-          example: https://s3.amazonaws.com/example-bucket/qrcode.pdf
-        rate:
-          $ref: '#/components/schemas/MoneySetData'
-      required:
-      - label_request_id
-      - tracking_number
-      - carrier
-      - label_url
-      - rate
   responses:
-    NotFound:
-      description: The requested entity could not be found.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              code:
-                type: string
-              message:
-                type: string
-    BadRequest:
-      description: The request could not be processed.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                  message:
-                    type: string
     Unauthorized:
       description: The request could not be authorized.
       content:
@@ -516,6 +491,31 @@ components:
                   message:
                     type: string
                     example: Unauthorized.
+    BadRequest:
+      description: The request could not be processed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+    NotFound:
+      description: The requested entity could not be found.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
   securitySchemes:
     oauth2:
       type: oauth2

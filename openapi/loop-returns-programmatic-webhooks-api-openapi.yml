@@ -156,43 +156,6 @@ components:
           - Must be one of the following values:return,label,restock
         errors:
           type: object
-    NotFoundResponse:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            code:
-              type: string
-              examples:
-              - NOT_FOUND
-    Webhook:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The webhook's unique identifier.
-          examples:
-          - 12345
-        shop_id:
-          type: integer
-          description: The unique identifier of the shop that created the webhook.
-          examples:
-          - 65432
-        topic:
-          $ref: '#/components/schemas/TopicEnum'
-        trigger:
-          $ref: '#/components/schemas/TriggerEnum'
-        url:
-          $ref: '#/components/schemas/WebhookUrl'
-        status:
-          $ref: '#/components/schemas/StatusEnum'
-    StatusEnum:
-      type: string
-      description: The webhook's status.
-      enum:
-      - active
-      - inactive
     TriggerEnum:
       type: string
       description: The condition which triggers the webhook.
@@ -209,6 +172,11 @@ components:
       - shipment.processed
       examples:
       - return.created
+    WebhookUrl:
+      type: string
+      examples:
+      - https://example.com/webhook
+      description: The webhook's URL.
     UnauthorizedResponse:
       type: object
       properties:
@@ -227,6 +195,33 @@ components:
               type: string
               examples:
               - Unauthorized.
+    TopicEnum:
+      type: string
+      description: The webhook's topic.
+      enum:
+      - return
+      - label
+      - restock
+      - label.request
+      - giftcard
+      - happy.returns.shipment
+      examples:
+      - return
+    UpdateWebhookRequest:
+      type: object
+      required:
+      - topic
+      - trigger
+      - url
+      properties:
+        topic:
+          $ref: '#/components/schemas/TopicEnum'
+        trigger:
+          $ref: '#/components/schemas/TriggerEnum'
+        url:
+          $ref: '#/components/schemas/WebhookUrl'
+        status:
+          $ref: '#/components/schemas/StatusEnum'
     CreateWebhookRequest:
       type: object
       required:
@@ -243,30 +238,35 @@ components:
         status:
           default: inactive
           $ref: '#/components/schemas/StatusEnum'
-    TopicEnum:
-      type: string
-      description: The webhook's topic.
-      enum:
-      - return
-      - label
-      - restock
-      - label.request
-      - giftcard
-      - happy.returns.shipment
-      examples:
-      - return
-    WebhookUrl:
-      type: string
-      examples:
-      - https://example.com/webhook
-      description: The webhook's URL.
-    UpdateWebhookRequest:
+    NotFoundResponse:
       type: object
-      required:
-      - topic
-      - trigger
-      - url
       properties:
+        errors:
+          type: object
+          properties:
+            code:
+              type: string
+              examples:
+              - NOT_FOUND
+    StatusEnum:
+      type: string
+      description: The webhook's status.
+      enum:
+      - active
+      - inactive
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The webhook's unique identifier.
+          examples:
+          - 12345
+        shop_id:
+          type: integer
+          description: The unique identifier of the shop that created the webhook.
+          examples:
+          - 65432
         topic:
           $ref: '#/components/schemas/TopicEnum'
         trigger:
