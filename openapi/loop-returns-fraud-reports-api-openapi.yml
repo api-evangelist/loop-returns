@@ -93,18 +93,15 @@ paths:
                 - $ref: '#/components/schemas/InvalidComment'
 components:
   schemas:
-    FraudCategoryEnum:
-      type: string
-      description: The category under which the fraudulent return falls.
-      enum:
-      - package-never-received
-      - package-is-empty
-      - package-is-missing-items
-      - instant-return-charge-failed
-      - keep-item-abuse
-      - splitting-returns-to-avoid-restrictions
-      - item-is-worn
-      - other
+    CreateReturnFraudReportRequest:
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/FraudCategoryEnum'
+        comment:
+          type: string
+          description: Additional context. Required if category is 'other'.
+          example: This is a sample comment.
     InvalidCategory:
       type: object
       properties:
@@ -142,15 +139,18 @@ components:
           type: string
           format: date-time
           example: 2024-10-25 16:44:47.038000+00:00
-    CreateReturnFraudReportRequest:
-      type: object
-      properties:
-        category:
-          $ref: '#/components/schemas/FraudCategoryEnum'
-        comment:
-          type: string
-          description: Additional context. Required if category is 'other'.
-          example: This is a sample comment.
+    FraudCategoryEnum:
+      type: string
+      description: The category under which the fraudulent return falls.
+      enum:
+      - package-never-received
+      - package-is-empty
+      - package-is-missing-items
+      - instant-return-charge-failed
+      - keep-item-abuse
+      - splitting-returns-to-avoid-restrictions
+      - item-is-worn
+      - other
   securitySchemes:
     api_key:
       type: apiKey

@@ -154,13 +154,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    InvalidToDate:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
     ReturnDetails:
       type: object
       description: Detailed information about a specific return.
@@ -293,6 +286,13 @@ components:
           type: string
           format: date-time
     InvalidFromDate:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+    InvalidToDate:
       type: object
       properties:
         message:

@@ -147,54 +147,22 @@ paths:
                 $ref: '#/components/schemas/UnprocessableResponse'
 components:
   schemas:
-    UnprocessableResponse:
+    CreateWebhookRequest:
       type: object
+      required:
+      - topic
+      - trigger
+      - url
       properties:
-        message:
-          type: string
-          examples:
-          - Must be one of the following values:return,label,restock
-        errors:
-          type: object
-    TriggerEnum:
-      type: string
-      description: The condition which triggers the webhook.
-      enum:
-      - return.created
-      - return.updated
-      - return.closed
-      - label.created
-      - label.updated
-      - restock.requested
-      - label.request.issued
-      - label.request.cancelled
-      - giftcard.requested
-      - shipment.processed
-      examples:
-      - return.created
-    WebhookUrl:
-      type: string
-      examples:
-      - https://example.com/webhook
-      description: The webhook's URL.
-    UnauthorizedResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              examples:
-              - '401'
-            http_code:
-              type: string
-              examples:
-              - GEN-UNAUTHORIZED
-            message:
-              type: string
-              examples:
-              - Unauthorized.
+        topic:
+          $ref: '#/components/schemas/TopicEnum'
+        trigger:
+          $ref: '#/components/schemas/TriggerEnum'
+        url:
+          $ref: '#/components/schemas/WebhookUrl'
+        status:
+          default: inactive
+          $ref: '#/components/schemas/StatusEnum'
     TopicEnum:
       type: string
       description: The webhook's topic.
@@ -222,38 +190,6 @@ components:
           $ref: '#/components/schemas/WebhookUrl'
         status:
           $ref: '#/components/schemas/StatusEnum'
-    CreateWebhookRequest:
-      type: object
-      required:
-      - topic
-      - trigger
-      - url
-      properties:
-        topic:
-          $ref: '#/components/schemas/TopicEnum'
-        trigger:
-          $ref: '#/components/schemas/TriggerEnum'
-        url:
-          $ref: '#/components/schemas/WebhookUrl'
-        status:
-          default: inactive
-          $ref: '#/components/schemas/StatusEnum'
-    NotFoundResponse:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            code:
-              type: string
-              examples:
-              - NOT_FOUND
-    StatusEnum:
-      type: string
-      description: The webhook's status.
-      enum:
-      - active
-      - inactive
     Webhook:
       type: object
       properties:
@@ -275,6 +211,70 @@ components:
           $ref: '#/components/schemas/WebhookUrl'
         status:
           $ref: '#/components/schemas/StatusEnum'
+    UnauthorizedResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              examples:
+              - '401'
+            http_code:
+              type: string
+              examples:
+              - GEN-UNAUTHORIZED
+            message:
+              type: string
+              examples:
+              - Unauthorized.
+    StatusEnum:
+      type: string
+      description: The webhook's status.
+      enum:
+      - active
+      - inactive
+    WebhookUrl:
+      type: string
+      examples:
+      - https://example.com/webhook
+      description: The webhook's URL.
+    NotFoundResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            code:
+              type: string
+              examples:
+              - NOT_FOUND
+    UnprocessableResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Must be one of the following values:return,label,restock
+        errors:
+          type: object
+    TriggerEnum:
+      type: string
+      description: The condition which triggers the webhook.
+      enum:
+      - return.created
+      - return.updated
+      - return.closed
+      - label.created
+      - label.updated
+      - restock.requested
+      - label.request.issued
+      - label.request.cancelled
+      - giftcard.requested
+      - shipment.processed
+      examples:
+      - return.created
   securitySchemes:
     api_key:
       type: apiKey
