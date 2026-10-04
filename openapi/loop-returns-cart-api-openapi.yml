@@ -142,31 +142,9 @@ paths:
                 $ref: '#/components/schemas/UnauthorizedResponse'
 components:
   schemas:
-    CartNotFound:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            message:
-              type: string
-              example: No cart found for the provided token.
-    CartNotUpdated:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            message:
-              type: string
-              example: Error saving cart update.
     DeletedCart:
       type: boolean
       example: true
-    Variant:
-      type: number
-      example: 39076568408247
-      description: The unique identifier associated with a product variant.
     EmptyCart:
       type: object
       properties:
@@ -183,7 +161,21 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Variant'
-    CartNotSaved:
+    CreateCartRequest:
+      type: object
+      required:
+      - cart
+      properties:
+        cart:
+          type: array
+          items:
+            $ref: '#/components/schemas/Variant'
+          description: An array of product variants.
+        shopify:
+          description: A Base64-encoded liquid cart object, used to reflect additional transaction details in Shopify such as discounts.
+          type: string
+          example: c2FtcGxlLXN0cmluZw==
+    CartNotDeleted:
       type: object
       properties:
         errors:
@@ -191,7 +183,15 @@ components:
           properties:
             message:
               type: string
-              example: There was an error attempting to create the cart.
+              example: Failed to delete cart.
+    Cart:
+      type: object
+      properties:
+        cart:
+          type: array
+          items:
+            type: integer
+            example: 39076568408247
     UnauthorizedResponse:
       type: object
       properties:
@@ -207,14 +207,28 @@ components:
             message:
               type: string
               example: Unauthorized.
-    Cart:
+    CartNotSaved:
       type: object
       properties:
-        cart:
-          type: array
-          items:
-            type: integer
-            example: 39076568408247
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              example: There was an error attempting to create the cart.
+    CartNotUpdated:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              example: Error saving cart update.
+    Variant:
+      type: number
+      example: 39076568408247
+      description: The unique identifier associated with a product variant.
     UpdateCartRequest:
       type: object
       required:
@@ -225,19 +239,6 @@ components:
           description: An array of product variant identifiers.
           items:
             $ref: '#/components/schemas/Variant'
-    UpdatedCart:
-      type: object
-      properties:
-        updated:
-          type: boolean
-          example: true
-        data:
-          type: object
-          properties:
-            cart:
-              type: array
-              items:
-                $ref: '#/components/schemas/Variant'
     CreatedCart:
       type: object
       properties:
@@ -261,20 +262,15 @@ components:
             message:
               type: string
               example: Cart should contain a list of variant IDs.
-    CreateCartRequest:
+    CartNotFound:
       type: object
-      required:
-      - cart
       properties:
-        cart:
-          type: array
-          items:
-            $ref: '#/components/schemas/Variant'
-          description: An array of product variants.
-        shopify:
-          description: A Base64-encoded liquid cart object, used to reflect additional transaction details in Shopify such as discounts.
-          type: string
-          example: c2FtcGxlLXN0cmluZw==
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              example: No cart found for the provided token.
     VariantNotFound:
       type: object
       properties:
@@ -291,15 +287,19 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Variant'
-    CartNotDeleted:
+    UpdatedCart:
       type: object
       properties:
-        errors:
+        updated:
+          type: boolean
+          example: true
+        data:
           type: object
           properties:
-            message:
-              type: string
-              example: Failed to delete cart.
+            cart:
+              type: array
+              items:
+                $ref: '#/components/schemas/Variant'
   securitySchemes:
     api_key:
       type: apiKey

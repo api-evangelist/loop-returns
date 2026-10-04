@@ -154,35 +154,27 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ReturnDetails:
+    InvalidToDate:
       type: object
-      description: Detailed information about a specific return.
       properties:
-        id:
+        message:
           type: string
-          description: The unique identifier associated with the return.
-        state:
+        errors:
+          type: object
+    InvalidState:
+      type: object
+      properties:
+        message:
           type: string
-          description: The current state of the return.
-        created_at:
+        errors:
+          type: object
+    InvalidFromDate:
+      type: object
+      properties:
+        message:
           type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        total:
-          type: string
-          description: The total cost of the return.
-        outcome:
-          type: string
-          description: The outcome of the return.
-        order_id:
-          type: string
-        order_name:
-          type: string
-        customer:
-          type: string
-          description: The customer's email address.
+        errors:
+          type: object
     DetailedReturnList:
       type: object
       properties:
@@ -233,13 +225,6 @@ components:
           type:
           - string
           - 'null'
-    InvalidState:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
     AsnReport:
       type: object
       properties:
@@ -285,20 +270,35 @@ components:
         closed_at:
           type: string
           format: date-time
-    InvalidFromDate:
+    ReturnDetails:
       type: object
+      description: Detailed information about a specific return.
       properties:
-        message:
+        id:
           type: string
-        errors:
-          type: object
-    InvalidToDate:
-      type: object
-      properties:
-        message:
+          description: The unique identifier associated with the return.
+        state:
           type: string
-        errors:
-          type: object
+          description: The current state of the return.
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        total:
+          type: string
+          description: The total cost of the return.
+        outcome:
+          type: string
+          description: The outcome of the return.
+        order_id:
+          type: string
+        order_name:
+          type: string
+        customer:
+          type: string
+          description: The customer's email address.
   responses:
     Unauthorized:
       description: Unauthorized

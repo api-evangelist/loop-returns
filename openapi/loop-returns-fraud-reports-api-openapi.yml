@@ -93,23 +93,6 @@ paths:
                 - $ref: '#/components/schemas/InvalidComment'
 components:
   schemas:
-    CreateReturnFraudReportRequest:
-      type: object
-      properties:
-        category:
-          $ref: '#/components/schemas/FraudCategoryEnum'
-        comment:
-          type: string
-          description: Additional context. Required if category is 'other'.
-          example: This is a sample comment.
-    InvalidCategory:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Must be one of the following values.
-        errors:
-          type: object
     InvalidComment:
       type: object
       properties:
@@ -139,6 +122,15 @@ components:
           type: string
           format: date-time
           example: 2024-10-25 16:44:47.038000+00:00
+    CreateReturnFraudReportRequest:
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/FraudCategoryEnum'
+        comment:
+          type: string
+          description: Additional context. Required if category is 'other'.
+          example: This is a sample comment.
     FraudCategoryEnum:
       type: string
       description: The category under which the fraudulent return falls.
@@ -151,6 +143,14 @@ components:
       - splitting-returns-to-avoid-restrictions
       - item-is-worn
       - other
+    InvalidCategory:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Must be one of the following values.
+        errors:
+          type: object
   securitySchemes:
     api_key:
       type: apiKey
