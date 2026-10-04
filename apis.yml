@@ -39,10 +39,13 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/loop-returns.png
+x-docs-platform: mintlify
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
+x-docs-hosting: vercel
 tags:
   - Returns
   - E-Commerce
-  - Exchange
   - Refunds
   - Shipping
   - Post-Purchase
@@ -52,7 +55,6 @@ tags:
 tags_raw:
   - Returns
   - E-Commerce
-  - Exchanges
   - Refunds
   - Shipping
   - Post-Purchase
@@ -256,3 +258,5 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-tags-removed:
+- Exchange
