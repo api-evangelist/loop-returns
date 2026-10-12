@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/loop-returns/integrations
+- https://n8n.io/integrations/loop-returns/
+- https://composio.dev/toolkits/loop-returns
+- https://monid.ai/tools/loop-returns
+checked:
+- https://composio.dev/toolkits/loop-returns
+- https://monid.ai/tools/loop-returns
+- https://n8n.io/integrations/loop-returns/
+- https://zapier.com/apps/loop-returns/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
