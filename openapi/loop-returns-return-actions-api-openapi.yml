@@ -303,105 +303,36 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    UnprocessableCancelledReturn:
+    DeeplinkCreationResponse:
       type: object
       properties:
-        message:
+        url:
           type: string
           examples:
-          - Return is cancelled and therefore cannot be processed.
-    InvalidContentForNoteResponse:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            message:
-              type: string
-              examples:
-              - Content is required and must be less than 255 characters.
-    UnprocessableInReviewReturn:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - Return is review and therefore cannot be processed.
-    DeeplinkCreationRequest:
+          - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
+    CreateReturnNoteRequest:
       type: object
       required:
-      - name
-      - zip
-      properties:
-        name:
-          type: string
-          description: The name of the order in Shopify.
-          examples:
-          - Shopify Order Name
-        zip:
-          type: string
-          description: The order detail used to identify the order (ZIP code, email, or phone number).
-          examples:
-          - '43215'
-        gift:
-          type: boolean
-          description: Whether the return will use Loop's Gift flow.
-          examples:
-          - false
-    ExpiredReturnCannotBeCancelled:
-      type: object
+      - content
       properties:
         content:
+          description: The content of the note.
           type: string
           examples:
-          - Return is expired and cannot be processed.
-    BadRequestWithErrorCode:
+          - This is a new note
+    ReturnNote:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            type: string
-    SuccessMessage:
-      description: Value returned when the operation succeeds.
-      type: string
-      examples:
-      - 'true'
-    FailedToProcess:
-      type: object
-      properties:
-        message:
+        id:
+          type: integer
+          description: The unique identifier associated with the return note.
+        content:
           type: string
-          examples:
-          - An error was encountered during processing.
-    UnprocessableStateReturn:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            message:
-              type: string
-              examples:
-              - Return is closed and therefore cannot be processed.
-            code:
-              type: string
-              examples:
-              - UNPROCESSABLE_RETURN
-    NoLineItemsToRemoveResponse:
-      type: object
-      properties:
-        message:
+          description: The content of the note.
+        created_at:
           type: string
-          examples:
-          - There are no line items that qualify for removal
-    ReturnCannotBeModifiedResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - Return cannot be modified.
+          format: date-time
+          description: The date and time at which the note was created.
     QrCreationRequest:
       type: object
       required:
@@ -432,16 +363,30 @@ components:
           type: integer
           examples:
           - 250
-    LineItemRequiredResponse:
+    UnprocessableCancelledReturn:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            message:
-              type: string
-              examples:
-              - The line item id field is required.
+        message:
+          type: string
+          examples:
+          - Return is cancelled and therefore cannot be processed.
+    FlaggedReturnCannotBeCancelled:
+      type: object
+      properties:
+        content:
+          type: string
+          examples:
+          - Return is flagged and cannot be processed.
+    SuccessMessage:
+      description: Value returned when the operation succeeds.
+      type: string
+      examples:
+      - 'true'
+    FailureMessage:
+      description: Value returned when the operation fails.
+      type: string
+      examples:
+      - 'false'
     QrCreationResponse:
       type: object
       properties:
@@ -453,13 +398,103 @@ components:
           type: string
           examples:
           - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
-    DeeplinkCreationResponse:
+    UnprocessableStateReturn:
       type: object
       properties:
-        url:
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - Return is closed and therefore cannot be processed.
+            code:
+              type: string
+              examples:
+              - UNPROCESSABLE_RETURN
+    ReturnCannotBeModifiedResponse:
+      type: object
+      properties:
+        message:
           type: string
           examples:
-          - https://test-shop.loopreturns.com/#/link/examp1e-uu1d-h3r3
+          - Return cannot be modified.
+    BadRequestWithErrorCode:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+    ExpiredReturnCannotBeCancelled:
+      type: object
+      properties:
+        content:
+          type: string
+          examples:
+          - Return is expired and cannot be processed.
+    FailedToProcess:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - An error was encountered during processing.
+    InvalidContentForNoteResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - Content is required and must be less than 255 characters.
+    LineItemRequiredResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+              examples:
+              - The line item id field is required.
+    NoLineItemsToRemoveResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - There are no line items that qualify for removal
+    UnprocessableInReviewReturn:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Return is review and therefore cannot be processed.
+    DeeplinkCreationRequest:
+      type: object
+      required:
+      - name
+      - zip
+      properties:
+        name:
+          type: string
+          description: The name of the order in Shopify.
+          examples:
+          - Shopify Order Name
+        zip:
+          type: string
+          description: The order detail used to identify the order (ZIP code, email, or phone number).
+          examples:
+          - '43215'
+        gift:
+          type: boolean
+          description: Whether the return will use Loop's Gift flow.
+          examples:
+          - false
     NotAllLineItemsQualifyForRemovalResponse:
       type: object
       properties:
@@ -467,41 +502,6 @@ components:
           type: string
           examples:
           - Not all line items qualify for removal
-    FlaggedReturnCannotBeCancelled:
-      type: object
-      properties:
-        content:
-          type: string
-          examples:
-          - Return is flagged and cannot be processed.
-    ReturnNote:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: The unique identifier associated with the return note.
-        content:
-          type: string
-          description: The content of the note.
-        created_at:
-          type: string
-          format: date-time
-          description: The date and time at which the note was created.
-    FailureMessage:
-      description: Value returned when the operation fails.
-      type: string
-      examples:
-      - 'false'
-    CreateReturnNoteRequest:
-      type: object
-      required:
-      - content
-      properties:
-        content:
-          description: The content of the note.
-          type: string
-          examples:
-          - This is a new note
   responses:
     Unauthorized:
       description: Unauthorized

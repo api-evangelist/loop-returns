@@ -154,77 +154,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    InvalidToDate:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
-    InvalidState:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
-    InvalidFromDate:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
-    DetailedReturnList:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier associated with the return.
-        state:
-          type: string
-          description: The current state of the return.
-          examples:
-          - open
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        total:
-          type: string
-          examples:
-          - '63.30'
-        order_id:
-          type: string
-        order_name:
-          type: string
-        customer:
-          type: string
-          description: The customer's email address.
-        currency:
-          type: string
-          examples:
-          - USD
-        refund:
-          type: string
-          examples:
-          - '63.30'
-        carrier:
-          type: string
-        tracking_number:
-          type: string
-        label_status:
-          type: string
-        label_url:
-          type:
-          - string
-          - 'null'
-        destination_id:
-          type:
-          - string
-          - 'null'
     AsnReport:
       type: object
       properties:
@@ -299,6 +228,77 @@ components:
         customer:
           type: string
           description: The customer's email address.
+    DetailedReturnList:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier associated with the return.
+        state:
+          type: string
+          description: The current state of the return.
+          examples:
+          - open
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        total:
+          type: string
+          examples:
+          - '63.30'
+        order_id:
+          type: string
+        order_name:
+          type: string
+        customer:
+          type: string
+          description: The customer's email address.
+        currency:
+          type: string
+          examples:
+          - USD
+        refund:
+          type: string
+          examples:
+          - '63.30'
+        carrier:
+          type: string
+        tracking_number:
+          type: string
+        label_status:
+          type: string
+        label_url:
+          type:
+          - string
+          - 'null'
+        destination_id:
+          type:
+          - string
+          - 'null'
+    InvalidState:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+    InvalidToDate:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+    InvalidFromDate:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
   responses:
     Unauthorized:
       description: Unauthorized

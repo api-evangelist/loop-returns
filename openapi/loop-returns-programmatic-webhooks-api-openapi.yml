@@ -147,29 +147,42 @@ paths:
                 $ref: '#/components/schemas/UnprocessableResponse'
 components:
   schemas:
+    WebhookUrl:
+      type: string
+      examples:
+      - https://example.com/webhook
+      description: The webhook's URL.
+    UpdateWebhookRequest:
+      type: object
+      required:
+      - topic
+      - trigger
+      - url
+      properties:
+        topic:
+          $ref: '#/components/schemas/TopicEnum'
+        trigger:
+          $ref: '#/components/schemas/TriggerEnum'
+        url:
+          $ref: '#/components/schemas/WebhookUrl'
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+    NotFoundResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          properties:
+            code:
+              type: string
+              examples:
+              - NOT_FOUND
     StatusEnum:
       type: string
       description: The webhook's status.
       enum:
       - active
       - inactive
-    WebhookUrl:
-      type: string
-      examples:
-      - https://example.com/webhook
-      description: The webhook's URL.
-    TopicEnum:
-      type: string
-      description: The webhook's topic.
-      enum:
-      - return
-      - label
-      - restock
-      - label.request
-      - giftcard
-      - happy.returns.shipment
-      examples:
-      - return
     UnauthorizedResponse:
       type: object
       properties:
@@ -188,6 +201,43 @@ components:
               type: string
               examples:
               - Unauthorized.
+    UnprocessableResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          examples:
+          - Must be one of the following values:return,label,restock
+        errors:
+          type: object
+    TopicEnum:
+      type: string
+      description: The webhook's topic.
+      enum:
+      - return
+      - label
+      - restock
+      - label.request
+      - giftcard
+      - happy.returns.shipment
+      examples:
+      - return
+    CreateWebhookRequest:
+      type: object
+      required:
+      - topic
+      - trigger
+      - url
+      properties:
+        topic:
+          $ref: '#/components/schemas/TopicEnum'
+        trigger:
+          $ref: '#/components/schemas/TriggerEnum'
+        url:
+          $ref: '#/components/schemas/WebhookUrl'
+        status:
+          default: inactive
+          $ref: '#/components/schemas/StatusEnum'
     Webhook:
       type: object
       properties:
@@ -201,21 +251,6 @@ components:
           description: The unique identifier of the shop that created the webhook.
           examples:
           - 65432
-        topic:
-          $ref: '#/components/schemas/TopicEnum'
-        trigger:
-          $ref: '#/components/schemas/TriggerEnum'
-        url:
-          $ref: '#/components/schemas/WebhookUrl'
-        status:
-          $ref: '#/components/schemas/StatusEnum'
-    UpdateWebhookRequest:
-      type: object
-      required:
-      - topic
-      - trigger
-      - url
-      properties:
         topic:
           $ref: '#/components/schemas/TopicEnum'
         trigger:
@@ -240,41 +275,6 @@ components:
       - shipment.processed
       examples:
       - return.created
-    NotFoundResponse:
-      type: object
-      properties:
-        errors:
-          type: object
-          properties:
-            code:
-              type: string
-              examples:
-              - NOT_FOUND
-    CreateWebhookRequest:
-      type: object
-      required:
-      - topic
-      - trigger
-      - url
-      properties:
-        topic:
-          $ref: '#/components/schemas/TopicEnum'
-        trigger:
-          $ref: '#/components/schemas/TriggerEnum'
-        url:
-          $ref: '#/components/schemas/WebhookUrl'
-        status:
-          default: inactive
-          $ref: '#/components/schemas/StatusEnum'
-    UnprocessableResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          examples:
-          - Must be one of the following values:return,label,restock
-        errors:
-          type: object
   securitySchemes:
     api_key:
       type: apiKey

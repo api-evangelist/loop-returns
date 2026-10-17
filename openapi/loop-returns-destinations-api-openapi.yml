@@ -165,21 +165,6 @@ paths:
           description: Error deleting the destination.
 components:
   schemas:
-    UnauthorizedResponse:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              example: '401'
-            http_code:
-              type: string
-              example: GEN-UNAUTHORIZED
-            message:
-              type: string
-              example: Unauthorized.
     CreateDestinationRequest:
       type: object
       required:
@@ -210,6 +195,58 @@ components:
         message:
           type: string
           example: The destination could not be found.
+    UnauthorizedResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: '401'
+            http_code:
+              type: string
+              example: GEN-UNAUTHORIZED
+            message:
+              type: string
+              example: Unauthorized.
+    UnprocessableResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: The name field is required.
+    Address:
+      type: object
+      description: The destination's address.
+      properties:
+        address1:
+          type: string
+          example: 123 Main St
+        address2:
+          type:
+          - string
+          - 'null'
+          example: Unit 456
+        city:
+          type: string
+          example: Columbus
+        state:
+          type:
+          - string
+          - 'null'
+          example: Ohio
+        zip:
+          type:
+          - string
+          - 'null'
+          example: '43210'
+        country:
+          type: string
+          example: United States
+        country_code:
+          type: string
+          example: US
     Destination:
       type: object
       description: A physical location such as a warehouse or donation center to which returns are shipped.
@@ -250,43 +287,6 @@ components:
         message:
           type: string
           example: You have reached the destination limit. Please check your settings.
-    UnprocessableResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          example: The name field is required.
-    Address:
-      type: object
-      description: The destination's address.
-      properties:
-        address1:
-          type: string
-          example: 123 Main St
-        address2:
-          type:
-          - string
-          - 'null'
-          example: Unit 456
-        city:
-          type: string
-          example: Columbus
-        state:
-          type:
-          - string
-          - 'null'
-          example: Ohio
-        zip:
-          type:
-          - string
-          - 'null'
-          example: '43210'
-        country:
-          type: string
-          example: United States
-        country_code:
-          type: string
-          example: US
   securitySchemes:
     api_key:
       type: apiKey
