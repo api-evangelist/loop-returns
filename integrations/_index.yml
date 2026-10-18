@@ -78,7 +78,7 @@
     - connectors/applications/loop
     vendor_link: https://www.loopreturns.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: loop-returns-meltano-meltano-hub
   label: Meltano (meltano-hub)
