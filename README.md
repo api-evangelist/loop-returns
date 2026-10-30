@@ -1,4 +1,4 @@
-# Loop Returns (loop-returns)
+# Loop Returns
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,54 +64,182 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Loop Returns is an AI-powered post-purchase operations platform built for e-commerce retention that unites tracking, returns, exchanges, fraud prevention, and shipping into a single platform. Originally built for Shopify, Loop now supports all e-commerce platforms and enables brands to transform returns into revenue-retaining exchanges. The platform provides a REST API for creating return authorizations, tracking return status, managing exchange workflows, generating labels, and triggering refunds, along with programmatic webhook support for real-time event notifications.
+Loop Returns is an AI-powered post-purchase operations platform built for e-commerce retention that unites tracking, returns, exchanges, fraud prevention, and shipping into a single platform. Originally built for Shopify, Loop now supports all e-commerce platforms and enables brands to transform returns into revenue-retaining exchanges. The platform provides a REST API for creating return authorizations, tracking return status, managing exchange workflows, generating labels, and triggering refunds. Developers can also configure programmatic webhooks to receive real-time event notifications for returns, shipments, labels, and gift cards. API access is gated by scoped API keys passed via the X-Authorization header, with OAuth 2.0 required for the Label and Webhooks APIs.
 
-**APIs.json:** https://raw.githubusercontent.com/api-evangelist/loop-returns/refs/heads/main/apis.yml
+**Areas:** Returns · E-Commerce · Refunds · Shipping · Post-Purchase · Shopify · Fraud Prevention · Retail
 
-**Naftiko Fleet:** https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=loop-returns-api-evangelist&utm_content=repo
+## Loop Returns on APIs.io
 
-## Tags
+Everything profiled for Loop Returns is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/loop-returns/](https://apis.io/providers/loop-returns/)** — or go straight to one of the APIs or properties below.
 
-Returns, E-Commerce, Exchanges, Refunds, Shipping, Post-Purchase, Shopify, Fraud Prevention, Retail
+### APIs (7)
 
-## APIs
+- [Loop Returns Cart API](https://apis.io/apis/loop-returns/loop-returns-cart-api/) — The Cart API from Loop Returns — 2 operation(s) for cart.
+- [Loop Returns Destinations API](https://apis.io/apis/loop-returns/loop-returns-destinations-api/) — The Destinations API from Loop Returns — 2 operation(s) for destinations.
+- [Loop Returns Fraud Reports API](https://apis.io/apis/loop-returns/loop-returns-fraud-reports-api/) — The Fraud Reports API from Loop Returns — 1 operation(s) for fraud reports.
+- [Loop Returns Label Requests API](https://apis.io/apis/loop-returns/loop-returns-label-requests-api/) — The Label Requests API from Loop Returns — 6 operation(s) for label requests.
+- [Loop Returns Programmatic Webhooks API](https://apis.io/apis/loop-returns/loop-returns-programmatic-webhooks-api/) — The Programmatic Webhooks API from Loop Returns — 2 operation(s) for programmatic webhooks.
+- [Loop Returns Return Actions API](https://apis.io/apis/loop-returns/loop-returns-return-actions-api/) — The Return Actions API from Loop Returns — 9 operation(s) for return actions.
+- [Loop Returns Return Data API](https://apis.io/apis/loop-returns/loop-returns-return-data-api/) — The Return Data API from Loop Returns — 3 operation(s) for return data.
 
-| Name | Description | Docs |
-|------|-------------|------|
-| Loop Returns API | REST API for managing returns, exchanges, labels, carts, destinations, allowlists, webhooks, and item grading | [Documentation](https://docs.loopreturns.com/api-reference/getting-started) |
+### Published properties
 
-## Plans / Rate Limits / FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | File |
-|----------|------|
-| Plans & Pricing | [plans/loop-returns-plans-pricing.yml](plans/loop-returns-plans-pricing.yml) |
-| Rate Limits | [rate-limits/loop-returns-rate-limits.yml](rate-limits/loop-returns-rate-limits.yml) |
-| FinOps | [finops/loop-returns-finops.yml](finops/loop-returns-finops.yml) |
+#### Agentic access (1)
 
-**Plans summary:** Checkout+ (free, per-shipment label cost) | Essential ($155+/month) | Advanced ($340+/month)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-**Rate limits:** 300 requests per minute per API key; HTTP 429 on breach. Authentication via `X-Authorization` header (API key) or OAuth 2.0 (Label and Webhooks APIs). OAuth tokens expire after 1 hour.
+- [Loop Returns Agentic Access](https://apis.io/agentic-access/loop-returns/loop-returns-agentic-access/)
 
-## Timestamps
+#### JSON Schema (3)
 
-- **Created:** 2026-06-12
-- **Modified:** 2026-06-12
+The data models the API reads and writes.
 
-## Common Properties
+- [Loop Returns - Label Request](https://apis.io/schemas/loop-returns/loop-returns-label-request/)
+- [Loop Returns - Return](https://apis.io/schemas/loop-returns/loop-returns-return/)
+- [Loop Returns - Webhook](https://apis.io/schemas/loop-returns/loop-returns-webhook/)
 
-| Type | URL |
-|------|-----|
-| Website | https://www.loopreturns.com/ |
-| Documentation | https://docs.loopreturns.com/ |
-| Pricing | https://www.loopreturns.com/pricing |
-| Blog | https://www.loopreturns.com/blog/ |
-| Changelog | https://changelog.loopreturns.com/ |
-| Status Page | https://status.loopreturns.com/ |
-| Help Center | https://help.loopreturns.com/ |
-| GitHub Organization | https://github.com/LoopReturns |
-| LinkedIn | https://www.linkedin.com/company/loop-returns |
-| X / Twitter | https://x.com/loop |
+#### JSON-LD (1)
 
-## Maintainers
+Linked-data contexts for the provider's vocabulary.
 
-**Kin Lane** — kin@apievangelist.com
+- [Loop Returns Context](https://apis.io/jsonld/loop-returns/loop-returns-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Loop Returns Vocabulary](https://apis.io/vocabularies/loop-returns/loop-returns-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Loop Returns Label Request Example](https://apis.io/examples/loop-returns/loop-returns-label-request-example/)
+- [Loop Returns Return Example](https://apis.io/examples/loop-returns/loop-returns-return-example/)
+- [Loop Returns Webhook Example](https://apis.io/examples/loop-returns/loop-returns-webhook-example/)
+
+#### Collections (14)
+
+Postman and Open Collection request collections.
+
+- [Loop Returns Cart API](https://apis.io/collections/loop-returns/open-loop-returns-cart-api/)
+- [Loop Returns Cart Destinations API](https://apis.io/collections/loop-returns/open-loop-returns-destinations-api/)
+- [Loop Returns Cart Fraud Reports API](https://apis.io/collections/loop-returns/open-loop-returns-fraud-reports-api/)
+- [Loop Returns Cart Label Requests API](https://apis.io/collections/loop-returns/open-loop-returns-label-requests-api/)
+- [Loop Returns Cart Programmatic Webhooks API](https://apis.io/collections/loop-returns/open-loop-returns-programmatic-webhooks-api/)
+- [Loop Returns Cart Return Actions API](https://apis.io/collections/loop-returns/open-loop-returns-return-actions-api/)
+- [Loop Returns Cart Return Data API](https://apis.io/collections/loop-returns/open-loop-returns-return-data-api/)
+- [Loop Returns Cart API](https://apis.io/collections/loop-returns/postman-loop-returns-cart-api/)
+- [Loop Returns Cart Destinations API](https://apis.io/collections/loop-returns/postman-loop-returns-destinations-api/)
+- [Loop Returns Cart Fraud Reports API](https://apis.io/collections/loop-returns/postman-loop-returns-fraud-reports-api/)
+- [Loop Returns Cart Label Requests API](https://apis.io/collections/loop-returns/postman-loop-returns-label-requests-api/)
+- [Loop Returns Cart Programmatic Webhooks API](https://apis.io/collections/loop-returns/postman-loop-returns-programmatic-webhooks-api/)
+- [Loop Returns Cart Return Actions API](https://apis.io/collections/loop-returns/postman-loop-returns-return-actions-api/)
+- [Loop Returns Cart Return Data API](https://apis.io/collections/loop-returns/postman-loop-returns-return-data-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Loop Returns — jsonschema rules](https://apis.io/rules/loop-returns/loop-returns-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Loop Returns Authentication](https://apis.io/security/loop-returns/loop-returns-authentication/)
+- [Loop Returns Domain Security](https://apis.io/security/loop-returns/loop-returns-domain-security/)
+- [Loop Returns Trust Center](https://apis.io/security/loop-returns/loop-returns-trust-center/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Loop Returns Scopes](https://apis.io/scopes/loop-returns/loop-returns-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Loop Returns Plans Pricing](https://apis.io/plans/loop-returns/loop-returns-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Loop Returns Rate Limits](https://apis.io/rate-limits/loop-returns/loop-returns-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Loop Returns Finops](https://apis.io/finops/loop-returns/loop-returns-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.loopreturns.com/)
+- [Documentation](https://docs.loopreturns.com/)
+- [Pricing](https://www.loopreturns.com/pricing)
+- [Changelog](https://changelog.loopreturns.com/)
+- [Blog](https://www.loopreturns.com/blog/)
+- [GitHub](https://github.com/LoopReturns)
+- [Status](https://status.loopreturns.com/)
+
+## API Evangelist rating
+
+**Kin Score 43.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 62.6 |
+| Contract governance | 23.5 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 29.8 |
+| Access clarity | 26.3 |
+
+**Agent readiness 32.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 31.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/loop-returns/](https://apis.io/providers/loop-returns/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Loop Returns: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/loop-returns/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
